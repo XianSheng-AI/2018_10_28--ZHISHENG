@@ -24,16 +24,17 @@
             <!-- 搜索框 -->
             <div class="search">
                 <input class="sea-inp" type="text" placeholder="搜索" >
+                <svg-icon iconClass="icon-sousuo1"></svg-icon>
             </div>
             <!-- 写文章/登陆/注册 -->
             <div class="log-reg">
-                <svg class="icon icon-wenzhangliebiaoxiangqing" aria-hidden="true">  
+                <!-- <svg class="icon icon-wenzhangliebiaoxiangqing" aria-hidden="true">  
                     <use xlink:href="#icon-wenzhangliebiaoxiangqing"></use>
                 </svg>
-                <!-- <svg class="icon icon-wenzhangliebiaoxiangqing" aria-hidden="true">　　
+                <svg class="icon icon-wenzhangliebiaoxiangqing" aria-hidden="true">　　
                             <use xlink:href="#icon-wenzhangliebiaoxiangqing"></use>
                 </svg> -->
-                <svg-icon iconClass="icon-wenzhangliebiaoxiangqing"></svg-icon>
+                <svg-icon class="svg-icon" iconClass="icon-wenzhangliebiaoxiangqing"></svg-icon>
                 <!-- <span class="iconfont icon-wenzhangliebiaoxiangqing"></span> -->
                 <span class="go write-article">写文章</span>
                 <span class="go login">登陆</span>
@@ -111,6 +112,7 @@ import Search from './children/Search'
                 float left
                 width 14rem
                 height 3rem
+                position relative
                 // background  #222222
                 .sea-inp
                     width 80%
@@ -120,10 +122,15 @@ import Search from './children/Search'
                     border-radius 1rem
                     margin 0.5rem auto
                     text-align center
+                .icon
+                    position absolute
+                    top 1rem
+                    right 2.1rem
             .log-reg
                 line-height 3rem
                 float right 
-                width 11rem
+                // width 11rem
+                // padding 0 0 
                 height 3rem
                 // background #888888
                 font-size 0
@@ -138,12 +145,21 @@ import Search from './children/Search'
                     color $mainColor
                     cursor pointer
                     font-size 1rem
+                    position relative
                     &.write-article
-                        padding-right 1rem
+                        padding-right 2rem
+                        &:after
+                            content "|"
+                            position absolute 
+                            top -1rem
+                            left 3.9rem
+                            color #ccc
                 .icon
                     // color $mainColor
-                    color #000
+                    // color #000
+                    fill $mainColor
                     font-size 1rem
+                    
                     
                     
                     

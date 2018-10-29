@@ -19,15 +19,17 @@ export default {
   },
   computed: {
     iconName() {
-      return `#icon-${this.iconClass}` // 注意：因为此处绑定的svgClass名已经包含#icon，所以复制symbol名字事不需要名字的前缀了
+      return `#${this.iconClass}` // 注意：因为此处绑定的svgClass名已经包含#icon，所以复制symbol名字事不需要名字的前缀了
     },
     svgClass() {
+      //  console.log(this.className)
+        // console.log(this.iconClass)
       if (this.className) {
-        console.log(this.className)
+        // console.log(this.className)
         return 'svg-icon ' + this.className
       } else {
-        console.log(this.className)
-        return 'svg-icon'
+        // console.log(this.iconClass)
+        return 'svg-icon icon ' +  this.iconClass
       }
     }
   }
