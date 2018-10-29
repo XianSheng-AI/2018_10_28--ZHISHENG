@@ -74,6 +74,7 @@ import Search from './children/Search'
             display: flex
             justify-content center
             flex-direction row
+            flex-wrap nowrap
 
             .logo
                 float left
