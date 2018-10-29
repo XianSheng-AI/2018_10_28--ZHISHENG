@@ -71,6 +71,10 @@ import Search from './children/Search'
             height 100%
             // background #784
             margin 0 auto
+            display: flex
+            justify-content center
+            flex-direction row
+
             .logo
                 float left
                 height 100%
