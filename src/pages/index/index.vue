@@ -14,7 +14,7 @@ import HomeRegister from './children/register'
         name:'index',
         data(){
             return {
-
+                
             }
         },
         components:{

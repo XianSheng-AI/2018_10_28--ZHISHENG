@@ -27,12 +27,13 @@
             </div>
             <!-- 写文章/登陆/注册 -->
             <div class="log-reg">
-                <!-- <svg class="icon icon-wenzhangliebiaoxiangqing" aria-hidden="true">  
+                <svg class="icon icon-wenzhangliebiaoxiangqing" aria-hidden="true">  
                     <use xlink:href="#icon-wenzhangliebiaoxiangqing"></use>
-                </svg> -->
-                <svg class="icon icon-wenzhangliebiaoxiangqing" aria-hidden="true">　　
-                            <use xlink:href="#icon-wenzhangliebiaoxiangqing"></use>
                 </svg>
+                <!-- <svg class="icon icon-wenzhangliebiaoxiangqing" aria-hidden="true">　　
+                            <use xlink:href="#icon-wenzhangliebiaoxiangqing"></use>
+                </svg> -->
+                <svg-icon iconClass="icon-wenzhangliebiaoxiangqing"></svg-icon>
                 <!-- <span class="iconfont icon-wenzhangliebiaoxiangqing"></span> -->
                 <span class="go write-article">写文章</span>
                 <span class="go login">登陆</span>
@@ -44,7 +45,6 @@
 
 <script>
 import Search from './children/Search'
-// import '../../../static/iconfont/iconfont.js'
     export default {
         name:'index',
         data(){
