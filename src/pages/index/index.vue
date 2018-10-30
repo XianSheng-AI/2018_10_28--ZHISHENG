@@ -12,7 +12,7 @@
 <script>
 import HomeHeader from '@/components/Header/Header'
 import HomeRecommend from './children/recommend'
-import HomeMain from './children/main'
+import HomeMain from './children/main/main'
 import HomeRegister from './children/register'
 
     export default {

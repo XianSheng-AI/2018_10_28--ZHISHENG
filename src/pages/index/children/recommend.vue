@@ -35,7 +35,7 @@
 
 <script>
     export default {
-        name:'index',
+        name:'home-recommend',
   
     }
 </script>

@@ -10,13 +10,54 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import index from '../pages/index/index.vue'
 
-Vue.use(VueRouter)
+import indexNewest from '../pages/index/children/main/children/newest'
+import indexHot from '../pages/index/children/main/children/hot'
+import indexFocus from '../pages/index/children/main/children/focus'
+import indexStar from '../pages/index/children/main/children/star'
+import indexQuestion from '../pages/index/children/main/children/question'
+import indexTopic from '../pages/index/children/main/children/topic'
+
+Vue.use(VueRouter);
 
 export default new VueRouter({
+  mode: 'history',
+  base: __dirname,
   routes:[
   {
     path:'/',
-    component:index
+    component:index,
+    children:[
+      {
+        path: '/newest',
+        // name: 'home-newest',
+        component:indexNewest
+      },
+      {
+        path:'/hot',
+        component:indexHot
+      },
+      {
+
+        path:'/focus',
+        component:indexFocus
+      },
+      {
+        path:'/star',
+        component:indexStar
+      },
+      {
+        path:'/question',
+        component:indexQuestion
+      },
+      {
+        path:'/topic',
+        component:indexTopic
+      },
+      {
+        path : '',
+        redirect : '/newest'
+      }
+    ]
   }
   ]
 })

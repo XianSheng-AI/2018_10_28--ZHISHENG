@@ -1,14 +1,15 @@
 <template>
     <div>
-        register
-
+      topic
     </div>
 </template>
 
 <script>
     export default {
-        name:'home-register',
-    
+        name: "topic",
+        data() {
+
+        }
     }
 </script>
 

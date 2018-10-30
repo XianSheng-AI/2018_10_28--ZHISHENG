@@ -47,7 +47,7 @@
 <script>
 import Search from './children/Search'
     export default {
-        name:'index',
+        name:'home-header',
         data(){
             return {
 
@@ -163,7 +163,7 @@ import Search from './children/Search'
                     // color $mainColor
                     // color #000
                     fill $mainColor
-                    font-size 1rem
+                    font-size 1remo
                     
                     
                     
