@@ -23,7 +23,7 @@
           <ul class="star-action-ul">
             <li class="star-action-ul-li">
               <div class="lik star-like-box">
-                <svg-icon iconClass="icon-dianzan_active"></svg-icon>
+                <svg-icon iconClass="icon-dianzan2"></svg-icon>
                 <span class="star-cou star-like">87</span>
               </div>
             </li>
@@ -35,11 +35,45 @@
             </li>
             <li class="star-action-ul-li">
               <div class="lik star-transmit-box">
-                <svg-icon iconClass="icon-zhuanfa5"></svg-icon>
+                <svg-icon iconClass="icon-icon_zhuanfa"></svg-icon>
                 <span class="star-cou star- transmit">28</span>
               </div>
             </li>
           </ul>
+        </div>
+        <!--评论-->
+        <div class="comment">
+          <div class="comment-empty">
+            <div class="comment-form">
+              <div class="comment-form-box">
+                <span class="comment-head-img">
+                  <svg-icon iconClass="icon-gugediqiu1"></svg-icon>
+                </span>
+                <input placeholder="输入评论..." class="comment-inp" type="text">
+              </div>
+              <div class="comment-option">
+                <div class="comment-option-left">
+                  <span class="comment-same comment-face">
+                    <div class="comment-face-svg">
+                      <svg-icon iconClass="icon-biaoqing"></svg-icon>
+                    </div>
+                    <span class="comment-s">表情</span>
+                  </span>
+                  <span class="comment-same comment-img">
+                    <div class="comment-face-svg">
+                      <svg-icon iconClass="icon-tupian7"></svg-icon>
+                    </div>
+                    <span class="comment-s">图片</span>
+                  </span>
+                </div>
+                <div class="comment-option-right">
+                  <div></div>
+                  <span class="comment-option-right-btn">评论</span>
+                </div>
+              </div>
+            </div>
+            <div class="comment-list"></div>
+          </div>
         </div>
       </li>
     </ul>
@@ -50,7 +84,9 @@
   export default {
     name: "star",
     data() {
-      return {}
+      return {
+        data:null
+      }
     }
   }
 </script>
@@ -120,11 +156,99 @@
               /*background aqua*/
               margin 0 auto
               line-height 2.6rem
+              .icon-dianzan2
+                fill: #cdcdcd
               .star-cou
                 color #cdcdcd
               .icon-pinglun1
                 fill: #cdcdcd
-              .icon-zhuanfa5
+              .icon-icon_zhuanfa
                 fill: #cdcdcd
+      .comment
+        width:100%
+        height:10rem
+        /*background: burlywood*/
+        .comment-empty
+          width: 95%
+          height: 100%
+          /*background: blue*/
+          margin:0 auto
+          overflow: hidden
+          .comment-form
+            width:35rem
+            /*width:35.5rem*/
+            height:6rem
+            background: #f4f5f5
+            margin:1rem auto
+            padding: .8rem .8rem
+            .comment-form-box
+              width:100%
+              height:2rem
+              /*background: burlywood*/
+              .comment-head-img
+                display: inline-block
+                padding:0 .4rem 0 0
+                /*background: violet*/
+                .icon-gugediqiu1
+                  font-size 2rem
+              .comment-inp
+                float: right
+                width:89%
+                height: 100%
+                padding 0 0 .2rem .8rem
+                /*background: aquamarine*/
+                border-bottom 1px solid gray
+            .comment-option
+              clear both
+              float: right
+              width:91.2%
+              height:2.9rem
+              /*background: cadetblue*/
+              .comment-option-left
+                /*width:8rem*/
+                ///*height: 44%*/
+                /*background: thistle*/
+                margin:.4rem 0
+                padding:.4rem
+                float left
+                /*cursor: pointer;*/
+
+                .comment-same
+                  cursor: pointer;
+                  display: inline-block
+                  /*width:rem*/
+                  /*height:2rem*/
+                  /*background: goldenrod*/
+                  padding:.4rem
+                  .comment-face-svg
+                    float: left;
+                  .icon-biaoqing
+                    fill #4c65fb
+                    font-size 1.2rem
+                  .comment-s
+                    color: #4c65fb
+                    display: inline-block
+                    font-size .8rem
+                    /*background: fuchsia*/
+                  .icon-tupian7
+                    fill #4c65fb
+                    font-size 1.2rem
+              .comment-option-right
+                float: right;
+                width:10rem
+                height:2.2rem
+                padding 0.8rem 0 0 0
+                /*background: greenyellow*/
+                .comment-option-right-btn
+                  float: right
+                  display: inline-block
+                  padding:.4rem 1rem
+                  border-radius .4rem
+                  background: #4c65fb
+                  color: #f4f5f5
+
+
+          .comment-list
+            width: 100%
 
 </style>
