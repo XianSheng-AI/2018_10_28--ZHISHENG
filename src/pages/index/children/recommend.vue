@@ -43,7 +43,7 @@
 <style lang="stylus" scoped>
     .recommend
         float left
-        width 40rem
+        width 44.4rem
         height 2.8rem
         margin 0 0.6rem 0.6rem 0  
         background #ffffff

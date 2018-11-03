@@ -8,3 +8,15 @@ ellipsis()
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+
+//清除浮动
+clearFix()
+  //*zoom 1
+  &::after
+    content ''
+    display block
+    clear both
+    //display: block;
+    height: 0;
+    //clear: both;
+    visibility: hidden;

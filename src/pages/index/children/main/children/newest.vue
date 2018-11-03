@@ -51,7 +51,7 @@
                 <li class="info-row-ul-li">React.js/前端</li>
               </ul>
             </div>
-            <h3 class="title-row">反倒是个人认识他仍是突然热点话题热度</h3>
+            <h3 class="title-row">一次性搞懂JavaScript正则表达式之语法</h3>
             <div class="action-row">
               <ul class="action-row-ul">
                 <li class="action-row-ul-li">
@@ -89,7 +89,7 @@
                 <li class="info-row-ul-li">React.js/前端</li>
               </ul>
             </div>
-            <h3 class="title-row">反倒是个人认识他仍是突然热点话题热度</h3>
+            <h3 class="title-row">彻底搞懂小程序登录流程-附小程序和服务端代码</h3>
             <div class="action-row">
               <ul class="action-row-ul">
                 <li class="action-row-ul-li">
@@ -127,7 +127,7 @@
                 <li class="info-row-ul-li">React.js/前端</li>
               </ul>
             </div>
-            <h3 class="title-row">反倒是个人认识他仍是突然热点话题热度</h3>
+            <h3 class="title-row">CAT 3.0 开源发布，支持多语言客户端及多项性能提升</h3>
             <div class="action-row">
               <ul class="action-row-ul">
                 <li class="action-row-ul-li">
@@ -165,7 +165,7 @@
                 <li class="info-row-ul-li">React.js/前端</li>
               </ul>
             </div>
-            <h3 class="title-row">反倒是个人认识他仍是突然热点话题热度</h3>
+            <h3 class="title-row">仿有赞后台+vue+ts+vuecli3.0+elementUi+二期项目结构文件搭建+以及路由的使用</h3>
             <div class="action-row">
               <ul class="action-row-ul">
                 <li class="action-row-ul-li">
@@ -203,7 +203,7 @@
                 <li class="info-row-ul-li">React.js/前端</li>
               </ul>
             </div>
-            <h3 class="title-row">反倒是个人认识他仍是突然热点话题热度</h3>
+            <h3 class="title-row">微信小程序性能优化方案——让你的小程序如此丝滑</h3>
             <div class="action-row">
               <ul class="action-row-ul">
                 <li class="action-row-ul-li">
@@ -278,15 +278,20 @@
         .wapper-box
           display flex
           align-items: center;
-          width 652px
-          height 80px
+          /*width 652px*/
+          /*height 80px*/
           // padding: 1.5rem 2rem;
-          padding: .6rem .8rem;
+          padding: 1rem 1rem;
+          cursor: pointer;
+          &:hover
+            background-color: rgba(0,0,0,.01);
+
           .info-box
             flex 1 1 auto
             justify-content center
             flex-direction: column;
             width 100%
+
             .info-row
               width 100%
               height 1rem
@@ -294,15 +299,17 @@
               .info-row-ul
                 .info-row-ul-li
                   float left
-                  &:after
+                  font-size .9rem
+                  color: #b2bac2
+                  &:not(:last-child):after
                     content: "\B7";
                     margin: 0 0.4em;
             // color: #b2bac2;
             // background #b2bac2
             .title-row
               ellipsis()
-              font-size 1rem
-              margin .4rem 0 .4rem
+              font-size 1.1rem
+              margin .6rem 0 .8rem
               color #313437
             .action-row
               width 100%
@@ -317,9 +324,11 @@
 
                   .svg-icon
                     fill #cdcdcd
+                    font-size 1rem
                   .same-count
-                    font-weight bold
-                    color #CDCDCD
+                    font-size .9rem
+                    font-weight 700
+                    color #b2bac2
   // &.action-like
   // background #000
   // .like-count

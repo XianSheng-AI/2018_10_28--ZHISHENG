@@ -35,7 +35,7 @@ import HomeRegister from './children/register'
     .posi
         // height 20rem
         width 64%
-        margin 0.6rem auto 
+        margin 0.6rem 0 0 19rem
         // background red
 </style>
 

@@ -49,7 +49,10 @@
                 <span class="comment-head-img">
                   <svg-icon iconClass="icon-gugediqiu1"></svg-icon>
                 </span>
-                <input placeholder="输入评论..." class="comment-inp" type="text">
+                <div class="comment-inp-box">
+                  <div placeholder="输入评论..." contenteditable="true" spellcheck="false" class="comment-inp" :class="{'empty':!!hasWord}"  v-model="hasWord"></div>
+                </div>
+
               </div>
               <div class="comment-option">
                 <div class="comment-option-left">
@@ -72,7 +75,20 @@
                 </div>
               </div>
             </div>
-            <div class="comment-list"></div>
+            <div class="comment-list">
+              <div class="list-item">
+                <div class="item">
+                  <div class="user-img-box">
+                    <svg-icon iconClass="icon-gugediqiu1"></svg-icon>
+                  </div>
+                  <div class="content-box">
+                    <div class="content-owner"></div>
+                    <div class="content-text"></div>
+                    <div class="content-time"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </li>
@@ -85,13 +101,15 @@
     name: "star",
     data() {
       return {
-        data:null
+        data:null,
+        hasWord:''
       }
     }
   }
 </script>
 
 <style lang="stylus" scoped>
+  @import "~@/common/stylus/mixins.styl"
 .star-wapper
   width 100%
   /*height:20rem*/
@@ -106,7 +124,7 @@
       align-items  center
       justify-content:center
       .star-user-info
-        width: 41.6rem
+        width: 46rem
         height: 2.82rem
         /*background: aqua*/
         padding:.8rem 0 0 0
@@ -114,7 +132,7 @@
           width:2.82rem
           height:2.82rem
           /*background: aquamarine*/
-          padding-right .6rem
+          padding-right 1rem
           float left
         .icon-gugediqiu1
           font-size 2.8rem
@@ -144,12 +162,17 @@
         width:100%
         /*background: burlywood*/
         .star-action-ul
-
+          display: flex
+          justify-content:center
+          border-bottom 2px #F4F5F5 solid
           .star-action-ul-li
             float: left
-            width: 33.333333333333333%
+            padding: 0 .6rem/*width: 33.333333333333333%*/
             height: 100%
-            border-bottom 2px #F4F5F5 solid
+
+            /*background: #888*/
+            margin:0 4rem
+
             .lik
               text-align center
               width:100%
@@ -166,43 +189,82 @@
                 fill: #cdcdcd
       .comment
         width:100%
-        height:10rem
+        /*height:10rem*/
         /*background: burlywood*/
+        clearFix()
         .comment-empty
           width: 95%
           height: 100%
           /*background: blue*/
           margin:0 auto
-          overflow: hidden
+          clearFix()
+          /*overflow: hidden*/
           .comment-form
-            width:35rem
+            /*width:35rem*/
             /*width:35.5rem*/
-            height:6rem
+            /*height:6rem*/
             background: #f4f5f5
             margin:1rem auto
             padding: .8rem .8rem
+            border-radius .3rem
+            /*display: flex*/
+            /*justify-content: center*/
+            /*align-items center*/
+            /*position: relative*/
+            clearFix()
+
             .comment-form-box
               width:100%
               height:2rem
+              /*float: left*/
+              //clearFix()
               /*background: burlywood*/
               .comment-head-img
                 display: inline-block
-                padding:0 .4rem 0 0
+                padding:0 .2rem 0 0
                 /*background: violet*/
                 .icon-gugediqiu1
                   font-size 2rem
-              .comment-inp
+              .comment-inp-box
+                border 1px solid #007fff
                 float: right
-                width:89%
-                height: 100%
-                padding 0 0 .2rem .8rem
-                /*background: aquamarine*/
-                border-bottom 1px solid gray
+                border-radius .3rem
+
+                width:41.2rem
+                display: block
+                .comment-inp
+                  //clearFix()
+                  /*display: block*/
+                  position: relative;
+                  padding: .6rem 1rem;
+                  /*font-size: 1.083rem;*/
+                  line-height: 1.7;
+                  color: #17181a;
+                  outline: none;
+                  min-height: 1.3em;
+                  /*float: right*/
+                  /*width: 91%*/
+                  /*height: 100%*/
+                  /*padding 0 0 .2rem .8rem*/
+                  /*background: aquamarine*/
+                  &:before
+                    content: attr(placeholder);
+                    position: absolute;
+                    opacity: .4;
+                    pointer-events: none;
+                    -webkit-user-select: none;
+                    -moz-user-select: none;
+                    -ms-user-select: none;
+                    user-select: none;
+                    &:not(.empty):before
+                      display: none
+
             .comment-option
               clear both
               float: right
               width:91.2%
               height:2.9rem
+              clearFix()
               /*background: cadetblue*/
               .comment-option-left
                 /*width:8rem*/
@@ -244,11 +306,38 @@
                   display: inline-block
                   padding:.4rem 1rem
                   border-radius .4rem
-                  background: #4c65fb
+                  background: #027fff
                   color: #f4f5f5
+                  cursor: pointer;
+                  transition .3s
+                  &:hover
+                    background #0371df
 
 
           .comment-list
-            width: 100%
+            width: 91.6%
+            height:20rem
+            background: #ccc
+            margin: 0 1.666rem 0 3.5rem
+            .list-item
+              &:not(last-children)
+                margin-bottom 1.333333rem
+              .item
+                height:10rem
+                background: aquamarine
+                display: flex
+                .user-img-box
+                    /*margin-right .rem*/
+                    .icon-gugediqiu1
+                      font-size 2rem
+                .content-box
+                  margin-left: .833rem;
+                  -webkit-box-flex: 1;
+                  -ms-flex: 1 1 auto;
+                  flex: 1 1 auto;
+                  /*width: 90%*/
+                  height:100%
+                  background: bisque
+
 
 </style>
