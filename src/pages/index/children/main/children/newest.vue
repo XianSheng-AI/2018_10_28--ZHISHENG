@@ -13,7 +13,7 @@
                 <li class="info-row-ul-li">React.js/前端</li>
               </ul>
             </div>
-            <h3 class="title-row">反倒是个人认识他仍是突然热点话题热度</h3>
+            <h3 class="title-row">[译] Google 工程师提升网页性能的新策略：空闲执行，紧急优先</h3>
             <div class="action-row">
               <ul class="action-row-ul">
                 <li class="action-row-ul-li">
@@ -75,7 +75,11 @@
               </ul>
             </div>
           </div>
+          <div class="info-img-box">
+            <img class="info-img" src="https://user-gold-cdn.xitu.io/2018/11/5/166e112be87fa0bf?imageView2/1/w/120/h/120/q/85/format/webp/interlace/1" alt="">
+          </div>
         </div>
+
       </li>
 
       <li class="look-data-ul-li">
@@ -246,6 +250,7 @@
 </script>
 
 <style lang="stylus" scoped>
+  @import '~@/common/stylus/mixins.styl'
   .fade-enter-active, .fade-leave-active {
     opacity 1
     transition: opacity .5s;
@@ -287,6 +292,7 @@
             background-color: rgba(0,0,0,.01);
 
           .info-box
+            ellipsis()
             flex 1 1 auto
             justify-content center
             flex-direction: column;
@@ -329,6 +335,11 @@
                     font-size .9rem
                     font-weight 700
                     color #b2bac2
+          .info-img-box
+            height:100%
+            .info-img
+              height:5rem
+
   // &.action-like
   // background #000
   // .like-count

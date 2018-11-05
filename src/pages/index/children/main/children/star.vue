@@ -50,7 +50,13 @@
                   <svg-icon iconClass="icon-gugediqiu1"></svg-icon>
                 </span>
                 <div class="comment-inp-box">
-                  <div placeholder="输入评论..." contenteditable="true" spellcheck="false" class="comment-inp" :class="{'empty':!!hasWord}"  v-model="hasWord"></div>
+                  <div placeholder="输入评论..."
+                       contenteditable="true"
+                       spellcheck="false"
+                       class="comment-inp"
+                       :class="{'empty':!!hasWord}"
+                       v-model="hasWord"
+                  ></div>
                 </div>
 
               </div>
@@ -82,9 +88,26 @@
                     <svg-icon iconClass="icon-gugediqiu1"></svg-icon>
                   </div>
                   <div class="content-box">
-                    <div class="content-owner"></div>
-                    <div class="content-text"></div>
-                    <div class="content-time"></div>
+                    <div class="content-owner">
+                      <div class="info-wrapper">
+                        <a class="user-name" href="#">一米八的萝卜</a>
+                      </div>
+                      <div class="user-position">站长@掘金</div>
+                    </div>
+                    <div class="content-text">文章评论很多那种拼团的小广告，很影响阅读体验，希望能出一个举报功能或者有人能清除一下😳。</div>
+                    <div class="content-time">
+                      <time datetime="2018-11-05T02:51:24.940Z" title="Mon Nov 05 2018 10:51:24 GMT+0800 (中国标准时间)" class="time">44分钟前</time>
+                      <div class="content-action-box">
+                        <div class="action-like">
+                          <svg-icon  iconClass="icon-dianzan2"></svg-icon>
+                          <span class="action-sty action-like-count">546</span>
+                        </div>
+                        <div class="action-comment">
+                          <svg-icon iconClass="icon-pinglun1"></svg-icon>
+                          <span class="action-sty action-comment-count">66</span>
+                        </div>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -203,7 +226,7 @@
             /*width:35rem*/
             /*width:35.5rem*/
             /*height:6rem*/
-            background: #f4f5f5
+            background: #fafbfc
             margin:1rem auto
             padding: .8rem .8rem
             border-radius .3rem
@@ -316,16 +339,17 @@
 
           .comment-list
             width: 91.6%
-            height:20rem
-            background: #ccc
+            /*height:20rem*/
+            /*background: #ccc*/
             margin: 0 1.666rem 0 3.5rem
             .list-item
               &:not(last-children)
                 margin-bottom 1.333333rem
               .item
-                height:10rem
-                background: aquamarine
+                /*height:10rem*/
+                /*background: aquamarine*/
                 display: flex
+                padding-bottom .6rem
                 .user-img-box
                     /*margin-right .rem*/
                     .icon-gugediqiu1
@@ -337,7 +361,56 @@
                   flex: 1 1 auto;
                   /*width: 90%*/
                   height:100%
-                  background: bisque
-
+                  /*background: bisque*/
+                  .content-owner
+                    width:100%
+                    /*background-color: #ccc*/
+                    display: flex
+                    .user-name
+                      flex:1 1 auto
+                      font-size .9rem
+                    .user-position
+                      color: #8a9aa9;
+                      font-size: .9rem;
+                      margin-left: 4px;
+                      overflow: hidden;
+                      white-space: nowrap;
+                      text-overflow: ellipsis;
+                      max-width: 16rem;
+                  .content-text
+                    margin-top: .4rem;
+                    font-size: .9rem;
+                    line-height: 1.4rem;
+                    white-space: pre-wrap;
+                    color: #505050;
+                  .content-time
+                    width:100%
+                    padding-top .3rem
+                    display: flex
+                    .time
+                      color: #8a9aa9
+                      font-size .9rem
+                    .content-action-box
+                      /*width:6rem*/
+                      /*background: aqua*/
+                      -webkit-box-flex: 0;
+                      -ms-flex: 0 0 auto;
+                      flex: 0 0 auto;
+                      display: -webkit-box;
+                      display: -ms-flexbox;
+                      display: flex;
+                      -webkit-box-pack: justify;
+                      -ms-flex-pack: justify;
+                      justify-content: space-between;
+                      margin-left: auto;
+                      min-width: 8.8rem;
+                      color: #8a93a0;
+                      -webkit-user-select: none;
+                      -moz-user-select: none;
+                      -ms-user-select: none;
+                      user-select: none;
+                      .action-sty
+                        color: #8a93a0
+                        font-size .8rem
 
 </style>
