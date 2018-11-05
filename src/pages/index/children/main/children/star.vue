@@ -23,7 +23,7 @@
           <ul class="star-action-ul">
             <li class="star-action-ul-li">
               <div class="lik star-like-box">
-                <svg-icon iconClass="icon-dianzan2"></svg-icon>
+                <svg-icon iconClass="icon-dianzan4"></svg-icon>
                 <span class="star-cou star-like">87</span>
               </div>
             </li>
@@ -99,7 +99,7 @@
                       <time datetime="2018-11-05T02:51:24.940Z" title="Mon Nov 05 2018 10:51:24 GMT+0800 (中国标准时间)" class="time">44分钟前</time>
                       <div class="content-action-box">
                         <div class="action-like">
-                          <svg-icon  iconClass="icon-dianzan2"></svg-icon>
+                          <svg-icon  iconClass="icon-dianzan4"></svg-icon>
                           <span class="action-sty action-like-count">546</span>
                         </div>
                         <div class="action-comment">
@@ -108,7 +108,98 @@
                         </div>
                       </div>
                     </div>
+                    <div class="res-user-box">
+                      <div class="res-item">
+                        <div class="posi-flex">
+                          <div class="user-img-box">
+                            <svg-icon iconClass="icon-gugediqiu1"></svg-icon>
+                          </div>
+                          <div class="content-box">
+                            <div class="content-owner">
+                              <div class="info-wrapper">
+                                <a class="user-name" href="#">一米八的萝卜</a>
+                              </div>
+                              <!--<div class="user-position">站长@掘金</div>-->
+                            </div>
+                            <div class="content-text">文章评论很多那种拼团的小广告，很影响阅读体验，希望能出一个举报功能或者有人能清除一下😳。</div>
+                            <div class="content-time">
+                              <time datetime="2018-11-05T02:51:24.940Z" title="Mon Nov 05 2018 10:51:24 GMT+0800 (中国标准时间)" class="time">44分钟前</time>
+                              <div class="content-action-box">
+                                <div class="action-like">
+                                  <svg-icon  iconClass="icon-dianzan4"></svg-icon>
+                                  <span class="action-sty action-like-count">546</span>
+                                </div>
+                                <div class="action-comment">
+                                  <svg-icon iconClass="icon-pinglun1"></svg-icon>
+                                  <span class="action-sty action-comment-count">66</span>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div><div class="res-item">
+                        <div class="posi-flex">
+                          <div class="user-img-box">
+                            <svg-icon iconClass="icon-gugediqiu1"></svg-icon>
+                          </div>
+                          <div class="content-box">
+                            <div class="content-owner">
+                              <div class="info-wrapper">
+                                <a class="user-name" href="#">一米八的萝卜</a>
+                              </div>
+                              <!--<div class="user-position">站长@掘金</div>-->
+                            </div>
+                            <div class="content-text">文章评论很多那种拼团的小广告，很影响阅读体验，希望能出一个举报功能或者有人能清除一下😳。</div>
+                            <div class="content-time">
+                              <time datetime="2018-11-05T02:51:24.940Z" title="Mon Nov 05 2018 10:51:24 GMT+0800 (中国标准时间)" class="time">44分钟前</time>
+                              <div class="content-action-box">
+                                <div class="action-like">
+                                  <svg-icon  iconClass="icon-dianzan4"></svg-icon>
+                                  <span class="action-sty action-like-count">546</span>
+                                </div>
+                                <div class="action-comment">
+                                  <svg-icon iconClass="icon-pinglun1"></svg-icon>
+                                  <span class="action-sty action-comment-count">66</span>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="res-item">
+                        <div class="posi-flex">
+                          <div class="user-img-box">
+                            <svg-icon iconClass="icon-gugediqiu1"></svg-icon>
+                          </div>
+                          <div class="content-box">
+                            <div class="content-owner">
+                              <div class="info-wrapper">
+                                <a class="user-name" href="#">一米八的萝卜</a>
+                              </div>
+                              <!--<div class="user-position">站长@掘金</div>-->
+                            </div>
+                            <div class="content-text">文章评论很多那种拼团的小广告，很影响阅读体验，希望能出一个举报功能或者有人能清除一下😳。</div>
+                            <div class="content-time">
+                              <time datetime="2018-11-05T02:51:24.940Z" title="Mon Nov 05 2018 10:51:24 GMT+0800 (中国标准时间)" class="time">44分钟前</time>
+                              <div class="content-action-box">
+                                <div class="action-like">
+                                  <svg-icon  iconClass="icon-dianzan4"></svg-icon>
+                                  <span class="action-sty action-like-count">546</span>
+                                </div>
+                                <div class="action-comment">
+                                  <svg-icon iconClass="icon-pinglun1"></svg-icon>
+                                  <span class="action-sty action-comment-count">66</span>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <!--<div class="res-item"></div>-->
+                      <!--<div class="res-item"></div>-->
+                    </div>
                   </div>
+
                 </div>
               </div>
             </div>
@@ -132,6 +223,7 @@
 </script>
 
 <style lang="stylus" scoped>
+  /*@import "~@/common/stylus/mixins.styl"*/
   @import "~@/common/stylus/mixins.styl"
 .star-wapper
   width 100%
@@ -202,7 +294,7 @@
               /*background aqua*/
               margin 0 auto
               line-height 2.6rem
-              .icon-dianzan2
+              .icon-dianzan4
                 fill: #cdcdcd
               .star-cou
                 color #cdcdcd
@@ -355,6 +447,8 @@
                     .icon-gugediqiu1
                       font-size 2rem
                 .content-box
+                  /*clear: both*/
+                  /*background: red*/
                   margin-left: .833rem;
                   -webkit-box-flex: 1;
                   -ms-flex: 1 1 auto;
@@ -412,5 +506,27 @@
                       .action-sty
                         color: #8a93a0
                         font-size .8rem
+
+                .res-user-box
+                  margin: 1rem 0;
+                  padding: 0 0 0 .8rem;
+                  background-color: #fafbfc;
+                  border-radius: 3px;
+                  //clearFix()
+                  clear: both
+                  margin-top .6rem
+                  /*height:10rem*/
+                  /*background: wheat*/
+                  .res-item
+                    padding .8rem .8rem 0 0
+                    /*background: darkturquoise*/
+                    &:not(:last-child) .content-box
+                      border-bottom: 1px solid #f1f1f1;
+                    .posi-flex
+                      display: flex
+                      .content-box
+
+
+                        padding-bottom 1rem
 
 </style>

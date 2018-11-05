@@ -309,7 +309,7 @@
                   color: #b2bac2
                   &:not(:last-child):after
                     content: "\B7";
-                    margin: 0 0.4em;
+                    margin: 0 0.4rem;
             // color: #b2bac2;
             // background #b2bac2
             .title-row

@@ -12,6 +12,8 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 import '../static/iconfont/iconfont.js'
+// import './common/normalize.css'
+import './common/reset.css'
 
 import SvgIcon from '@/components/iconfont/SvgIcon.vue'
 
