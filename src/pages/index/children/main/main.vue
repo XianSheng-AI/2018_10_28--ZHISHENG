@@ -92,7 +92,7 @@
 @import "~@/common/stylus/mixins.styl"
     .main-container
         clear both
-        width 48rem
+        width 44rem
         /*height 40rem*/
         background #ffffff
         border-radius 0.4rem
@@ -139,6 +139,7 @@
                             right 0
             .look-container
                 width 100%
+                border-bottom 1px solid #f0f2f7
                 /*height 30rem*/
                 // background #cccccc
                 // padding .8rem 0
