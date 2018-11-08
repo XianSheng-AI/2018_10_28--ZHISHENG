@@ -1,12 +1,17 @@
 <template>
   <div id="app">
+    <common-header></common-header>
     <router-view/>
   </div>
 </template>
 
 <script>
+  import commonHeader from './components/Header/Header'
 export default {
-  name: "App"
+  name: "App",
+  components:{
+    commonHeader
+  }
 };
 </script>
 
@@ -18,11 +23,10 @@ export default {
   list-style: none;
   text-decoration: none;
   color: #71777c;
-  /* display: block */
 }
 body,
 html {
-  /* font-size: 20px; */
+  font-size: 16px;
   background: #f4f5f5;
   margin: 0;
   color: #71777c;

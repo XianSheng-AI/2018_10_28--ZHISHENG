@@ -4,7 +4,7 @@
         <div class="posi">
             <Home-Recommend></Home-Recommend>
             <home-main></home-main>
-            <Home-Register></Home-Register>
+            <Home-Aside></Home-Aside>
         </div>
     </div>
 </template>
@@ -13,7 +13,8 @@
 import HomeHeader from '@/components/Header/Header'
 import HomeRecommend from './children/recommend'
 import HomeMain from './children/main/main'
-import HomeRegister from './children/register'
+import HomeAside from './children/aside/aside'
+
 
     export default {
         name:'index',
@@ -26,16 +27,20 @@ import HomeRegister from './children/register'
             HomeHeader,
             HomeRecommend,
             HomeMain,
-            HomeRegister
+            HomeAside
         }
     }
 </script>
 
 <style lang="stylus" scoped>
+  @import "~@/common/stylus/mixins.styl"
     .posi
-        // height 20rem
-        width 64%
-        margin 0.6rem 0 0 19rem
-        // background red
+        /*overflow: hidden*/
+
+        width 60rem
+        margin 0.6rem auto
+        background: #ccc
+        position: relative
+        /*margin 0.6rem 0 0 19rem*/
 </style>
 

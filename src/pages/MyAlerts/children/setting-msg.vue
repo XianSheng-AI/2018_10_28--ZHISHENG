@@ -1,14 +1,15 @@
 <template>
     <div>
-        register
-
+      setting
     </div>
 </template>
 
 <script>
     export default {
-        name:'home-register',
-    
+        name: "setting-msg",
+        data() {
+            return {}
+        }
     }
 </script>
 

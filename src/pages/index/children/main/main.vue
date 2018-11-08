@@ -91,6 +91,7 @@
 <style lang="stylus" scoped>
 @import "~@/common/stylus/mixins.styl"
     .main-container
+        float left
         clear both
         width 44rem
         /*height 40rem*/
@@ -108,20 +109,16 @@
                 border-bottom 1.2px solid #f4f5f4
                 width 100%
                 height 2.8rem
-                /*background #777*/
                 .look-nav-ul
 
                     .look-nav-ul-li
                         width 3.8rem
                         height 2.8rem
-                        // background red
                         float left
                         cursor pointer
                         position: relative
-
                         span
                             display inline-block
-                            // background #777
                             width 100%
                             height 2.8rem
                             text-align center
@@ -140,9 +137,6 @@
             .look-container
                 width 100%
                 border-bottom 1px solid #f0f2f7
-                /*height 30rem*/
-                // background #cccccc
-                // padding .8rem 0
 
 
 

@@ -239,7 +239,7 @@
       align-items  center
       justify-content:center
       .star-user-info
-        width: 46rem
+        width: 95.6%
         height: 2.82rem
         /*background: aqua*/
         padding:.8rem 0 0 0
@@ -247,7 +247,7 @@
           width:2.82rem
           height:2.82rem
           /*background: aquamarine*/
-          padding-right 1rem
+          padding-right .6rem
           float left
         .icon-gugediqiu1
           font-size 2.8rem
@@ -345,7 +345,7 @@
                 float: right
                 border-radius .3rem
 
-                width:41.2rem
+                width:37.4rem
                 display: block
                 .comment-inp
                   //clearFix()
