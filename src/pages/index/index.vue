@@ -1,6 +1,5 @@
 <template>
     <div>
-        <Home-Header></Home-Header>
         <div class="posi">
             <Home-Recommend></Home-Recommend>
             <home-main></home-main>

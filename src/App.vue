@@ -30,14 +30,18 @@ html {
   background: #f4f5f5;
   margin: 0;
   color: #71777c;
+  font-family:Helvetica,arial,'Hiragino Sans GB',\5b8b\4f53,sans-serif;
 }
 input {
   background: none;
   outline: none;
-  border: 0px;
+  border: 0;
 }
 #app {
-  font-family: "Avenir", Helvetica, Arial, sans-serif;
+  /*font-family: "Avenir", Helvetica, Arial, sans-serif;*/
+  font-family: -apple-system,PingFang SC,Hiragino Sans GB,Microsoft YaHei,Helvetica Neue,Arial,sans-serif;
+
+  /*font-family:Helvetica,arial,'Hiragino Sans GB',\5b8b\4f53,sans-serif;*/
   /* -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
