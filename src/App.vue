@@ -22,7 +22,7 @@ export default {
   border: none;
   list-style: none;
   text-decoration: none;
-  color: #71777c;
+  /*color: #71777c;*/
 }
 body,
 html {

@@ -62,6 +62,9 @@ import Search from './children/Search'
 <style lang="stylus" scoped>
 @import "~@/common/stylus/mixins.styl"
     .header
+        position: fixed
+        top: 0
+        left:0
         width 100%
         height 3rem
         background #ffffff

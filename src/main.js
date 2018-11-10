@@ -11,13 +11,46 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
+// import iView from 'iview'
+import 'iview/dist/styles/iview.css';
 import '../static/iconfont/iconfont.js'
 // import './common/normalize.css'
 import './common/reset.css'
+//引用vuescroll插件
+import VueScroll from 'vuescroll/dist/vuescroll-native';
+// import VueScroll from 'vuescroll/dist/vuescroll-slide';
+import 'vuescroll/dist/vuescroll.css';
 
 import SvgIcon from '@/components/iconfont/SvgIcon.vue'
 
 Vue.component('svg-icon',SvgIcon);
+// Vue.use(VueScroll);
+
+// Vue.use(iView);
+Vue.use(VueScroll, {
+  // mode: 'native',
+  ops: {
+    vuescroll: {
+      mode: 'native',
+      sizeStrategy: 'percent',
+    },
+    scrollPanel: {
+      scrollingX: false,
+    },
+    rail: {
+      background: '#c8c4f4',
+      opacity: 0,
+      /** Rail's size(Height/Width) , default -> 6px */
+      size: '6px',
+    },
+    bar: {
+      background : '#93a5fb',
+      keepShow: false,
+    }
+  }, // 在这里设置全局默认配置
+  name: 'vueScroll' // 在这里自定义组件名字，默认是vueScroll
+
+});
 
 // Vue.config.productionTip = false
 

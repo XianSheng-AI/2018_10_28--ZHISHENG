@@ -2,39 +2,39 @@
     <div class="my-alert">
       <div class="guide-box-left">
         <ul class="guide-box-ul">
-          <router-link tag="li" to="./comment" class="guide-box-ul-li">
-            <router-link to="./comment" class="guide-svg"><svg-icon iconClass="icon-pinglun10"></svg-icon></router-link>
+          <router-link tag="li" to="/setting/comment" class="guide-box-ul-li">
+            <span  class="guide-svg"><svg-icon iconClass="icon-pinglun10"></svg-icon></span>
             <span>评论</span>
             <span class="no-read-count">126</span>
           </router-link>
-          <router-link tag="li" to="./like" class="guide-box-ul-li">
+          <router-link tag="li" to="/setting/like" class="guide-box-ul-li">
             <span class="guide-svg"><svg-icon iconClass="icon-dianzan7"></svg-icon></span>
             <span>点赞</span>
             <!--<div class="no-read">-->
             <span class="no-read-count">85</span>
             <!--</div>-->
           </router-link>
-          <router-link tag="li" to="./focus" class="guide-box-ul-li">
+          <router-link tag="li" to="/setting/focus" class="guide-box-ul-li">
             <span class="guide-svg"><svg-icon iconClass="icon-guanzhu"></svg-icon></span>
             <span>关注</span>
             <span class="no-read-count">89</span>
           </router-link>
-          <router-link tag="li" to="./collect" class="guide-box-ul-li">
+          <router-link tag="li" to="/setting/collect" class="guide-box-ul-li">
             <span class="guide-svg"><svg-icon iconClass="icon-shoucang10"></svg-icon></span>
             <span>收藏</span>
             <span class="no-read-count">28</span>
           </router-link>
-          <router-link tag="li" to="./share" class="guide-box-ul-li">
+          <router-link tag="li" to="/setting/share" class="guide-box-ul-li">
             <span class="guide-svg"><svg-icon iconClass="icon-fenxiangzhuanfafasongzhijiantouyuanxingshar"></svg-icon></span>
             <span>分享</span>
             <span class="no-read-count">4</span>
           </router-link>
-          <router-link tag="li" to="./contribute" class="guide-box-ul-li">
+          <router-link tag="li" to="/setting/contribute" class="guide-box-ul-li">
             <span class="guide-svg"><svg-icon iconClass="icon-tougao1"></svg-icon></span>
             <span>投稿</span>
             <span class="no-read-count">2</span>
           </router-link>
-          <router-link tag="li" to="./settingMsg" class="guide-box-ul-li">
+          <router-link tag="li" to="/setting/settingMsg" class="guide-box-ul-li">
             <span class="guide-svg"><svg-icon iconClass="icon-IOT_tongzhishezhi"></svg-icon></span>
             <span>信息设置</span>
           </router-link>
@@ -64,12 +64,16 @@
     padding:0
     border none
   .my-alert
+
     position: relative
+    top 3.1rem
     width:60rem
     /*height: 25rem*/
     /*background: aqua*/
     margin:.9rem auto
     .guide-box-left
+      position: fixed;
+      top:4rem
       box-shadow 0 0 .6rem #ccc
       clearFix()
       width:14rem
@@ -97,7 +101,7 @@
             border-bottom 1px solid #f5f5f5
           .svg-icon
             fill #4c65fb
-            padding-right 1rem
+            margin-right .8rem
           /*.no-read*/
 
 
@@ -107,20 +111,23 @@
             color: #ffff
             padding:.16rem .4rem
             border-radius .5rem
-            margin:0 0 1rem 4rem
+            margin:0 0 1rem 3.6rem
             line-height 1.6rem
+          /*float: right*/
           &:hover
             background: #bdf9f7
             cursor pointer
     .change-box
       border-radius .3rem
-      overflow: hidden
-      position: absolute;
-      top: 0
-      right: 0
+      /*overflow: hidden*/
+      /*height: 100%;*/
+      position: fixed;
+      top: 4rem
+      right 17.8rem
       float right
-      width: 75%
-      height:30rem
+      width: 45rem
+      /*height:30rem*/
       background: #ffffff
+      box-shadow 0 0 .6rem #ccc
 
 </style>
