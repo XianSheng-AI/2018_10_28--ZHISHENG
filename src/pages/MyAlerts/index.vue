@@ -4,39 +4,39 @@
         <ul class="guide-box-ul">
           <router-link tag="li" to="/setting/comment" class="guide-box-ul-li">
             <span  class="guide-svg"><svg-icon iconClass="icon-pinglun10"></svg-icon></span>
-            <span>评论</span>
+            <span class="type-tip">评论</span>
             <span class="no-read-count">126</span>
           </router-link>
           <router-link tag="li" to="/setting/like" class="guide-box-ul-li">
             <span class="guide-svg"><svg-icon iconClass="icon-dianzan7"></svg-icon></span>
-            <span>点赞</span>
+            <span class="type-tip">点赞</span>
             <!--<div class="no-read">-->
             <span class="no-read-count">85</span>
             <!--</div>-->
           </router-link>
           <router-link tag="li" to="/setting/focus" class="guide-box-ul-li">
             <span class="guide-svg"><svg-icon iconClass="icon-guanzhu"></svg-icon></span>
-            <span>关注</span>
+            <span class="type-tip">关注</span>
             <span class="no-read-count">89</span>
           </router-link>
           <router-link tag="li" to="/setting/collect" class="guide-box-ul-li">
             <span class="guide-svg"><svg-icon iconClass="icon-shoucang10"></svg-icon></span>
-            <span>收藏</span>
+            <span class="type-tip">收藏</span>
             <span class="no-read-count">28</span>
           </router-link>
           <router-link tag="li" to="/setting/share" class="guide-box-ul-li">
             <span class="guide-svg"><svg-icon iconClass="icon-fenxiangzhuanfafasongzhijiantouyuanxingshar"></svg-icon></span>
-            <span>分享</span>
+            <span class="type-tip">分享</span>
             <span class="no-read-count">4</span>
           </router-link>
           <router-link tag="li" to="/setting/contribute" class="guide-box-ul-li">
             <span class="guide-svg"><svg-icon iconClass="icon-tougao1"></svg-icon></span>
-            <span>投稿</span>
+            <span class="type-tip">投稿</span>
             <span class="no-read-count">2</span>
           </router-link>
           <router-link tag="li" to="/setting/settingMsg" class="guide-box-ul-li">
             <span class="guide-svg"><svg-icon iconClass="icon-IOT_tongzhishezhi"></svg-icon></span>
-            <span>信息设置</span>
+            <span class="type-tip">信息设置</span>
           </router-link>
         </ul>
       </div>
@@ -74,7 +74,10 @@
     .guide-box-left
       position: fixed;
       top:4rem
-      box-shadow 0 0 .6rem #ccc
+      border: 1px solid #ebebeb;
+      /*border-radius: 3px;*/
+      box-shadow: 0 0 4px rgba(6,10,29,.04);
+      /*box-shadow 0 0 .6rem #ccc*/
       clearFix()
       width:14rem
       border-radius .3rem
@@ -90,21 +93,18 @@
           position: relative
           /*height:2rem*/
           /*background: tomato*/
-          padding .5rem 1.8rem
-          -webkit-transition: .2s
-          -moz-transition: .2s
-          -ms-transition: .2s
-          -o-transition: .2s
-          transition: .2s
+          padding .5rem 2.1rem
+          /*-webkit-transition: .2s*/
+          /*-moz-transition: .2s*/
+          /*-ms-transition: .2s*/
+          /*-o-transition: .2s*/
+          /*transition: .2s*/
           line-height 1.6rem
-          &:not(:last-child)
-            border-bottom 1px solid #f5f5f5
+          .type-tip
+            color #8590a6
           .svg-icon
-            fill #4c65fb
+            fill #8590a6
             margin-right .8rem
-          /*.no-read*/
-
-
           .no-read-count
             background: #ff4848
             font-size .6rem
@@ -115,8 +115,9 @@
             line-height 1.6rem
           /*float: right*/
           &:hover
-            background: #bdf9f7
+            background: rgba(133,144,166,.08);
             cursor pointer
+
     .change-box
       border-radius .3rem
       /*overflow: hidden*/
@@ -128,6 +129,9 @@
       width: 45rem
       /*height:30rem*/
       background: #ffffff
-      box-shadow 0 0 .6rem #ccc
+      /*box-shadow 0 0 .6rem #ccc*/
+      border: 1px solid #ebebeb;
+      /*border-radius: 3px;*/
+      box-shadow: 0 0 4px rgba(6,10,29,.04);
 
 </style>

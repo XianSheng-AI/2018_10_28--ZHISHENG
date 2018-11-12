@@ -13,6 +13,7 @@ import App from './App'
 import router from './router'
 // import iView from 'iview'
 import 'iview/dist/styles/iview.css';
+
 import '../static/iconfont/iconfont.js'
 // import './common/normalize.css'
 import './common/reset.css'
@@ -25,8 +26,6 @@ import SvgIcon from '@/components/iconfont/SvgIcon.vue'
 
 Vue.component('svg-icon',SvgIcon);
 // Vue.use(VueScroll);
-
-// Vue.use(iView);
 Vue.use(VueScroll, {
   // mode: 'native',
   ops: {
@@ -44,13 +43,24 @@ Vue.use(VueScroll, {
       size: '6px',
     },
     bar: {
-      background : '#93a5fb',
+      background : '#b3b3b3',
       keepShow: false,
     }
   }, // 在这里设置全局默认配置
   name: 'vueScroll' // 在这里自定义组件名字，默认是vueScroll
 
 });
+// import iView from 'iview';
+// Vue.use(iView);
+//
+// router.beforeEach((to, from, next) => {
+//   iView.LoadingBar.start();
+//   next();
+// });
+//
+// router.afterEach(route => {
+//   iView.LoadingBar.finish();
+// });
 
 // Vue.config.productionTip = false
 
