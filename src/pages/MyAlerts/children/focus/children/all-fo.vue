@@ -1,12 +1,12 @@
 <template>
-    <div>
-      focus
+    <div class="all-foc">
+      <span>4687684</span>
     </div>
 </template>
 
 <script>
     export default {
-        name: "focus",
+        name: "all-focus",
         data() {
             return {}
         }

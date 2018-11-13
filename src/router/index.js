@@ -20,12 +20,17 @@ import indexTopic from '../pages/index/children/main/children/topic'
 import myalerts from '../pages/MyAlerts/index'
 import my_comment from '../pages/MyAlerts/children/comment'
 import my_like from '../pages/MyAlerts/children/like'
-import my_focus from '../pages/MyAlerts/children/focus'
+import my_focus from '../pages/MyAlerts/children/focus/focus'
 import my_collect from '../pages/MyAlerts/children/collect'
 import my_share from '../pages/MyAlerts/children/share'
 import my_contribute from '../pages/MyAlerts/children/contribute'
 import my_settingMsg from '../pages/MyAlerts/children/setting-msg'
-
+//my_fofus里的子选项
+import allFo from '../pages/MyAlerts/children/focus/children/all-fo'
+import collectFo from '../pages/MyAlerts/children/focus/children/collect-fo'
+import columnFo from '../pages/MyAlerts/children/focus/children/column-fo'
+import meFo from '../pages/MyAlerts/children/focus/children/me-fo'
+import questionFo from '../pages/MyAlerts/children/focus/children/question-fo'
 Vue.use(VueRouter);
 
 export default new VueRouter({
@@ -38,7 +43,6 @@ export default new VueRouter({
     children:[
       {
         path: '/newest',
-        // name: 'home-newest',
         component:indexNewest
       },
       {
@@ -46,9 +50,8 @@ export default new VueRouter({
         component:indexHot
       },
       {
-
         path:'/focus',
-        component:indexFocus
+        component:indexFocus,
       },
       {
         path:'/star',
@@ -81,7 +84,29 @@ export default new VueRouter({
         }
         ,{
           path:'focus',
-          component:my_focus
+          component:my_focus,
+          children:[
+            {
+              path: 'all-fo',
+              component:allFo
+            },
+            {
+              path: 'collect-fo',
+              component:collectFo
+            },
+            {
+              path: 'column-fo',
+              component:columnFo
+            },
+            {
+              path: 'me-fo',
+              component:meFo
+            },
+            {
+              path: 'question-fo',
+              component:questionFo
+            }
+          ]
         }
         ,{
           path:'collect',

@@ -205,6 +205,7 @@
 
 <script>
   import {Switch} from 'iview'
+  import change from '../../../util/util'
     export default {
         name: "setting-msg",
         data() {
@@ -238,6 +239,9 @@
         components:{
           iSwitch:Switch
         },
+      computed:{
+
+      },
       created(){
         // this.start();
       },
@@ -246,6 +250,15 @@
       },
       methods :{
         show_box(SE){
+          if(SE==='focus'){
+            if(this.change_bool_arr.focus_bool){
+              this.$set(this.change_bool_arr,'focus_bool',false)
+              this.$set(this.change_bool_arr,'focus_style',false)
+            }else {
+              this.$set(this.change_bool_arr,'focus_bool',true)
+              this.$set(this.change_bool_arr,'focus_style',true)
+            }
+          }
 
           if(SE==='collect'){
             if(this.change_bool_arr.collect_bool){
@@ -254,17 +267,6 @@
             }else {
               this.$set(this.change_bool_arr,'collect_bool',true)
               this.$set(this.change_bool_arr,'collect_style',true)
-            }
-          }
-
-
-          if(SE==='focus'){
-            if(this.change_bool_arr.focus_bool){
-              this.$set(this.change_bool_arr,'focus_bool',false)
-              this.$set(this.change_bool_arr,'focus_style',false)
-            }else {
-              this.$set(this.change_bool_arr,'focus_bool',true)
-              this.$set(this.change_bool_arr,'focus_style',true)
             }
           }
 
@@ -308,6 +310,8 @@
             }
           }
         }
+
+
         // start () {
         //   this.$Loading.start();
         // },
