@@ -10,9 +10,7 @@
           <router-link tag="li" to="/setting/like" class="guide-box-ul-li">
             <span class="guide-svg"><svg-icon iconClass="icon-dianzan7"></svg-icon></span>
             <span class="type-tip">点赞</span>
-            <!--<div class="no-read">-->
             <span class="no-read-count">85</span>
-            <!--</div>-->
           </router-link>
           <router-link tag="li" to="/setting/focus" class="guide-box-ul-li">
             <span class="guide-svg"><svg-icon iconClass="icon-guanzhu"></svg-icon></span>

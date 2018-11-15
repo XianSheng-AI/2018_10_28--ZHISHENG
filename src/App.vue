@@ -24,15 +24,15 @@ export default {
   text-decoration: none;
   /*color: #71777c;*/
 }
-body,
-html {
-  font-size: 16px;
-  background: #f4f5f5;
-  margin: 0;
-  color: #8590a6;
-  font-family: -apple-system,BlinkMacSystemFont,Helvetica Neue,PingFang SC,Microsoft YaHei,Source Han Sans SC,Noto Sans CJK SC,WenQuanYi Micro Hei,sans-serif;
-  /*font-family:Helvetica,arial,'Hiragino Sans GB',\5b8b\4f53,sans-serif;*/
-}
+/*body,*/
+/*html {*/
+  /*font-size: 16px;*/
+  /*background: #f4f5f5;*/
+  /*margin: 0;*/
+  /*color: #8590a6;*/
+  /*font-family: -apple-system,BlinkMacSystemFont,Helvetica Neue,PingFang SC,Microsoft YaHei,Source Han Sans SC,Noto Sans CJK SC,WenQuanYi Micro Hei,sans-serif;*/
+  /*!*font-family:Helvetica,arial,'Hiragino Sans GB',\5b8b\4f53,sans-serif;*!*/
+/*}*/
 input {
   background: none;
   outline: none;

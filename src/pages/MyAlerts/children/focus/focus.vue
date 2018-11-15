@@ -8,10 +8,8 @@
               tag="span"
               class="action-type"
               :class="{'action-fo':selIndex.in===index}"
-
             >{{item.typeText}}</router-link>
           </li>
-
         </ul>
         <!--<div class="more-select">-->
           <!--<span class="more-svg">-->
@@ -70,33 +68,24 @@
     overflow: hidden
     border-bottom 1px solid #ebebeb
     width: 100%
-    /*height:3rem*/
-    /*background: #ccc*/
-    /*border-bottom 1px solid #ebebeb*/
     .guide-ul
       margin-left .6rem
       .guide-item
-
         float: left
+        padding 0 1.3rem
         .action-type
           font-size .875rem
           display: inline-block
-          padding .6rem 1.3rem
+          padding .6rem 0
           cursor: pointer;
           &.action-fo
-            color #333639
+            color #9494fc
             font-weight bold
-            border-bottom 1px solid #333639
-        /*&:last-child*/
-          /*width:2rem*/
-          /*height:2rem*/
-          /*background: #ccc*/
+            border-bottom 2px solid #9494fc
     .more-select
       float: left
       padding .5rem 1rem
-      /*background: #ccc*/
       cursor: pointer;
-
       .more-svg
         .svg-icon
           fill #8590a6

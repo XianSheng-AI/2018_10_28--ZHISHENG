@@ -1,12 +1,10 @@
 <template>
-    <div>
-      share
-    </div>
+    
 </template>
 
 <script>
     export default {
-        name: "share",
+        name: "focus",
         data() {
             return {}
         }

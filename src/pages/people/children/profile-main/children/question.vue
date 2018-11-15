@@ -1,12 +1,10 @@
 <template>
-    <div>
-      投稿
-    </div>
+    
 </template>
 
 <script>
     export default {
-        name: "contribute",
+        name: "question",
         data() {
             return {}
         }

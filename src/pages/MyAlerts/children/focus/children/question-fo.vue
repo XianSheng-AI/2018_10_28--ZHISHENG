@@ -1,5 +1,7 @@
 <template>
-    
+    <div>
+      关注我的问题
+    </div>
 </template>
 
 <script>
