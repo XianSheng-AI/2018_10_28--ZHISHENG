@@ -24,6 +24,9 @@ export default {
   text-decoration: none;
   /*color: #71777c;*/
 }
+body{
+  background: #f6f6f6;
+}
 /*body,*/
 /*html {*/
   /*font-size: 16px;*/

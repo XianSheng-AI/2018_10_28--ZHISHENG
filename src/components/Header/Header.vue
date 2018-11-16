@@ -69,6 +69,7 @@ import Search from './children/Search'
         height 3rem
         background #ffffff
         box-shadow 0 0 0.2rem #cccccc
+        z-index 10
         .header-wrapper
             width 64%
             height 100%

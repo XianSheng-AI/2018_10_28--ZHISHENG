@@ -1,5 +1,7 @@
 <template>
-    
+    <div class="person-honor">
+
+    </div>
 </template>
 
 <script>
@@ -12,5 +14,9 @@
 </script>
 
 <style lang="stylus" scoped>
-
+.person-honor
+  width:18rem
+  height:18rem
+  background: teal
+  float: right
 </style>

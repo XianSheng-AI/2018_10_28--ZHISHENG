@@ -24,6 +24,8 @@
 .person-header
   width: 100%
   /*height:20rem*/
+  background: #ffffff;
   box-sizing border-box
+  padding-bottom 1.1rem
   /*background: thistle*/
 </style>
