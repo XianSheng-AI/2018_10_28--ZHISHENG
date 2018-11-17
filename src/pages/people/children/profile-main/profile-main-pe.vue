@@ -3,27 +3,27 @@
       <div class="behavior-wrap">
         <div class="behavior-guide">
           <ul class="behavior-guide-list">
-            <!--<li class="tag-item">-->
-              <!--<router-link class="tag-link is-active" to="/people/1132/dynamicStatePe">动态</router-link>-->
-            <!--</li>-->
-            <!--<li class="tag-item">-->
-              <!--<router-link class="tag-link" to="/people/1132/answerPe">回答<span class="tag-count">8</span></router-link>-->
-            <!--</li>-->
-            <!--<li class="tag-item">-->
-              <!--<router-link class="tag-link" to="/people/1132/questionPe">提问<span class="tag-count">12</span></router-link>-->
-            <!--</li>-->
-            <!--<li class="tag-item">-->
-              <!--<router-link class="tag-link" to="/people/1132/startPe">星点<span class="tag-count">0</span></router-link>-->
-            <!--</li>-->
-            <!--<li class="tag-item">-->
-              <!--<router-link class="tag-link" to="/people/1132/articlePe">文章<span class="tag-count">4</span></router-link>-->
-            <!--</li>-->
             <li class="tag-item" v-for="(item,index) of behavior_guide_data" :key="index" @click="changeActive(index)">
               <router-link tag="a" class="tag-link" :class="{'is-active':isActiveIndex.num===index}"
                            :to="item.to"
-                           >{{item.behavior_}}<span class="tag-count">{{item.behavior_count}}</span></router-link>
+                           >{{item.behavior_}}<span class="tag-count" v-show="item.behavior_count">{{item.behavior_count}}</span></router-link>
             </li>
           </ul>
+        </div>
+
+        <!--变换内容区-->
+        <!--二级导航-->
+        <div class="sec-guide">
+          <div class="sec-guide-empty">
+            <span class="com-sec-guide">我的动态</span>
+          </div>
+        </div>
+        <div class="behavior-main">
+          <div>
+            <div class="">
+
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -95,6 +95,7 @@
         .tag-item
           float: left
           padding: 0 16px;
+
           .tag-link
             text-decoration none
             display: inline-block
@@ -114,6 +115,7 @@
               height: 3px;
               background: #0084ff;
               content: "";
+              border-radius 2px
           .tag-count
             margin-left: 6px;
             font-size: 14px;
@@ -122,7 +124,20 @@
             font-weight: 400;
           &:first-child
             padding-left 20px
-
+    .sec-guide
+      width: 100%
+      .sec-guide-empty
+        padding 0 19px
+        border-bottom: 1px solid #f6f6f6;
+        box-sizing: border-box;
+        .com-sec-guide
+          display: inline-block
+          padding: 13px 0
+    .behavior-main
+      width: 100%s
+      height:20rem
+      background: olivedrab
+      padding:2rem
 </style>
 
 
