@@ -162,7 +162,7 @@
                 </div>
                 <div class="answer-content">
                   <span>寒冬真的来了吗？可能是吧，因为最近几年每年都说是寒冬，说的真的叫人焦虑。不过互联网的整体环境确实不如前几年，即使不说我想大家也能隐约的感受到了。作为曾经炙手可热的Android工程师，现在面临着以下的问题...</span>
-                  <span class="show-all-btn Button ContentItem-more Button--plain"  type="button" value="阅读全文">阅读全文<span style="display: inline-flex; align-items: center;" class="show-all-svg">
+                  <span class="show-all-btn Button"  type="button" value="阅读全文">阅读全文<span style="display: inline-flex; align-items: center;" class="show-all-svg">
                       <!--<svg class="show-svg Zi&#45;&#45;ArrowDown ContentItem-arrowIcon" fill="currentColor" viewBox="0 0 24 24" width="24" height="24"><path d="M12 13L8.285 9.218a.758.758 0 0 0-1.064 0 .738.738 0 0 0 0 1.052l4.249 4.512a.758.758 0 0 0 1.064 0l4.246-4.512a.738.738 0 0 0 0-1.052.757.757 0 0 0-1.063 0L12.002 13z" fill-rule="evenodd"></path></svg>-->
                     <svg-icon class="act" iconClass="icon-xia"></svg-icon>
                   </span>
