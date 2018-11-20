@@ -39,7 +39,7 @@
     box-shadow: 0 1px 3px rgba(26,26,26,.1);
   .personMain
     width: 100%
-    height:80rem
+    /*height:80rem*/
     margin-top:.625rem
     background: #ccc
 </style>

@@ -1,26 +1,25 @@
 <template>
   <div class="tem-like-article">
     <div class="t-like-head">
-      <span class="t-action-type">{{Data.d.action_type}}</span>
-      <span class="t-action-timer">{{Data.d.action_timer}}</span>
+      <span class="t-action-type">赞了文章</span>
+      <span class="t-action-timer">1天前</span>
     </div>
     <h2>
-      <a class="article-title" href="#">{{Data.d.article_title}}</a>
+      <a class="content-title article-title" href="#">2017总结</a>
     </h2>
     <div class="t-like-meta">
         <span class="t-like-img">
-          <img :src="Data.d.target_avatar_url" alt="">
-          <!--<img src="../../../../../../static/images/5.jpg" alt="">-->
+          <img src="../../../../../../../../static/images/5.jpg" alt="">
         </span>
       <div class="t-like-info">
-        <div class="userName">{{Data.d.userName}}</div>
-        <div class="headLike">{{Data.d.headLine}}</div>
+        <div class="userName">罗宾仙子</div>
+        <div class="headLike">唐卡画师</div>
       </div>
     </div>
-    <span class="follow-to-count">{{Data.d.follow_count_text}}</span>
+    <span class="follow-to-count">1人也赞了该文章</span>
     <div class="t-like-content">
       <div class="text-part-box">
-        <span class="text-part">{{Data.d.article_content}}…
+        <span class="text-part">2017年完成的任务。 一，跑步一千公里。 二，看书22本。 三，看电影32部。 四，泰山旅游。…
           <button class="show-all-btn Button" type="button" value="阅读全文">阅读全文<span
             style="display: inline-flex; align-items: center;" class="show-all-svg">
                       <!--<svg class="show-svg Zi&#45;&#45;ArrowDown ContentItem-arrowIcon" fill="currentColor" viewBox="0 0 24 24" width="24" height="24"><path d="M12 13L8.285 9.218a.758.758 0 0 0-1.064 0 .738.738 0 0 0 0 1.052l4.249 4.512a.758.758 0 0 0 1.064 0l4.246-4.512a.738.738 0 0 0 0-1.052.757.757 0 0 0-1.063 0L12.002 13z" fill-rule="evenodd"></path></svg>-->
@@ -41,20 +40,13 @@
 
   export default {
     props: {
-      Data:{
-        type: Object,
-        request:true
+      Data: {
+        type: Object
       }
     },
     name: "answer",
     data() {
       return {}
-    },
-    mounted(){
-      console.log(this.Data)
-    },
-    methods :{
-
     },
     components: {
       commonLike
@@ -79,7 +71,7 @@
       .t-action-timer
         float: right
         font-size .875rem
-    .article-title
+    .content-title
       display: block
       color: #1a1a1a
       font-size 1.1rem

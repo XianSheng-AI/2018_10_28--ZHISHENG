@@ -16,34 +16,17 @@ export default {
 </script>
 
 <style>
-* {
-  margin: 0;
-  padding: 0;
-  border: none;
-  list-style: none;
-  text-decoration: none;
-  /*color: #71777c;*/
-}
 body{
   background: #f6f6f6;
 }
-/*body,*/
-/*html {*/
-  /*font-size: 16px;*/
-  /*background: #f4f5f5;*/
-  /*margin: 0;*/
-  /*color: #8590a6;*/
-  /*font-family: -apple-system,BlinkMacSystemFont,Helvetica Neue,PingFang SC,Microsoft YaHei,Source Han Sans SC,Noto Sans CJK SC,WenQuanYi Micro Hei,sans-serif;*/
-  /*!*font-family:Helvetica,arial,'Hiragino Sans GB',\5b8b\4f53,sans-serif;*!*/
+/*input {*/
+  /*background: none;*/
+  /*outline: none;*/
+  /*border: 0;*/
 /*}*/
-input {
-  background: none;
-  outline: none;
-  border: 0;
-}
-#app {
+/*#app {*/
   /*font-family: "Avenir", Helvetica, Arial, sans-serif;*/
-  font-family: -apple-system,PingFang SC,Hiragino Sans GB,Microsoft YaHei,Helvetica Neue,Arial,sans-serif;
+  /*font-family: -apple-system,PingFang SC,Hiragino Sans GB,Microsoft YaHei,Helvetica Neue,Arial,sans-serif;*/
 
   /*font-family:Helvetica,arial,'Hiragino Sans GB',\5b8b\4f53,sans-serif;*/
   /* -webkit-font-smoothing: antialiased;
@@ -51,12 +34,12 @@ input {
   text-align: center;
   color: #2c3e50;
   margin-top: 60px; */
-}
-.icon {
-  width: 1em;
-  height: 1em;
-  vertical-align: -0.15em;
-  fill: currentColor;
-  overflow: hidden;
-}
+/*}*/
+/*.icon {*/
+  /*width: 1em;*/
+  /*height: 1em;*/
+  /*vertical-align: -0.15em;*/
+  /*fill: currentColor;*/
+  /*overflow: hidden;*/
+/*}*/
 </style>

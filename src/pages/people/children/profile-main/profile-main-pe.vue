@@ -29,12 +29,14 @@
 </template>
 
 <script>
-  import temAnswer from './template-file/answer'
+  import temAnswer from './children/dynamic-state/template-file/like-answer'
   import temComment from './template-file/comment'
-  import temArticle from './template-file/article'
+  import temArticle from './children/dynamic-state/template-file/like-article'
   import temLike from './template-file/like'
-  import temFocusQuestion from './template-file/focus-question'
-    export default {
+  import temFocusQuestion from './children/dynamic-state/template-file/focus-question'
+  import temFocusTopic from './children/dynamic-state/template-file/focus-topic'
+  import temLikeStar from './children/dynamic-state/template-file/like-star'
+  export default {
         name: "profileMain-pe",
         data() {
             return {
@@ -104,26 +106,26 @@
                 {
                   show_type:'temFocusQuestion',
                   d:{
-                    action_type:'赞同了回答',
-                    action_timer:'2天前',
-                    article_title:'是什么支持着你在偌大的城市中孤身一人奋斗？',
-                    target_avatar_url:'https://pic3.zhimg.com/50/a224eb9f7f6cf0ba637879e872161710_xs.jpg',
-                    userName:'网知',
-                    headLine:'愿你出走半生，归来依旧少年！',
-                    follow_count_text:'2 人赞同了该回答',
-                    article_content:' 没什么支撑的，回去也是孤身一人奋斗，没得选择啊！阅读全文',
-                    like_count:96,
-                    comment_count:106
+                    action_type:'关注了问题',
+                    action_timer:'8天前',
+                    target_question:'node配合mongodb能做中型电商平台吗？'
+                  }
+                },
+                {
+                  show_type:'temFocusTopic',
+                  d:{
+                    action_type:'关注了话题',
+                    action_timer:'11天前',
+                    target_topic:'java'
+                  }
+                },
+                {
+                  show_type:'temLikeStar',
+                  d:{
+                    action_type:'点赞了星点',
+                    action_timer:'1个月前'
                   }
                 }
-
-                // ,{
-                //   show_type:'temComment',
-                //   d:'d'
-                // },{
-                //   show_type:'temLike',
-                //   c:'c'
-                // }
               ]
             }
         },
@@ -132,7 +134,9 @@
         temComment,
         temArticle,
         temLike,
-        temFocusQuestion
+        temFocusQuestion,
+        temFocusTopic,
+        temLikeStar
       },
       methods : {
         changeActive(index){
@@ -149,7 +153,7 @@
 .person-container
   float: left
   width: 41.3rem
-  height:80rem
+  /*height:80rem*/
   background: #ffffff
   .behavior-wrap
     background: #ffffff

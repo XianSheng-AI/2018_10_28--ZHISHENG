@@ -1,7 +1,9 @@
 <template>
   <div class="star-wapper">
-    <ul class="star-ul">
-      <li class="star-ul-li">
+    <div class="t-like-head">
+      <span class="t-action-type">{{Data.d.action_type}}</span>
+      <span class="t-action-timer">{{Data.d.action_timer}}</span>
+    </div>
         <div class="star-user-info">
           <div class="star-user-img">
             <svg-icon iconClass="icon-gugediqiu1"></svg-icon>
@@ -15,27 +17,25 @@
           </div>
         </div>
         <div class="star-content">
-          <span class="content">👉👉👉企鹅云羊毛继续开车啦：最低至6元每月，最多8元撸41个月，美滋滋。
-            1.想直接买的人，上车地址https://0x7.me/d6Ha网页链接，点击参团购买，选择买3个月送1个月，24元买了4个月 ，平均6元每月，最多可买一年。<br/>
-2.有能力自己开车的，开车地址https://0x7.me/9cne网页链接，选择购买一个月，然后开团，在微信群和朋友圈分享地址，最多可最多8元撸41个月。</span>
+          <span class="content">👉👉👉企鹅云羊毛继续开车啦：最低至6元每月，最多8元撸41个月，美滋滋。</span>
         </div>
         <div class="star-action">
           <ul class="star-action-ul">
             <li class="star-action-ul-li">
               <div class="lik star-like-box">
-                <svg-icon iconClass="icon-dianzan12"></svg-icon>
+                <svg-icon iconClass="icon-dianzan28"></svg-icon>
                 <span class="star-cou star-like">87</span>
               </div>
             </li>
             <li class="star-action-ul-li">
               <div class="lik star-comment-box">
-                <svg-icon iconClass="icon-pinglun1"></svg-icon>
+                <svg-icon iconClass="icon-wodepinglun"></svg-icon>
                 <span class="star-cou star-like">66</span>
               </div>
             </li>
             <li class="star-action-ul-li">
               <div class="lik star-transmit-box">
-                <svg-icon iconClass="icon-icon_zhuanfa"></svg-icon>
+                <svg-icon iconClass="icon-emizhifeiji1"></svg-icon>
                 <span class="star-cou star- transmit">28</span>
               </div>
             </li>
@@ -187,7 +187,7 @@
                                   <span class="action-sty action-like-count">546</span>
                                 </div>
                                 <div class="action-comment">
-                                  <svg-icon iconClass="icon-pinglun1"></svg-icon>
+                                  <svg-icon iconClass="icon-wodepinglun"></svg-icon>
                                   <span class="action-sty action-comment-count">66</span>
                                 </div>
                               </div>
@@ -205,14 +205,18 @@
             </div>
           </div>
         </div>
-      </li>
-    </ul>
+
   </div>
 </template>
 
 <script>
   export default {
     name: "star",
+    props:{
+      Data:{
+        type:Object
+      }
+    },
     data() {
       return {
         data:null,
@@ -223,26 +227,22 @@
 </script>
 
 <style lang="stylus" scoped>
-  /*@import "~@/common/stylus/mixins.styl"*/
   @import "~@/common/stylus/mixins.styl"
-  .star-wapper
-    width 100%
-    /*height:20rem*/
-    /*background: #555*/
-    .star-ul
-      width:100%
-
-      .star-ul-li
-        width:100%
-        display flex
-        flex-direction column
-        align-items  center
-        justify-content:center
+      .star-wapper
+        width 100%
+        .t-like-head
+          width: 100%
+          color: #8590a6
+          padding-bottom .8rem
+          .t-action-type
+            font-size .875rem
+          .t-action-timer
+            float: right
+            font-size .875rem
         .star-user-info
-          width: 95.6%
-          /*height: 2.82rem*/
-          /*background: aqua*/
-          padding:.8rem 0 .4rem 0
+          width: 100%
+          padding:0 0 .4rem 0
+          clearFix()
           .star-user-img
             padding-right .8rem
             float left
@@ -252,6 +252,7 @@
             float: left
             width:14rem
             .star-name
+              color: #1a1a1a
               width:100%
               font-size .9375rem
             .star-meta
@@ -261,10 +262,11 @@
                 width: 100%
         .star-content
           /*background: violet*/
-          width:79.8%
+          width:100%
 
           /*height:12rem*/
           .content
+            color: #1a1a1a
             font-size .9375rem
             display: block
             padding:.1rem 0 .4rem 0
@@ -275,7 +277,7 @@
           .star-action-ul
             display: flex
             justify-content:center
-            border-bottom 2px #F4F5F5 solid
+            border-bottom 1px solid #f6f6f6
             .star-action-ul-li
               float: left
               padding: 0 .6rem/*width: 33.333333333333333%*/
@@ -291,34 +293,29 @@
                 margin 0 auto
                 line-height 2.6rem
                 .svg-icon
-                  fill: #cdcdcd
+                  fill: #8590a6
+                  font-size .9375rem
+                  /*font-size .875rem*/
                 .star-cou
-                  color #cdcdcd
+                  font-size .9375rem
+                  color #8590a6
 
         .comment
+          /*隐藏评论框*/
+          display: none
           width:100%
-          /*height:10rem*/
-          /*background: burlywood*/
           clearFix()
           .comment-empty
-            width: 95%
+            width: 100%
             height: 100%
             /*background: blue*/
             margin:0 auto
             clearFix()
-            /*overflow: hidden*/
             .comment-form
-              /*width:35rem*/
-              /*width:35.5rem*/
-              /*height:6rem*/
               background: #fafbfc
               margin:1rem auto
               padding: .8rem .8rem
               border-radius .3rem
-              /*display: flex*/
-              /*justify-content: center*/
-              /*align-items center*/
-              /*position: relative*/
               clearFix()
 
               .comment-form-box
@@ -337,24 +334,15 @@
                   border 1px solid #007fff
                   float: right
                   border-radius .3rem
-
-                  width:37.4rem
+                  width:34.3rem
                   display: block
                   .comment-inp
-                    //clearFix()
-                    /*display: block*/
                     position: relative;
-                    padding: .6rem 1rem;
-                    /*font-size: 1.083rem;*/
+                    padding: .2rem 1rem;
                     line-height: 1.7;
                     color: #17181a;
                     outline: none;
                     min-height: 1.3em;
-                    /*float: right*/
-                    /*width: 91%*/
-                    /*height: 100%*/
-                    /*padding 0 0 .2rem .8rem*/
-                    /*background: aquamarine*/
                     &:before
                       content: attr(placeholder);
                       position: absolute;
@@ -443,18 +431,13 @@
                     /*clear: both*/
                     /*background: red*/
                     margin-left: .833rem;
-                    -webkit-box-flex: 1;
-                    -ms-flex: 1 1 auto;
-                    flex: 1 1 auto;
                     /*width: 90%*/
                     height:100%
                     /*background: bisque*/
                     .content-owner
                       width:100%
                       /*background-color: #ccc*/
-                      display: flex
                       .user-name
-                        flex:1 1 auto
                         font-size .9rem
                       .user-position
                         color: #8a9aa9;
@@ -478,17 +461,7 @@
                         color: #8a9aa9
                         font-size .9rem
                       .content-action-box
-                        /*width:6rem*/
-                        /*background: aqua*/
-                        -webkit-box-flex: 0;
-                        -ms-flex: 0 0 auto;
-                        flex: 0 0 auto;
-                        display: -webkit-box;
-                        display: -ms-flexbox;
-                        display: flex;
-                        -webkit-box-pack: justify;
-                        -ms-flex-pack: justify;
-                        justify-content: space-between;
+
                         margin-left: auto;
                         min-width: 8.8rem;
                         color: #8a93a0;
@@ -518,8 +491,5 @@
                       .posi-flex
                         display: flex
                         .content-box
-
-
                           padding-bottom 1rem
-
 </style>

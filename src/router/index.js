@@ -53,21 +53,21 @@ import personHeader from '../pages/people/children/person-header/person-header'
 //--视图切换父盒子--column
 import profileMainPe from '../pages/people/children/profile-main/profile-main-pe'
 //--回答--answerPe
-import answerPe from '../pages/people/children/profile-main/children/answer'
+import answerPe from '../pages/people/children/profile-main/children/answer/answer'
 //--文章--articlePe
-import articlePe from '../pages/people/children/profile-main/children/article'
+import articlePe from '../pages/people/children/profile-main/children/article/article'
 //--收藏--collectPe
 import collectPe from '../pages/people/children/profile-main/children/collect'
 //--专栏--column
-import columnPe from '../pages/people/children/profile-main/children/column'
+import columnPe from '../pages/people/children/profile-main/children/column/column'
 //--动态--dynamicState
-import dynamicStatePe from '../pages/people/children/profile-main/children/dynamic-state'
+import dynamicStatePe from '../pages/people/children/profile-main/children/dynamic-state/dynamic-state'
 //--想法--ideaPe
-import ideaPe from '../pages/people/children/profile-main/children/idea'
+import ideaPe from '../pages/people/children/profile-main/children/idea/idea'
 //--问题--questionPe
-import questionPe from '../pages/people/children/profile-main/children/question'
+import questionPe from '../pages/people/children/profile-main/children/question/question'
 //--关注--focusPe
-import focusPe from '../pages/people/children/profile-main/children/focus'
+import focusPe from '../pages/people/children/profile-main/children/focus/focus'
 //------------------------------------------------------------------
 //个人荣誉组件
 import personalHonor from '../pages/people/children/personal-honor/personal-honor'

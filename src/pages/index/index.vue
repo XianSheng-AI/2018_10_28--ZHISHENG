@@ -37,7 +37,7 @@ import HomeAside from './children/aside/aside'
         /*overflow: hidden*/
 
         width 60rem
-        margin 0.6rem auto
+        margin 3.6rem auto
         background: #ccc
         position: relative
         /*margin 0.6rem 0 0 19rem*/

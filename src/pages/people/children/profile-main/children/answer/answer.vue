@@ -1,12 +1,10 @@
 <template>
-    <div class="">
-        focus-question
-    </div>
+    
 </template>
 
 <script>
     export default {
-        name: "focus-question",
+        name: "answer",
         data() {
             return {}
         }
@@ -16,3 +14,86 @@
 <style lang="stylus" scoped>
 
 </style>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
