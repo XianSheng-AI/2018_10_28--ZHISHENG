@@ -68,6 +68,8 @@ import ideaPe from '../pages/people/children/profile-main/children/idea/idea'
 import questionPe from '../pages/people/children/profile-main/children/question/question'
 //--关注--focusPe
 import focusPe from '../pages/people/children/profile-main/children/focus/focus'
+//--星点--startPe
+import startPe from '../pages/people/children/profile-main/children/star/star'
 //------------------------------------------------------------------
 //个人荣誉组件
 import personalHonor from '../pages/people/children/personal-honor/personal-honor'
@@ -246,6 +248,10 @@ export default new VueRouter({
         ,{
           path:'focus',
           component:focusPe
+        }
+        ,{
+          path:'startPe',
+          component:startPe
         }
         ,{
           path:'collect',

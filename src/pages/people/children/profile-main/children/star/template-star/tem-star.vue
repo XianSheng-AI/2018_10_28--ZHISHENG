@@ -1,12 +1,12 @@
 <template>
-    <div class="person-honor">
-
+    <div class="">
+        tem-star
     </div>
 </template>
 
 <script>
     export default {
-        name: "personal-honor",
+        name: "tem-star",
         data() {
             return {}
         }
@@ -14,9 +14,5 @@
 </script>
 
 <style lang="stylus" scoped>
-.person-honor
-  width:18rem
-  height:38rem
-  background: teal
-  float: right
+
 </style>
