@@ -1,8 +1,5 @@
 <template>
   <div class="my-answer">
-    <h2>
-      <a class="question-title question-empty" href="#">测试使用（切勿）</a>
-    </h2>
     <div class="user-meta">
         <span class="avatar-im">
           <img src="../../../../../../../../static/images/4.jpg" alt="">
@@ -14,13 +11,13 @@
     </div>
     <div class="action-content-wrapper">
       <div class="text-part-box">
-        <span class="text-part">2017年完成的任务。 一，跑步一千公里。 二，看书22本。 三，看电影32部。 四，泰山旅游。…
-          <button class="show-all-btn Button" type="button" value="阅读全文">阅读全文<span
-            style="display: inline-flex; align-items: center;" class="show-all-svg">
-                      <!--<svg class="show-svg Zi&#45;&#45;ArrowDown ContentItem-arrowIcon" fill="currentColor" viewBox="0 0 24 24" width="24" height="24"><path d="M12 13L8.285 9.218a.758.758 0 0 0-1.064 0 .738.738 0 0 0 0 1.052l4.249 4.512a.758.758 0 0 0 1.064 0l4.246-4.512a.738.738 0 0 0 0-1.052.757.757 0 0 0-1.063 0L12.002 13z" fill-rule="evenodd"></path></svg>-->
-                    <svg-icon class="act" iconClass="icon-xia"></svg-icon>
-                  </span>
-          </button>
+        <span class="text-part">2017年完成的任务。 一，跑步一千公里。 二，看书22本。 三，看电影32部。 四，泰山旅游。
+          <!--<button class="show-all-btn Button" type="button" value="阅读全文">阅读全文<span-->
+            <!--style="display: inline-flex; align-items: center;" class="show-all-svg">-->
+                      <!--&lt;!&ndash;<svg class="show-svg Zi&#45;&#45;ArrowDown ContentItem-arrowIcon" fill="currentColor" viewBox="0 0 24 24" width="24" height="24"><path d="M12 13L8.285 9.218a.758.758 0 0 0-1.064 0 .738.738 0 0 0 0 1.052l4.249 4.512a.758.758 0 0 0 1.064 0l4.246-4.512a.738.738 0 0 0 0-1.052.757.757 0 0 0-1.063 0L12.002 13z" fill-rule="evenodd"></path></svg>&ndash;&gt;-->
+                    <!--<svg-icon class="act" iconClass="icon-xia"></svg-icon>-->
+                  <!--</span>-->
+          <!--</button>-->
         </span>
       </div>
       <div class="interaction-box">
@@ -54,16 +51,16 @@
   .my-answer
     font-size .875rem
     width: 100%
+    padding .9rem 0
     /*height: 8rem*/
     /*background: yellow*/
-    padding .8rem 0
     position: relative
     clearFix()
     .question-title
       display: block
       color: #1a1a1a
       font-size 1.1rem
-      /*padding .4rem 0 .5rem 0*/
+      padding .4rem 0 .5rem 0
     .user-meta
       margin-bottom .3rem
       .avatar-im

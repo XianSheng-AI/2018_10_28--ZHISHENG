@@ -18,6 +18,7 @@ export default {
 <style>
 body{
   background: #f6f6f6;
+  height: 80rem;
 }
 /*input {*/
   /*background: none;*/

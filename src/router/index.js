@@ -246,6 +246,10 @@ export default new VueRouter({
           component:dynamicStatePe
         }
         ,{
+          path:'',
+          redirect:'dynamicStatePe'
+        }
+        ,{
           path:'focus',
           component:focusPe
         }

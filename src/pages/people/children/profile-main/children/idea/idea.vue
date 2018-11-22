@@ -3,14 +3,19 @@
     <div class="action-guide">
       <span class="my-action">我的想法</span>
     </div>
+    <my-idea></my-idea>
   </div>
 </template>
 
 <script>
+  import myIdea from './template-file/tem-idea'
   export default {
     name: "idea",
     data() {
       return {}
+    },
+    components:{
+      myIdea
     }
   }
 </script>

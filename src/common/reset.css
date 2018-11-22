@@ -7,7 +7,7 @@ address, cite, dfn, em, var {font-style:normal;}
 code, kbd, pre, samp {font-family:courier new, courier, monospace;}
 small {font-size:16px;}
 ul, ol {list-style:none;}
-a {text-decoration:none;}
+a {text-decoration:none !important;}
 a:hover {text-decoration:underline;}
 sup {vertical-align:text-top;}
 sub {vertical-align:text-bottom;}

@@ -1,17 +1,24 @@
 <template>
     <div class="my-star">
       <div class="action-guide">
-        <span class="my-action">我的文章</span>
+        <span class="my-action">我的星点</span>
       </div>
+      <my-satr></my-satr>
     </div>
 </template>
 
 <script>
+  import mySatr from './template-star/tem-star'
     export default {
         name: "star",
         data() {
-            return {}
-        }
+            return {
+
+            }
+        },
+      components:{
+        mySatr
+      }
     }
 </script>
 
@@ -26,5 +33,9 @@
       color: #1a1a1a
       /*15px*/
       font-size .9375rem
+
+
+
+
 
 </style>
