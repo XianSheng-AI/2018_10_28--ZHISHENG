@@ -84,222 +84,266 @@ import likeCountPh from '../pages/people/children/personal-honor/children/like-c
 //--字数--wordCountPh
 import wordCountPh from '../pages/people/children/personal-honor/children/word-count'
 
+
+//设置中心
+//父组件
+import setting from '../pages/setting/setting'
+//子组件
+import personalData from '../pages/setting/children/personal-data'
+import messagesAndEmails from '../pages/setting/children/messages-and-emails'
+import accountAssociated from '../pages/setting/children/account-associated'
+import changePassword from '../pages/setting/children/change-password'
+import shield from '../pages/setting/children/shield'
+import privacy from '../pages/setting/children/privacy'
+import hobbiesSetting from '../pages/setting/children/hobbies-setting'
+
+
+
+//使用路由控制
 Vue.use(VueRouter);
 
 export default new VueRouter({
   mode: 'history',
   base: __dirname,
-  routes:[
-  {
-    path:'/',
-    component:index,
-    children:[
-      {
-        path: '/newest',
-        component:indexNewest
-      },
-      {
-        path:'/hot',
-        component:indexHot
-      },
-      {
-        path:'/focus',
-        component:indexFocus,
-      },
-      {
-        path:'/star',
-        component:indexStar
-      },
-      {
-        path:'/question',
-        component:indexQuestion
-      },
-      {
-        path:'/topic',
-        component:indexTopic
-      },
-      {
-        path : '',
-        redirect : '/newest'
-      }
-    ]
-  }, {
-      path:'/setting',
-      component:myalerts,
-      children:[
+  routes: [
+    {
+      path: '/',
+      component: index,
+      children: [
         {
-          path:'comment',
-          component:my_comment
+          path: '/newest',
+          component: indexNewest
+        },
+        {
+          path: '/hot',
+          component: indexHot
+        },
+        {
+          path: '/focus',
+          component: indexFocus,
+        },
+        {
+          path: '/star',
+          component: indexStar
+        },
+        {
+          path: '/question',
+          component: indexQuestion
+        },
+        {
+          path: '/topic',
+          component: indexTopic
+        },
+        {
+          path: '',
+          redirect: '/newest'
         }
-        ,{
-          path:'like',
-          component:my_like
+      ]
+    }, {
+      path: '/messageCenter',
+      component: myalerts,
+      children: [
+        {
+          path: 'comment',
+          component: my_comment
         }
-        ,{
-          path:'focus',
-          component:my_focus,
-          children:[
+        , {
+          path: 'like',
+          component: my_like
+        }
+        , {
+          path: 'focus',
+          component: my_focus,
+          children: [
             {
               path: 'all-fo',
-              component:allFo
+              component: allFo
             },
             {
               path: 'collect-fo',
-              component:collectFo
+              component: collectFo
             },
             {
               path: 'column-fo',
-              component:columnFo
+              component: columnFo
             },
             {
               path: 'me-fo',
-              component:meFo
+              component: meFo
             },
             {
               path: 'question-fo',
-              component:questionFo
+              component: questionFo
             },
             {
-              path:'',
+              path: '',
               redirect: 'all-fo'
             }
           ]
         }
-        ,{
-          path:'collect',
-          component:my_collect,
-          children:[
+        , {
+          path: 'collect',
+          component: my_collect,
+          children: [
             {
-              path:'all-col',
-              component:allCol
+              path: 'all-col',
+              component: allCol
             },
             {
-              path:'answer-col',
-              component:answerCol
+              path: 'answer-col',
+              component: answerCol
             },
             {
-              path:'article-col',
-              component:articleCol
+              path: 'article-col',
+              component: articleCol
             },
             {
-              path:'favorite-col',
-              component:favoriteCol
+              path: 'favorite-col',
+              component: favoriteCol
             },
             {
-              path:'',
+              path: '',
               redirect: 'all-col'
             }
           ]
         }
-        ,{
-          path:'share',
-          component:my_share,
-          children:[
+        , {
+          path: 'share',
+          component: my_share,
+          children: [
             {
               path: 'all-sh',
-              component:allSh
+              component: allSh
             },
             {
               path: 'star-sh',
-              component:starSh
+              component: starSh
             },
             {
               path: 'question-sh',
-              component:questionSh
+              component: questionSh
             },
             {
               path: 'article-sh',
-              component:articleSh
+              component: articleSh
             },
             {
-              path:'',
+              path: '',
               redirect: 'all-sh'
             }
           ]
         }
-        ,{
-          path:'contribute',
-          component:my_contribute,
-          children:[
+        , {
+          path: 'contribute',
+          component: my_contribute,
+          children: [
             {
-              path:'all-co',
-              component:allCo
+              path: 'all-co',
+              component: allCo
             },
             {
-              path:'',
+              path: '',
               redirect: 'all-co'
             }
           ]
         }
-        ,{
-          path:'settingMsg',
-          component:my_settingMsg
+        , {
+          path: 'settingMsg',
+          component: my_settingMsg
         }
       ]
     }, {
-      path:'/people/:id',
-      component:personIndex,
-      children:[
+      path: '/people/:id',
+      component: personIndex,
+      children: [
         //个人中心（动态，关注，收藏，想法，专栏，文章，问题，回答）
         {
-          path:'dynamicStatePe',
-          component:dynamicStatePe
+          path: 'dynamicStatePe',
+          component: dynamicStatePe
         }
-        ,{
-          path:'',
-          redirect:'dynamicStatePe'
+        , {
+          path: '',
+          redirect: 'dynamicStatePe'
         }
-        ,{
-          path:'focus',
-          component:focusPe
+        , {
+          path: 'focus',
+          component: focusPe
         }
-        ,{
-          path:'startPe',
-          component:startPe
+        , {
+          path: 'startPe',
+          component: startPe
         }
-        ,{
-          path:'collect',
-          component:collectPe
+        , {
+          path: 'collect',
+          component: collectPe
         }
-        ,{
-          path:'ideaPe',
-          component:ideaPe
+        , {
+          path: 'ideaPe',
+          component: ideaPe
         }
-        ,{
-          path:'columnPe',
-          component:columnPe,
+        , {
+          path: 'columnPe',
+          component: columnPe,
         }
-        ,{
-          path:'articlePe',
-          component:articlePe
+        , {
+          path: 'articlePe',
+          component: articlePe
         }
-        ,{
-          path:'questionPe',
-          component:questionPe
+        , {
+          path: 'questionPe',
+          component: questionPe
         }
-        ,{
-          path:'answerPe',
-          component:answerPe
+        , {
+          path: 'answerPe',
+          component: answerPe
         },
         //-----------------
         //个人荣誉
-         {
-          path:'article-ph',
-          component:articleCountPh
+        {
+          path: 'article-ph',
+          component: articleCountPh
         }
-        ,{
-          path:'focus-me-ph',
-          component:focusMeCountPh
+        , {
+          path: 'focus-me-ph',
+          component: focusMeCountPh
         }
-        ,{
-          path:'focus-other-ph',
-          component:focusOtherCountPh
+        , {
+          path: 'focus-other-ph',
+          component: focusOtherCountPh
         }
-        ,{
-          path:'like-ph',
-          component:likeCountPh
+        , {
+          path: 'like-ph',
+          component: likeCountPh
+        }
+      ]
+    }, {
+      path:'/setting',
+      component:setting,
+      children:[
+        {
+          path:'account',
+          component:personalData
+        },{
+          path:'notification',
+          component:messagesAndEmails
+        },{
+          path:'association',
+          component:accountAssociated
+        },{
+          path:'password',
+          component:changePassword
+        },{
+          path:'shield',
+          component:shield
+        },{
+          path:'privacy',
+          component:privacy
+        },{
+          path:'hobby',
+          component:hobbiesSetting
         }
       ]
     }
+
   ]
 })

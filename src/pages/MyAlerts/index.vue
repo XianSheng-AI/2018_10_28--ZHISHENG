@@ -2,37 +2,37 @@
     <div class="my-alert">
       <div class="guide-box-left">
         <ul class="guide-box-ul">
-          <router-link tag="li" to="/setting/comment" class="guide-box-ul-li">
+          <router-link tag="li" to="/messageCenter/comment" class="guide-box-ul-li">
             <span  class="guide-svg"><svg-icon iconClass="icon-pinglun10"></svg-icon></span>
             <span class="type-tip">评论</span>
             <span class="no-read-count">126</span>
           </router-link>
-          <router-link tag="li" to="/setting/like" class="guide-box-ul-li">
+          <router-link tag="li" to="/messageCenter/like" class="guide-box-ul-li">
             <span class="guide-svg"><svg-icon iconClass="icon-dianzan7"></svg-icon></span>
             <span class="type-tip">点赞</span>
             <span class="no-read-count">85</span>
           </router-link>
-          <router-link tag="li" to="/setting/focus" class="guide-box-ul-li">
+          <router-link tag="li" to="/messageCenter/focus" class="guide-box-ul-li">
             <span class="guide-svg"><svg-icon iconClass="icon-guanzhu"></svg-icon></span>
             <span class="type-tip">关注</span>
             <span class="no-read-count">89</span>
           </router-link>
-          <router-link tag="li" to="/setting/collect" class="guide-box-ul-li">
+          <router-link tag="li" to="/messageCenter/collect" class="guide-box-ul-li">
             <span class="guide-svg"><svg-icon iconClass="icon-shoucang10"></svg-icon></span>
             <span class="type-tip">收藏</span>
             <span class="no-read-count">28</span>
           </router-link>
-          <router-link tag="li" to="/setting/share" class="guide-box-ul-li">
+          <router-link tag="li" to="/messageCenter/share" class="guide-box-ul-li">
             <span class="guide-svg"><svg-icon iconClass="icon-fenxiangzhuanfafasongzhijiantouyuanxingshar"></svg-icon></span>
             <span class="type-tip">分享</span>
             <span class="no-read-count">4</span>
           </router-link>
-          <router-link tag="li" to="/setting/contribute" class="guide-box-ul-li">
+          <router-link tag="li" to="/messageCenter/contribute" class="guide-box-ul-li">
             <span class="guide-svg"><svg-icon iconClass="icon-tougao1"></svg-icon></span>
             <span class="type-tip">投稿</span>
             <span class="no-read-count">2</span>
           </router-link>
-          <router-link tag="li" to="/setting/settingMsg" class="guide-box-ul-li">
+          <router-link tag="li" to="/messageCenter/settingMsg" class="guide-box-ul-li">
             <span class="guide-svg"><svg-icon iconClass="icon-IOT_tongzhishezhi"></svg-icon></span>
             <span class="type-tip">信息设置</span>
           </router-link>

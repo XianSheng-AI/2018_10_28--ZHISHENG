@@ -74,7 +74,7 @@
     z-index 10
     .header-wrapper
       clearFix()
-      width 63.8%
+      width 60rem
       height 100%
       /*overflow: hidden*/
       // background #784
