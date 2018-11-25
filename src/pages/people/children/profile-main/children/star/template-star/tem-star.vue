@@ -340,7 +340,6 @@
                   border 1px solid #007fff
                   float: right
                   border-radius .3rem
-
                   width:34.3rem
                   display: block
                   .comment-inp
