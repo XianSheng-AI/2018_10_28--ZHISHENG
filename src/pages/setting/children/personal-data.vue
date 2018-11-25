@@ -44,40 +44,42 @@
               <span class="set-per-type">所在行业</span>
               <!--过渡-->
               <div class="fade-wrapper">
-                <transition name="fade" mode="in-out">
-                  <div class="set-empty-box"
-                       v-show="fadeObj.industry_bool"
-                       @click="fadeObj.industry_bool=!fadeObj.industry_bool"
-                  >
-                    <span class="set-add-svg">
-                      <svg-icon iconClass="icon-tianjia4"></svg-icon>
+                <div class="set-fade-empty">
+                  <transition name="fade" mode="in-out">
+                    <div class="set-empty-box"
+                         v-show="fadeObj.industry_bool"
+                         @click="fadeObj.industry_bool=!fadeObj.industry_bool"
+                    >
+                      <span class="set-add-svg">
+                        <svg-icon iconClass="icon-tianjia4"></svg-icon>
+                      </span>
+                      <span class="set-add-com">添加所在行业</span>
+                    </div>
+                  </transition>
+
+
+                  <transition name="fade" mode="out-in">
+                    <!--隐藏盒子-->
+                    <div class="set-hide-box"
+                         v-show="!fadeObj.industry_bool"
+                    >
+                    <span class="set-hide-inp">
+                       <Select v-model="industryValue" size="large" style="width:100px">
+                         <Option v-for="item in industryList" :value="item.value"
+                                 :key="item.value">{{ item.label }}</Option>
+                       </Select>
                     </span>
-                    <span class="set-add-com">添加所在行业</span>
-                  </div>
-                </transition>
-
-
-                <transition name="fade" mode="out-in">
-                  <!--隐藏盒子-->
-                  <div class="set-hide-box"
-                       v-show="!fadeObj.industry_bool"
-                  >
-                  <span class="set-hide-inp">
-                     <Select v-model="industryValue" size="large" style="width:100px">
-                       <Option v-for="item in industryList" :value="item.value"
-                               :key="item.value">{{ item.label }}</Option>
-                     </Select>
-                  </span>
-                    <span class="set-hide-choose">
-                    <span class="set-com-btn set-make-sure"
-                          @click="fadeObj.industry_bool=!fadeObj.industry_bool"
-                    >确定</span>
-                    <span class="set-com-btn set-make-cancel"
-                          @click="fadeObj.industry_bool=!fadeObj.industry_bool"
-                    >取消</span>
-                  </span>
-                  </div>
-                </transition>
+                      <span class="set-hide-choose">
+                        <span class="set-com-btn set-make-sure"
+                              @click="fadeObj.industry_bool=!fadeObj.industry_bool"
+                        >确定</span>
+                        <span class="set-com-btn set-make-cancel"
+                              @click="fadeObj.industry_bool=!fadeObj.industry_bool"
+                        >取消</span>
+                      </span>
+                    </div>
+                  </transition>
+                </div>
               </div>
 
               <span class="fRight set-com-svg">
@@ -89,38 +91,66 @@
             <div class="set-item-box">
               <span class="set-per-type">职业经历</span>
               <div class="fade-wrapper">
-                <transition name="fade">
-                  <div class="set-empty-box"
-                       v-if="fadeObj.industry_bool"
-                       @click="fadeObj.industry_bool=!fadeObj.industry_bool"
-                  >
-                    <span class="set-add-svg">
-                      <svg-icon iconClass="icon-tianjia4"></svg-icon>
+                <!---------------------------------------------------->
+                <div class="set-fade-empty">
+                  <transition name="fade">
+                    <div class="set-empty-box"
+                         v-if="fadeObj.job_bool"
+                         @click="fadeObj.job_bool=!fadeObj.job_bool"
+                    >
+                      <span class="set-add-svg">
+                        <svg-icon iconClass="icon-tianjia4"></svg-icon>
+                      </span>
+                      <span class="set-add-com">添加职业经历</span>
+                    </div>
+                  </transition>
+
+                  <transition name="fade">
+                    <!--隐藏盒子-->
+
+                      <div class="set-hide-box"
+                           v-show="!fadeObj.job_bool"
+                      >
+                        <span class="set-hide-inp">
+                          <div>
+                            <div class="set-com-inp-box set-com-sty">
+                              <input autocomplete="off" role="combobox"
+                                     aria-expanded="false" aria-autocomplete="list"
+                                     aria-activedescendant="AutoComplete64-0"
+                                     ria-haspopup="true" aria-owns="Popover63-content"
+                                     class="set-com-input" placeholder="公司或组织名称" value="">
+                            </div>
+                            <!--set-com-space输入框之间的距离-->
+                            <div class="set-com-inp-box set-com-sty set-com-space">
+                              <input autocomplete="off" role="combobox"
+                                     aria-expanded="false" aria-autocomplete="list"
+                                     aria-activedescendant="AutoComplete64-0"
+                                     ria-haspopup="true" aria-owns="Popover63-content"
+                                     class="set-com-input" placeholder="所在职位（选填）" value="">
+                            </div>
+                          </div>
+                        </span>
+                        <span class="set-hide-choose">
+                      <span class="set-com-btn set-make-sure"
+                            @click="fadeObj.job_bool=!fadeObj.job_bool"
+                      >确定</span>
+                      <span class="set-com-btn set-make-cancel"
+                            @click="fadeObj.job_bool=!fadeObj.job_bool"
+                      >取消</span>
                     </span>
-                    <span class="set-add-com">添加职业经历</span>
+                      </div>
+
+                  </transition>
+                </div>
+                <!--添加填写的行业信息-->
+                <div class="set-hide-job">
+                  <div class="set-hide-job-empty">
+                    <span class="company-name">360集团有限公司</span>
+                    &nbsp;·&nbsp;
+                    <span class="job-name">技术总监</span>
                   </div>
-                </transition>
-                <transition name="fade">
-                  <!--隐藏盒子-->
-                  <div class="set-hide-box"
-                       v-if="!fadeObj.industry_bool"
-                  >
-                  <span class="set-hide-inp">
-                     <Select v-model="industryValue" size="large" style="width:100px">
-                       <Option v-for="item in industryList" :value="item.value"
-                               :key="item.value">{{ item.label }}</Option>
-                     </Select>
-                  </span>
-                    <span class="set-hide-choose">
-                    <span class="set-com-btn set-make-sure"
-                          @click="fadeObj.industry_bool=!fadeObj.industry_bool"
-                    >确定</span>
-                    <span class="set-com-btn set-make-cancel"
-                          @click="fadeObj.industry_bool=!fadeObj.industry_bool"
-                    >取消</span>
-                  </span>
-                  </div>
-                </transition>
+                </div>
+                <!--END-->
               </div>
               <span class="fRight set-com-svg">
                 <svg-icon iconClass="icon-xieyoujian1"></svg-icon>
@@ -131,38 +161,40 @@
             <div class="set-item-box">
               <span class="set-per-type">教育经历</span>
               <div class="fade-wrapper">
-                <transition name="fade">
-                  <div class="set-empty-box"
-                       v-if="fadeObj.industry_bool"
-                       @click="fadeObj.industry_bool=!fadeObj.industry_bool"
-                  >
-                    <span class="set-add-svg">
-                      <svg-icon iconClass="icon-tianjia4"></svg-icon>
+                <div class="set-fade-empty">
+                  <transition name="fade">
+                    <div class="set-empty-box"
+                         v-if="fadeObj.industry_bool"
+                         @click="fadeObj.industry_bool=!fadeObj.industry_bool"
+                    >
+                      <span class="set-add-svg">
+                        <svg-icon iconClass="icon-tianjia4"></svg-icon>
+                      </span>
+                      <span class="set-add-com">添加教育经历</span>
+                    </div>
+                  </transition>
+                  <transition name="fade">
+                    <!--隐藏盒子-->
+                    <div class="set-hide-box"
+                         v-if="!fadeObj.industry_bool"
+                    >
+                    <span class="set-hide-inp">
+                       <Select v-model="industryValue" size="large" style="width:100px">
+                         <Option v-for="item in industryList" :value="item.value"
+                                 :key="item.value">{{ item.label }}</Option>
+                       </Select>
                     </span>
-                    <span class="set-add-com">添加教育经历</span>
-                  </div>
-                </transition>
-                <transition name="fade">
-                  <!--隐藏盒子-->
-                  <div class="set-hide-box"
-                       v-if="!fadeObj.industry_bool"
-                  >
-                  <span class="set-hide-inp">
-                     <Select v-model="industryValue" size="large" style="width:100px">
-                       <Option v-for="item in industryList" :value="item.value"
-                               :key="item.value">{{ item.label }}</Option>
-                     </Select>
-                  </span>
-                    <span class="set-hide-choose">
-                    <span class="set-com-btn set-make-sure"
-                          @click="fadeObj.industry_bool=!fadeObj.industry_bool"
-                    >确定</span>
-                    <span class="set-com-btn set-make-cancel"
-                          @click="fadeObj.industry_bool=!fadeObj.industry_bool"
-                    >取消</span>
-                  </span>
-                  </div>
-                </transition>
+                      <span class="set-hide-choose">
+                      <span class="set-com-btn set-make-sure"
+                            @click="fadeObj.industry_bool=!fadeObj.industry_bool"
+                      >确定</span>
+                      <span class="set-com-btn set-make-cancel"
+                            @click="fadeObj.industry_bool=!fadeObj.industry_bool"
+                      >取消</span>
+                    </span>
+                    </div>
+                  </transition>
+                </div>
               </div>
               <span class="fRight set-com-svg">
                 <svg-icon iconClass="icon-xieyoujian1"></svg-icon>
@@ -193,7 +225,7 @@
     </div>
   </div>
 </template>
-
+<!--注意---个别栏没有修改0 1 和最后一个-->
 <script>
   import {Radio, RadioGroup, Select, Option} from 'iview'
 
@@ -685,7 +717,7 @@
   }
 
   .fade-enter, .fade-leave-to {
-    transform: translateX(20px);
+    transform: translateX(-20px);
     opacity: 0;
   }
 
@@ -716,6 +748,11 @@
     padding: 0 2rem
     .set-list-wrapper
       .set-item
+        -webkit-transition: .5s
+        -moz-transition: .5s
+        -ms-transition: .5s
+        -o-transition: .5s
+        transition: .5s
         color: #8590a6
         border-bottom 1px solid #ebebeb
         .set-item-box
@@ -746,33 +783,79 @@
           .fade-wrapper
             position: relative
             display: inline-block
-            width: 20rem
-            height 4.4rem
+            width: 32rem
+            /*background: #ccc*/
+            /*height 4.2rem*/
             box-sizing border-box
-            .set-empty-box
-              padding 1.58rem 0
-              display: inline-block
-              border-radius .2rem
-              cursor: pointer;
-            .set-add-svg
-              display: inline-block
-              .svg-icon
-                fill #0084ff
-                font-size 1rem
-            .set-add-com
-              display: inline-block
-              color: #175199
-            &:hover .set-add-com
-              color: #5b6aff
-            &:hover .svg-icon
-              fill: #5b6aff
-            /*所在行业隐藏盒子*/
-            .set-hide-box
-              float: right
-              padding: 1.2rem 0
-              display: inline-block
-              position: absolute
-              left:0
+            /*---------------------------------------*/
+            .set-fade-empty
+              position: relative
+              height:4.4rem
+              /*background: #000*/
+              .set-empty-box
+                /*padding 1.58rem 0*/
+                line-height 4.4rem
+                display: inline-block
+                border-radius .2rem
+                cursor: pointer;
+                &:hover .set-add-com
+                  color: #5b6aff
+                &:hover .svg-icon
+                  fill: #5b6aff
+              .set-add-svg
+                display: inline-block
+                .svg-icon
+                  fill #0084ff
+                  font-size 1rem
+              .set-add-com
+                display: inline-block
+                color: #175199
+
+              /*所在行业隐藏盒子*/
+              .set-hide-box
+                float: right
+                padding: 1.2rem 0
+                display: inline-block
+                position: absolute
+                top: 0
+                left:0
+                .set-hide-inp
+                  display: inline-block
+                  overflow: hidden
+                  .set-com-inp-box
+                    width:11.25rem
+                    display: inline-block
+                    &.set-com-sty
+                      padding:.3rem .8rem
+                      border 1px solid #ebebeb
+                      border-radius .3rem
+                      .set-com-input
+                        display: inline-block
+                        height:1.5rem
+                        font-size .875rem
+                      &.set-com-space
+                        margin-left .6rem
+                .set-hide-choose
+                  display: inline-block
+                  overflow: hidden
+                  font-size .875rem
+                  .set-com-btn
+                    display: inline-block
+                    padding:.36rem .6rem
+                    background: #ccc
+                    border-radius .2rem
+                    margin-left .6rem
+                    cursor: pointer;
+                    &.set-make-sure
+                      background: #0084ff
+                      border 1px solid #0084ff
+                      color: #ffffff
+                    &.set-make-cancel
+                      color: #8590a6
+                      background: #ffffff
+                      border 1px solid #8590a6
+
+
             .set-com-wrapper
               /*border 1px solid #007fff*/
               border-radius .3rem
@@ -796,6 +879,15 @@
                   -moz-user-select: none;
                   -ms-user-select: none;
                   user-select: none;
+            .set-hide-job
+              /*padding-top 4.6rem*/
+              width:32rem
+              height:8rem
+              background: #ccc
+              clearFix()
+              .set-hide-job-empty
+                color: #1a1a1a
+                font-size .9375rem
         .set-com-svg
           display: inline-block
           padding 1.58rem 0
