@@ -107,10 +107,9 @@
 
                   <transition name="fade">
                     <!--隐藏盒子-->
-
-                      <div class="set-hide-box"
-                           v-show="!fadeObj.job_bool"
-                      >
+                    <div class="set-hide-box"
+                         v-show="!fadeObj.job_bool"
+                    >
                         <span class="set-hide-inp">
                           <div>
                             <div class="set-com-inp-box set-com-sty">
@@ -130,7 +129,7 @@
                             </div>
                           </div>
                         </span>
-                        <span class="set-hide-choose">
+                      <span class="set-hide-choose">
                       <span class="set-com-btn set-make-sure"
                             @click="fadeObj.job_bool=!fadeObj.job_bool"
                       >确定</span>
@@ -138,16 +137,75 @@
                             @click="fadeObj.job_bool=!fadeObj.job_bool"
                       >取消</span>
                     </span>
-                      </div>
+                    </div>
 
                   </transition>
                 </div>
                 <!--添加填写的行业信息-->
                 <div class="set-hide-job">
-                  <div class="set-hide-job-empty">
-                    <span class="company-name">360集团有限公司</span>
-                    &nbsp;·&nbsp;
-                    <span class="job-name">技术总监</span>
+                  <!--循环个数-->
+                  <div class="job-item">
+                    <div class="job-empty">
+                      <div class="set-com-job company-box">
+                        <span class="company-svg">
+                          <svg-icon iconClass="icon-gongsi4"></svg-icon>
+                        </span>
+                        <span class="company-name">广东传媒有限公司</span>
+                      </div>
+                      &nbsp;&nbsp;·&nbsp;&nbsp;
+                      <div class="set-com-job job-box">
+                        <span class="job-svg">
+                          <svg-icon iconClass="icon-zhiwei1"></svg-icon>
+                        </span>
+                        <span class="job-name">技术总监</span>
+                      </div>
+                      <!--关闭图标-->
+                      <div class="close-svg">
+                        <svg-icon iconClass="icon-guanbi1"></svg-icon>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="job-item">
+                    <div class="job-empty">
+                      <div class="set-com-job company-box">
+                        <span class="company-svg">
+                          <svg-icon iconClass="icon-gongsi4"></svg-icon>
+                        </span>
+                        <span class="company-name">360集团有限公司</span>
+                      </div>
+                      &nbsp;&nbsp;·&nbsp;&nbsp;
+                      <div class="set-com-job job-box">
+                        <span class="job-svg">
+                          <svg-icon iconClass="icon-zhiwei1"></svg-icon>
+                        </span>
+                        <span class="job-name">全栈工程师</span>
+                      </div>
+                      <!--关闭图标-->
+                      <div class="close-svg">
+                        <svg-icon iconClass="icon-guanbi1"></svg-icon>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="job-item">
+                    <div class="job-empty">
+                      <div class="set-com-job company-box">
+                        <span class="company-svg">
+                          <svg-icon iconClass="icon-gongsi1"></svg-icon>
+                        </span>
+                        <span class="company-name">上海传媒股份集团</span>
+                      </div>
+                      &nbsp;&nbsp;·&nbsp;&nbsp;
+                      <div class="set-com-job job-box">
+                        <span class="job-svg">
+                          <svg-icon iconClass="icon-zhiwei1"></svg-icon>
+                        </span>
+                        <span class="job-name">项目经理</span>
+                      </div>
+                      <!--关闭图标-->
+                      <div class="close-svg">
+                        <svg-icon iconClass="icon-guanbi1"></svg-icon>
+                      </div>
+                    </div>
                   </div>
                 </div>
                 <!--END-->
@@ -161,11 +219,11 @@
             <div class="set-item-box">
               <span class="set-per-type">教育经历</span>
               <div class="fade-wrapper">
-                <div class="set-fade-empty">
+                <div class="set-fade-empty edu-hei">
                   <transition name="fade">
                     <div class="set-empty-box"
-                         v-if="fadeObj.industry_bool"
-                         @click="fadeObj.industry_bool=!fadeObj.industry_bool"
+                         v-if="fadeObj.education_bool"
+                         @click="fadeObj.education_bool=!fadeObj.education_bool"
                     >
                       <span class="set-add-svg">
                         <svg-icon iconClass="icon-tianjia4"></svg-icon>
@@ -176,29 +234,86 @@
                   <transition name="fade">
                     <!--隐藏盒子-->
                     <div class="set-hide-box"
-                         v-if="!fadeObj.industry_bool"
+                         v-if="!fadeObj.education_bool"
                     >
-                    <span class="set-hide-inp">
-                       <Select v-model="industryValue" size="large" style="width:100px">
-                         <Option v-for="item in industryList" :value="item.value"
-                                 :key="item.value">{{ item.label }}</Option>
-                       </Select>
-                    </span>
-                      <span class="set-hide-choose">
-                      <span class="set-com-btn set-make-sure"
-                            @click="fadeObj.industry_bool=!fadeObj.industry_bool"
-                      >确定</span>
-                      <span class="set-com-btn set-make-cancel"
-                            @click="fadeObj.industry_bool=!fadeObj.industry_bool"
-                      >取消</span>
-                    </span>
+                      <div class="field-content">
+                        <div class="field-fir">
+                          <!--1-->
+                          <div class="field-fir-wrapper">
+                            <div class="field-fir-wrapper-empty">
+                              <input class="set-com-input" placeholder="学校或教育机构名" type="text">
+                            </div>
+                          </div>
+                          <!--2-->
+                          <div class="field-fir-wrapper">
+                            <div class="field-fir-wrapper-empty">
+                              <input class="set-com-input" placeholder="专业方向（选填）" type="text">
+                            </div>
+                          </div>
+                          <!--3-->
+                          <div class="field-fir-wrapper">
+                            <div class="field-fir-wrapper-empty set-hov">
+                              <div class="set-com-level">
+                                <span class="set-com-level-type">本科</span>
+                                <span class="set-com-choose-svg">
+                                  <svg-icon iconClass="icon-ICON-"></svg-icon>
+                                </span>
+                              </div>
+                            </div>
+                            <!--隐藏select-->
+                            <select-box :selectBox_data="componentsObj.SelectBox_edu"></select-box>
+
+                          </div>
+                        </div>
+                        <div class="field-sec">
+                          <!--sec-1-->
+                          <div class="field-sec-wrapper">
+                            <div class="field-sec-wrapper-empty set-hov">
+                              <div class="set-com-year">
+                                <span class="set-com--type">入学年份</span>
+                                <span class="set-com-choose-svg">
+                                  <svg-icon iconClass="icon-ICON-"></svg-icon>
+                                </span>
+                              </div>
+                            </div>
+                            <select-box :selectBox_data="componentsObj.SelectBox_year"></select-box>
+                          </div>
+                          <!--sec-2-->
+                          <div class="field-sec-wrapper">
+                            <div class="field-sec-wrapper-empty set-hov">
+                              <div class="set-com-year">
+                                <span class="set-com--type">毕业年份</span>
+                                <span class="set-com-choose-svg">
+                                  <svg-icon iconClass="icon-ICON-"></svg-icon>
+                                </span>
+                              </div>
+                            </div>
+                            <select-box :selectBox_data="componentsObj.SelectBox_year"></select-box>
+                          </div>
+                          <!--sec-3-btn-->
+                          <div class="field-sec-wrapper">
+                            <div class="preset-styl">
+                              <choose-btn></choose-btn>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <!--<span class="set-hide-choose">-->
+                      <!--<span class="set-com-btn set-make-sure"-->
+                      <!--@click="fadeObj.education_bool=!fadeObj.education_bool"-->
+                      <!--&gt;确定</span>-->
+                      <!--<span class="set-com-btn set-make-cancel"-->
+                      <!--@click="fadeObj.education_bool=!fadeObj.education_bool"-->
+                      <!--&gt;取消</span>-->
+                      <!--</span>-->
                     </div>
                   </transition>
                 </div>
+                <!--添加填写的教育经历-->
               </div>
-              <span class="fRight set-com-svg">
-                <svg-icon iconClass="icon-xieyoujian1"></svg-icon>
-              </span>
+              <!--<span class="fRight set-com-svg">-->
+              <!--<svg-icon iconClass="icon-xieyoujian1"></svg-icon>-->
+              <!--</span>-->
             </div>
           </li>
           <li class="set-item">
@@ -227,13 +342,16 @@
 </template>
 <!--注意---个别栏没有修改0 1 和最后一个-->
 <script>
+
   import {Radio, RadioGroup, Select, Option} from 'iview'
+  import SelectBox from '@/components/Select-Box/Select-Box.vue'
+  import ChooseBtn from '@/components/Choose-Btn/Choose-Btn.vue'
 
   export default {
     name: "personal-data",
     data() {
       return {
-        disabledGroup: '爪哇犀牛',
+        disabledGroup: '男',
         fadeObj: {
           // industry_id:0,
           // job_id:1,
@@ -688,18 +806,36 @@
             label: '渔业'
           }
         ],
-        industryValue: ''
+        industryValue: '',
+        //所有组件需要的值(_edu表示哪个区块需要组件，里面有8种数据类型数据)
+        componentsObj: {
+          SelectBox_edu: {
+            ARRAY_DATA: ['高中及以下', '大专', '本科', '硕士', '博士及以上'],
+            HEI:'13rem'
+          },
+          SelectBox_year: {
+            ARRAY_DATA: ["2018", "2017", "2016", "2015", "2014", "2013", "2012", "2011", "2010", "2009", "2008", "2007", "2006", "2005", "2004", "2003", "2002", "2001", "2000", "1999", "1998", "1997", "1996", "1995", "1994", "1993", "1992", "1991", "1990", "1989", "1988", "1987", "1986", "1985", "1984", "1983", "1982", "1981", "1980", "1979", "1978", "1977", "1976", "1975", "1974", "1973", "1972", "1971", "1970", "1969", "1968", "1967", "1966", "1965", "1964", "1963", "1962", "1961", "1960", "1959", "1958", "1957", "1956", "1955", "1954", "1953", "1952", "1951", "1950"],
+            HEI:'18rem'
+          }
+
+        }
       }
     },
     components: {
       Radio,
       RadioGroup,
       Select,
-      Option
+      Option,
+      SelectBox,
+      ChooseBtn
+    },
+    mounted(){
+
     }
+
   }
 </script>
-
+<!--z注意写方法计算1950到2018的年数用谷歌测试版，内存不溢出（打印完整）let ii=i+'';-->
 <style lang="stylus" scoped>
   @import '~@/common/stylus/mixins.styl'
   /*--通用--*/
@@ -725,7 +861,8 @@
 
   .fRight
     float: right
-
+  .fLeft
+    float: left
   /*-----*/
   .personal-data
     position: relative
@@ -755,6 +892,7 @@
         transition: .5s
         color: #8590a6
         border-bottom 1px solid #ebebeb
+        clearFix()
         .set-item-box
           /*padding: 1.8rem 0*/
           clearFix()
@@ -783,15 +921,21 @@
           .fade-wrapper
             position: relative
             display: inline-block
-            width: 32rem
+            min-width: 34rem
+            max-width: 42rem
             /*background: #ccc*/
             /*height 4.2rem*/
             box-sizing border-box
+            height: inherit
             /*---------------------------------------*/
             .set-fade-empty
               position: relative
-              height:4.4rem
+              height: inherit
+              /*height: 4.4rem*/
               /*background: #000*/
+              &.edu-hei
+                height: 8rem
+              /*background: #ccc*/
               .set-empty-box
                 /*padding 1.58rem 0*/
                 line-height 4.4rem
@@ -818,30 +962,86 @@
                 display: inline-block
                 position: absolute
                 top: 0
-                left:0
+                left: 0
                 .set-hide-inp
                   display: inline-block
                   overflow: hidden
                   .set-com-inp-box
-                    width:11.25rem
+                    width: 11.25rem
                     display: inline-block
                     &.set-com-sty
-                      padding:.3rem .8rem
+                      padding: .3rem .8rem
                       border 1px solid #ebebeb
                       border-radius .3rem
                       .set-com-input
                         display: inline-block
-                        height:1.5rem
+                        height: 1.5rem
                         font-size .875rem
                       &.set-com-space
                         margin-left .6rem
+                .field-content
+                  font-size .9375rem
+                  color: #8590a6
+                  .field-fir
+                    .field-fir-wrapper
+                      position: relative
+                      display: inline-block
+                      &:not(:first-child)
+                        margin-left .6rem
+                      .field-fir-wrapper-empty
+                        padding: .5rem .8rem
+                        border 1px solid #ebebeb
+                        border-radius .2rem
+                        &.set-hov
+                          cursor: pointer;
+                        .set-com-input
+                          display: block
+                          width: 142px
+                        .set-com-level
+                          border-radius .2rem
+                          display: inline-block
+                          .set-com-level-type
+                            display: inline-block
+                            width: 118px
+                          .set-com-choose-svg
+                            display: inline-block
+                            .svg-icon
+                              font-size 1.2rem
+                              fill #8590a6
+                  .field-sec
+                    margin-top .8rem
+                    .field-sec-wrapper
+                      position: relative
+                      display: inline-block
+                      .preset-styl
+                        margin-left 1rem
+                      &:not(:first-child)
+                        margin-left .6rem
+                      .field-sec-wrapper-empty
+                        padding: .5rem .8rem
+                        border 1px solid #ebebeb
+                        border-radius .2rem
+                        &.set-hov
+                          cursor: pointer;
+                        .set-com-year
+                          border-radius .2rem
+                          display: inline-block
+                          .set-com--type
+                            display: inline-block
+                            width: 118px
+                          .set-com-choose-svg
+                            display: inline-block
+                            .svg-icon
+                              font-size 1.2rem
+                              fill #8590a6
+
                 .set-hide-choose
                   display: inline-block
                   overflow: hidden
                   font-size .875rem
                   .set-com-btn
                     display: inline-block
-                    padding:.36rem .6rem
+                    padding: .36rem .6rem
                     background: #ccc
                     border-radius .2rem
                     margin-left .6rem
@@ -854,7 +1054,6 @@
                       color: #8590a6
                       background: #ffffff
                       border 1px solid #8590a6
-
 
             .set-com-wrapper
               /*border 1px solid #007fff*/
@@ -881,13 +1080,46 @@
                   user-select: none;
             .set-hide-job
               /*padding-top 4.6rem*/
-              width:32rem
-              height:8rem
-              background: #ccc
+              width: 32rem
+              padding-bottom .8rem
+              /*height:8rem*/
+              /*background: #ccc*/
               clearFix()
-              .set-hide-job-empty
-                color: #1a1a1a
-                font-size .9375rem
+              .job-item
+                border-radius .2rem
+                /*background: aqua*/
+                margin-bottom .8rem
+                padding: .5rem 0
+                cursor: pointer
+                &:hover
+                  background: #cee6ff
+                .job-empty
+                  color: #1a1a1a
+                  font-size .9375rem
+                  .set-com-job
+                    display: inline-block
+                    .company-svg
+                      display: inline-block
+                      padding: 0 .6rem
+                      .svg-icon
+                        fill #6266ff
+                    .job-svg
+                      display: inline-block
+                      padding-right .4rem
+                      .svg-icon
+                        fill #42474c
+                  .close-svg
+                    display: none
+                    float: right
+                    padding-right .6rem
+                    .svg-icon
+                      font-size .8rem
+                      fill #42474c
+                      transition .2s
+                      &:hover
+                        fill #6266ff
+                &:hover .close-svg
+                  display: inline-block
         .set-com-svg
           display: inline-block
           padding 1.58rem 0
