@@ -18,9 +18,9 @@
                   <input class="set-inp" type="text" value="蔡先佳"/>
                 </div>
               </div>
-              <span class="fRight set-com-svg">
-                <svg-icon iconClass="icon-xieyoujian1"></svg-icon>
-              </span>
+              <!--<span class="fRight set-com-svg">-->
+              <!--<svg-icon iconClass="icon-xieyoujian1"></svg-icon>-->
+              <!--</span>-->
             </div>
           </li>
           <li class="set-item">
@@ -34,9 +34,9 @@
                   </RadioGroup>
                 </div>
               </div>
-              <span class="fRight set-com-svg">
-                <svg-icon iconClass="icon-xieyoujian1"></svg-icon>
-              </span>
+              <!--<span class="fRight set-com-svg">-->
+              <!--<svg-icon iconClass="icon-xieyoujian1"></svg-icon>-->
+              <!--</span>-->
             </div>
           </li>
           <li class="set-item">
@@ -45,46 +45,59 @@
               <!--过渡-->
               <div class="fade-wrapper">
                 <div class="set-fade-empty">
-                  <transition name="fade" mode="in-out">
-                    <div class="set-empty-box"
-                         v-show="fadeObj.industry_bool"
-                         @click="fadeObj.industry_bool=!fadeObj.industry_bool"
-                    >
+                  <!--<transition name="fade" mode="in-out">-->
+                  <div class="set-empty-box"
+                       v-show="fadeObj.industry_bool"
+                       @click="fadeObj.industry_bool=!fadeObj.industry_bool"
+                  >
                       <span class="set-add-svg">
                         <svg-icon iconClass="icon-tianjia4"></svg-icon>
                       </span>
-                      <span class="set-add-com">添加所在行业</span>
+                    <span class="set-add-com">添加所在行业</span>
+                  </div>
+                  <!--选好行业选择后且有值出现的框-->
+                  <div class="industry-suc">
+                    <span class="industry">{{formData.industry}}</span>
+                  </div>
+                  <!--</transition>-->
+                  <!--<transition name="fade" mode="out-in">-->
+                  <!--隐藏盒子-->
+                  <div class="set-hide-box"
+                       v-show="!fadeObj.industry_bool"
+                  >
+                    <div class="set-hide-inp">
+                      <!--<div class="field-sec-wrapper-empty set-hov"-->
+                      <!--选择框组件通用-->
+                      <div class="select-wrapper"
+                           @click="controlSelectIndustry"
+                      >
+                        <div class="set--select">
+                          <span ref="industryId" class="set-select--type">选择行业</span>
+                          <span class="set-com-choose-svg">
+                                  <svg-icon iconClass="icon-ICON-"></svg-icon>
+                                </span>
+                        </div>
+                      </div>
+                      <select-box
+                        ref="industryRef"
+                        :selectBox_data="componentsObj.SelectBox_industry"
+                        @reciveMe="industryMethod"
+                      ></select-box>
                     </div>
-                  </transition>
-
-
-                  <transition name="fade" mode="out-in">
-                    <!--隐藏盒子-->
-                    <div class="set-hide-box"
-                         v-show="!fadeObj.industry_bool"
-                    >
-                    <span class="set-hide-inp">
-                       <Select v-model="industryValue" size="large" style="width:100px">
-                         <Option v-for="item in industryList" :value="item.value"
-                                 :key="item.value">{{ item.label }}</Option>
-                       </Select>
-                    </span>
-                      <span class="set-hide-choose">
-                        <span class="set-com-btn set-make-sure"
-                              @click="fadeObj.industry_bool=!fadeObj.industry_bool"
-                        >确定</span>
-                        <span class="set-com-btn set-make-cancel"
-                              @click="fadeObj.industry_bool=!fadeObj.industry_bool"
-                        >取消</span>
+                    <span class="set-hide-choose">
+                        <choose-btn
+                          :chooseData="componentsObj.ChooseBtn_industry"
+                          @chooseMe="industryBtnMethod"
+                        ></choose-btn>
                       </span>
-                    </div>
-                  </transition>
+                  </div>
+                  <!--</transition>-->
                 </div>
               </div>
 
-              <span class="fRight set-com-svg">
-                <svg-icon iconClass="icon-xieyoujian1"></svg-icon>
-              </span>
+              <!--<span class="fRight set-com-svg">-->
+              <!--<svg-icon iconClass="icon-xieyoujian1"></svg-icon>-->
+              <!--</span>-->
             </div>
           </li>
           <li class="set-item">
@@ -93,23 +106,23 @@
               <div class="fade-wrapper">
                 <!---------------------------------------------------->
                 <div class="set-fade-empty">
-                  <transition name="fade">
-                    <div class="set-empty-box"
-                         v-if="fadeObj.job_bool"
-                         @click="fadeObj.job_bool=!fadeObj.job_bool"
-                    >
+                  <!--<transition name="fade">-->
+                  <div class="set-empty-box"
+                       v-if="fadeObj.job_bool"
+                       @click="fadeObj.job_bool=!fadeObj.job_bool"
+                  >
                       <span class="set-add-svg">
                         <svg-icon iconClass="icon-tianjia4"></svg-icon>
                       </span>
-                      <span class="set-add-com">添加职业经历</span>
-                    </div>
-                  </transition>
+                    <span class="set-add-com">添加职业经历</span>
+                  </div>
+                  <!--</transition>-->
 
-                  <transition name="fade">
-                    <!--隐藏盒子-->
-                    <div class="set-hide-box"
-                         v-show="!fadeObj.job_bool"
-                    >
+                  <!--<transition name="fade">-->
+                  <!--隐藏盒子-->
+                  <div class="set-hide-box"
+                       v-show="!fadeObj.job_bool"
+                  >
                         <span class="set-hide-inp">
                           <div>
                             <div class="set-com-inp-box set-com-sty">
@@ -129,17 +142,21 @@
                             </div>
                           </div>
                         </span>
-                      <span class="set-hide-choose">
-                      <span class="set-com-btn set-make-sure"
-                            @click="fadeObj.job_bool=!fadeObj.job_bool"
-                      >确定</span>
-                      <span class="set-com-btn set-make-cancel"
-                            @click="fadeObj.job_bool=!fadeObj.job_bool"
-                      >取消</span>
+                    <span class="set-hide-choose">
+                        <choose-btn
+                          :chooseData="componentsObj.ChooseBtn_job"
+                          @chooseMe="jobBtnMethod"
+                        ></choose-btn>
+                      <!--<span class="set-com-btn set-make-sure"-->
+                      <!--@click="fadeObj.job_bool=!fadeObj.job_bool"-->
+                      <!--&gt;确定</span>-->
+                      <!--<span class="set-com-btn set-make-cancel"-->
+                      <!--@click="fadeObj.job_bool=!fadeObj.job_bool"-->
+                      <!--&gt;取消</span>-->
                     </span>
-                    </div>
+                  </div>
 
-                  </transition>
+                  <!--</transition>-->
                 </div>
                 <!--添加填写的行业信息-->
                 <div class="set-hide-job">
@@ -210,9 +227,9 @@
                 </div>
                 <!--END-->
               </div>
-              <span class="fRight set-com-svg">
-                <svg-icon iconClass="icon-xieyoujian1"></svg-icon>
-              </span>
+              <!--<span class="fRight set-com-svg">-->
+              <!--<svg-icon iconClass="icon-xieyoujian1"></svg-icon>-->
+              <!--</span>-->
             </div>
           </li>
           <li class="set-item">
@@ -220,94 +237,108 @@
               <span class="set-per-type">教育经历</span>
               <div class="fade-wrapper">
                 <div class="set-fade-empty edu-hei">
-                  <transition name="fade">
-                    <div class="set-empty-box"
-                         v-if="fadeObj.education_bool"
-                         @click="fadeObj.education_bool=!fadeObj.education_bool"
-                    >
+                  <!--<transition name="fade">-->
+                  <div class="set-empty-box"
+                       v-if="fadeObj.education_bool"
+                       @click="fadeObj.education_bool=!fadeObj.education_bool"
+                  >
                       <span class="set-add-svg">
                         <svg-icon iconClass="icon-tianjia4"></svg-icon>
                       </span>
-                      <span class="set-add-com">添加教育经历</span>
-                    </div>
-                  </transition>
-                  <transition name="fade">
-                    <!--隐藏盒子-->
-                    <div class="set-hide-box"
-                         v-if="!fadeObj.education_bool"
-                    >
-                      <div class="field-content">
-                        <div class="field-fir">
-                          <!--1-->
-                          <div class="field-fir-wrapper">
-                            <div class="field-fir-wrapper-empty">
-                              <input class="set-com-input" placeholder="学校或教育机构名" type="text">
-                            </div>
-                          </div>
-                          <!--2-->
-                          <div class="field-fir-wrapper">
-                            <div class="field-fir-wrapper-empty">
-                              <input class="set-com-input" placeholder="专业方向（选填）" type="text">
-                            </div>
-                          </div>
-                          <!--3-->
-                          <div class="field-fir-wrapper">
-                            <div class="field-fir-wrapper-empty set-hov">
-                              <div class="set-com-level">
-                                <span class="set-com-level-type">本科</span>
-                                <span class="set-com-choose-svg">
-                                  <svg-icon iconClass="icon-ICON-"></svg-icon>
-                                </span>
-                              </div>
-                            </div>
-                            <!--隐藏select-->
-                            <select-box :selectBox_data="componentsObj.SelectBox_edu"></select-box>
-
+                    <span class="set-add-com">添加教育经历</span>
+                  </div>
+                  <!--</transition>-->
+                  <!--<transition name="fade">-->
+                  <!--隐藏盒子-->
+                  <div class="set-hide-box"
+                       v-if="!fadeObj.education_bool"
+                  >
+                    <div class="field-content">
+                      <div class="field-fir">
+                        <!--1-->
+                        <div class="field-fir-wrapper">
+                          <div class="field-fir-wrapper-empty">
+                            <input class="set-com-input" v-model="componentsObj.ChooseBtn_edu.DATA.word"
+                                   placeholder="学校或教育机构名" type="text" value="">
                           </div>
                         </div>
-                        <div class="field-sec">
-                          <!--sec-1-->
-                          <div class="field-sec-wrapper">
-                            <div class="field-sec-wrapper-empty set-hov">
-                              <div class="set-com-year">
-                                <span class="set-com--type">入学年份</span>
-                                <span class="set-com-choose-svg">
+                        <!--2-->
+                        <div class="field-fir-wrapper">
+                          <div class="field-fir-wrapper-empty">
+                            <input class="set-com-input" placeholder="专业方向（选填）" type="text">
+                          </div>
+                        </div>
+                        <!--3-->
+                        <div class="field-fir-wrapper">
+                          <div class="field-fir-wrapper-empty set-hov"
+                               @click="controlSelectLevel"
+                          >
+                            <div class="set-com-level">
+                              <span class="set-com-level-type" ref="eduId">本科</span>
+                              <span class="set-com-choose-svg">
                                   <svg-icon iconClass="icon-ICON-"></svg-icon>
                                 </span>
-                              </div>
                             </div>
-                            <select-box :selectBox_data="componentsObj.SelectBox_year"></select-box>
                           </div>
-                          <!--sec-2-->
-                          <div class="field-sec-wrapper">
-                            <div class="field-sec-wrapper-empty set-hov">
-                              <div class="set-com-year">
-                                <span class="set-com--type">毕业年份</span>
-                                <span class="set-com-choose-svg">
+                          <!--隐藏select-->
+                          <select-box
+                            ref="eduRef"
+                            :selectBox_data="componentsObj.SelectBox_edu"
+                            @reciveMe="eduMethod"
+                          ></select-box>
+
+                        </div>
+                      </div>
+                      <div class="field-sec">
+                        <!--sec-1-->
+                        <div class="field-sec-wrapper">
+                          <div class="field-sec-wrapper-empty set-hov"
+                               @click="controlSelectGoSchool"
+                          >
+                            <div class="set-com-year">
+                              <span class="set-com--type" ref="goId">入学年份</span>
+                              <span class="set-com-choose-svg">
                                   <svg-icon iconClass="icon-ICON-"></svg-icon>
                                 </span>
-                              </div>
                             </div>
-                            <select-box :selectBox_data="componentsObj.SelectBox_year"></select-box>
                           </div>
-                          <!--sec-3-btn-->
-                          <div class="field-sec-wrapper">
-                            <div class="preset-styl">
-                              <choose-btn></choose-btn>
+                          <select-box
+                            ref="goRef"
+                            :selectBox_data="componentsObj.SelectBox_year"
+                            @reciveMe="goMethod"
+                          ></select-box>
+                        </div>
+                        <!--sec-2-->
+                        <div class="field-sec-wrapper">
+                          <div class="field-sec-wrapper-empty set-hov"
+                               @click="controlSelectLeaveSchool"
+                          >
+                            <div class="set-com-year">
+                              <span class="set-com--type" ref="leaveId">毕业年份</span>
+                              <span class="set-com-choose-svg">
+                                  <svg-icon iconClass="icon-ICON-"></svg-icon>
+                                </span>
                             </div>
+                          </div>
+                          <select-box
+                            ref="leaveRef"
+                            :selectBox_data="componentsObj.SelectBox_year"
+                            @reciveMe="leaveMethod"
+                          ></select-box>
+                        </div>
+                        <!--sec-3-btn-->
+                        <div class="field-sec-wrapper">
+                          <div class="preset-styl">
+                            <choose-btn
+                              :chooseData="componentsObj.ChooseBtn_edu"
+                              @chooseMe="eduBtnMethod"
+                            ></choose-btn>
                           </div>
                         </div>
                       </div>
-                      <!--<span class="set-hide-choose">-->
-                      <!--<span class="set-com-btn set-make-sure"-->
-                      <!--@click="fadeObj.education_bool=!fadeObj.education_bool"-->
-                      <!--&gt;确定</span>-->
-                      <!--<span class="set-com-btn set-make-cancel"-->
-                      <!--@click="fadeObj.education_bool=!fadeObj.education_bool"-->
-                      <!--&gt;取消</span>-->
-                      <!--</span>-->
                     </div>
-                  </transition>
+                  </div>
+                  <!--</transition>-->
                 </div>
                 <!--添加填写的教育经历-->
               </div>
@@ -321,18 +352,26 @@
               <span class="set-per-type">个人介绍</span>
               <div class="set-com-wrapper">
                 <div class="comment-inp-box">
-                  <div placeholder="输入评论..."
+                  <div placeholder=""
                        contenteditable="true"
                        spellcheck="false"
                        class="comment-inp"
-                       :class="{'empty':!!hasWord}"
-                       v-model="hasWord"
+                       v-model="componentsObj.ChooseBtn_introduce.DATA.word"
                   ></div>
+                  <!--按钮组-->
+                  <div class="buttonGroup">
+                    <span class="buttonGroupEmpty">
+                      <choose-btn
+                        :chooseData="componentsObj.ChooseBtn_introduce"
+                        @chooseMe="personalBtnMethod"
+                      ></choose-btn>
+                    </span>
+                  </div>
                 </div>
               </div>
-              <span class="fRight set-com-svg">
-                <svg-icon iconClass="icon-xieyoujian1"></svg-icon>
-              </span>
+              <!--<span class="fRight set-com-svg">-->
+              <!--<svg-icon iconClass="icon-xieyoujian1"></svg-icon>-->
+              <!--</span>-->
             </div>
           </li>
         </ul>
@@ -351,474 +390,521 @@
     name: "personal-data",
     data() {
       return {
+        formData: {
+          userName:'',
+          sex:'',
+          industry:'',
+          job:{
+            company:'',
+            work:''
+          },
+          education:{
+            school:'',
+            profession:'',
+            edu_back:'',
+            goSchoolTimer:'',
+            leaveSchoolTimer:''
+          },
+          selfIntroduction:''
+        },
         disabledGroup: '男',
         fadeObj: {
-          // industry_id:0,
-          // job_id:1,
-          // education_id:2
           industry_bool: true,
           job_bool: true,
           education_bool: true
         },
-        industryList: [
-          {
-            value: '高新科技',
-            label: '高新科技'
-          },
-          {
-            value: '互联网',
-            label: '互联网'
-          },
-          {
-            value: '电子商务',
-            label: '电子商务'
-          },
-          {
-            value: '电子游戏',
-            label: '电子游戏'
-          },
-          {
-            value: '计算机软件',
-            label: '计算机硬件'
-          },
-          {
-            value: '信息传媒',
-            label: '信息传媒'
-          },
-          {
-            value: '出版业',
-            label: '出版业'
-          },
-          {
-            value: '电影录音',
-            label: '电影录音'
-          },
-          {
-            value: '广播电视',
-            label: '广播电视'
-          },
-          {
-            value: '通信',
-            label: '通信'
-          },
-          {
-            value: '金融',
-            label: '金融'
-          },
-          {
-            value: '银行',
-            label: '银行'
-          },
-          {
-            value: '资本投资',
-            label: '资本投资'
-          },
-          {
-            value: '证券投资',
-            label: '证券投资'
-          },
-          {
-            value: '保险',
-            label: '保险'
-          },
-          {
-            value: '信贷',
-            label: '信贷'
-          },
-          {
-            value: '财务',
-            label: '财务'
-          },
-          {
-            value: '审计',
-            label: '审计'
-          },
-          {
-            value: '服务业',
-            label: '服务业'
-          },
-          {
-            value: '法律',
-            label: '法律'
-          },
-          {
-            value: '餐饮',
-            label: '餐饮'
-          },
-          {
-            value: '酒店',
-            label: '酒店'
-          },
-          {
-            value: '旅游',
-            label: '旅游'
-          },
-          {
-            value: '广告',
-            label: '广告'
-          },
-          {
-            value: '公关',
-            label: '公关'
-          },
-          {
-            value: '景观',
-            label: '景观'
-          },
-          {
-            value: '咨询分析',
-            label: '咨询分析'
-          },
-          {
-            value: '市场推广',
-            label: '市场推广'
-          },
-          {
-            value: '人力资源',
-            label: '人力资源'
-          },
-          {
-            value: '社工服务',
-            label: '社工服务'
-          },
-          {
-            value: '养老服务',
-            label: '养老服务'
-          },
-          {
-            value: '教育',
-            label: '教育'
-          },
-          {
-            value: '高等教育',
-            label: '高等教育'
-          },
-          {
-            value: '基础教育',
-            label: '基础教育'
-          },
-          {
-            value: '职业教育',
-            label: '职业教育'
-          },
-          {
-            value: '幼儿教育',
-            label: '幼儿教育'
-          },
-          {
-            value: '特殊教育',
-            label: '特殊教育'
-          },
-          {
-            value: '培训',
-            label: '培训'
-          },
-          {
-            value: '医疗服务',
-            label: '医疗服务'
-          },
-          {
-            value: '临床服务',
-            label: '临床服务'
-          },
-          {
-            value: '制药',
-            label: '制药'
-          },
-          {
-            value: '保健',
-            label: '保健'
-          },
-          {
-            value: '美容',
-            label: '美容'
-          },
-          {
-            value: '医疗器械',
-            label: '医疗器械'
-          },
-          {
-            value: '生物工程',
-            label: '生物工程'
-          },
-          {
-            value: '疗养服务',
-            label: '疗养服务'
-          },
-          {
-            value: '护理服务',
-            label: '护理服务'
-          },
-          {
-            value: '艺术娱乐',
-            label: '艺术娱乐'
-          },
-          {
-            value: '创意艺术',
-            label: '创意艺术'
-          },
-          {
-            value: '体育健身',
-            label: '体育健身'
-          },
-          {
-            value: '娱乐休闲',
-            label: '娱乐休闲'
-          },
-          {
-            value: '图书馆',
-            label: '图书馆'
-          },
-          {
-            value: '博物馆',
-            label: '博物馆'
-          },
-          {
-            value: '策展',
-            label: '策展'
-          },
-          {
-            value: '博彩',
-            label: '博彩'
-          },
-          {
-            value: '制造加工',
-            label: '制造加工'
-          },
-          {
-            value: '食品饮料业',
-            label: '食品饮料业'
-          },
-          {
-            value: '纺织皮革业',
-            label: '纺织皮革业'
-          },
-          {
-            value: '服务业',
-            label: '服务业'
-          },
-          {
-            value: '烟草业',
-            label: '烟草业'
-          },
-          {
-            value: '造纸业',
-            label: '造纸业'
-          },
-          {
-            value: '印刷业',
-            label: '印刷业'
-          },
-          {
-            value: '化工业',
-            label: '化工业'
-          },
-          {
-            value: '汽车',
-            label: '汽车'
-          },
-          {
-            value: '家具',
-            label: '家具'
-          },
-          {
-            value: '电子电器',
-            label: '电子电器'
-          },
-          {
-            value: '机械设备',
-            label: '机械设备'
-          },
-          {
-            value: '塑料工业',
-            label: '塑料工业'
-          },
-          {
-            value: '金属加工',
-            label: '金属加工'
-          },
-          {
-            value: '军火',
-            label: '军火'
-          },
-          {
-            value: '地产建筑',
-            label: '地产建筑'
-          },
-          {
-            value: '房地产',
-            label: '房地产'
-          },
-          {
-            value: '装饰装潢',
-            label: '装饰装潢'
-          },
-          {
-            value: '物业服务',
-            label: '物业服务'
-          },
-          {
-            value: '特殊建造',
-            label: '特殊建造'
-          },
-          {
-            value: '建筑设备',
-            label: '建筑设备'
-          },
-          {
-            value: '贸易临售',
-            label: '贸易临售'
-          },
-          {
-            value: '零售',
-            label: '零售'
-          },
-          {
-            value: '大宗交易',
-            label: '大宗交易'
-          },
-          {
-            value: '进出口贸易',
-            label: '进出口贸易'
-          },
-          {
-            value: '公共服务',
-            label: '公共服务'
-          },
-          {
-            value: '政府',
-            label: '政府'
-          },
-          {
-            value: '国防军事',
-            label: '国防军事'
-          },
-          {
-            value: '航天',
-            label: '航天'
-          },
-          {
-            value: '科研',
-            label: '科研'
-          },
-          {
-            value: '给排水',
-            label: '给排水'
-          },
-          {
-            value: '水利能源',
-            label: '水利能源'
-          },
-          {
-            value: '电力电网',
-            label: '电力电网'
-          },
-          {
-            value: '公共管理',
-            label: '公共管理'
-          },
-          {
-            value: '环境保护',
-            label: '环境保护'
-          },
-          {
-            value: '非营利组织',
-            label: '非营利组织'
-          },
-          {
-            value: '开采冶金',
-            label: '开采冶金'
-          },
-          {
-            value: '煤炭工业',
-            label: '煤炭工业'
-          },
-          {
-            value: '石油工业',
-            label: '石油工业'
-          },
-          {
-            value: '黑色金属',
-            label: '黑色金属'
-          },
-          {
-            value: '有色金属',
-            label: '有色金属'
-          },
-          {
-            value: '土砂石开采',
-            label: '土砂石开采'
-          },
-          {
-            value: '地热开采',
-            label: '地热开采'
-          },
-          {
-            value: '交通仓储',
-            label: '交通仓储'
-          },
-          {
-            value: '邮政',
-            label: '邮政'
-          },
-          {
-            value: '物流递送',
-            label: '物流递送'
-          },
-          {
-            value: '地面运输',
-            label: '地面运输'
-          },
-          {
-            value: '铁路运输',
-            label: '铁路运输'
-          },
-          {
-            value: '管线运输',
-            label: '管线运输'
-          },
-          {
-            value: '航运业',
-            label: '航运业'
-          },
-          {
-            value: '民用航空业',
-            label: '民用航空业'
-          },
-          {
-            value: '农林牧渔',
-            label: '农林牧渔'
-          },
-          {
-            value: '种植业',
-            label: '种植业'
-          },
-          {
-            value: '畜牧业',
-            label: '畜牧业'
-          },
-          {
-            value: '林业',
-            label: '林业'
-          },
-          {
-            value: '渔业',
-            label: '渔业'
-          }
-        ],
         industryValue: '',
         //所有组件需要的值(_edu表示哪个区块需要组件，里面有8种数据类型数据)
         componentsObj: {
+          //行业select下拉框
+          SelectBox_industry: {
+            // ARRAY_DATA:[
+            //   {
+            //     value: '高新科技',
+            //     label: '高新科技'
+            //   },
+            //   {
+            //     value: '互联网',
+            //     label: '互联网'
+            //   },
+            //   {
+            //     value: '电子商务',
+            //     label: '电子商务'
+            //   },
+            //   {
+            //     value: '电子游戏',
+            //     label: '电子游戏'
+            //   },
+            //   {
+            //     value: '计算机软件',
+            //     label: '计算机硬件'
+            //   },
+            //   {
+            //     value: '信息传媒',
+            //     label: '信息传媒'
+            //   },
+            //   {
+            //     value: '出版业',
+            //     label: '出版业'
+            //   },
+            //   {
+            //     value: '电影录音',
+            //     label: '电影录音'
+            //   },
+            //   {
+            //     value: '广播电视',
+            //     label: '广播电视'
+            //   },
+            //   {
+            //     value: '通信',
+            //     label: '通信'
+            //   },
+            //   {
+            //     value: '金融',
+            //     label: '金融'
+            //   },
+            //   {
+            //     value: '银行',
+            //     label: '银行'
+            //   },
+            //   {
+            //     value: '资本投资',
+            //     label: '资本投资'
+            //   },
+            //   {
+            //     value: '证券投资',
+            //     label: '证券投资'
+            //   },
+            //   {
+            //     value: '保险',
+            //     label: '保险'
+            //   },
+            //   {
+            //     value: '信贷',
+            //     label: '信贷'
+            //   },
+            //   {
+            //     value: '财务',
+            //     label: '财务'
+            //   },
+            //   {
+            //     value: '审计',
+            //     label: '审计'
+            //   },
+            //   {
+            //     value: '法律',
+            //     label: '法律'
+            //   },
+            //   {
+            //     value: '餐饮',
+            //     label: '餐饮'
+            //   },
+            //   {
+            //     value: '酒店',
+            //     label: '酒店'
+            //   },
+            //   {
+            //     value: '旅游',
+            //     label: '旅游'
+            //   },
+            //   {
+            //     value: '广告',
+            //     label: '广告'
+            //   },
+            //   {
+            //     value: '公关',
+            //     label: '公关'
+            //   },
+            //   {
+            //     value: '景观',
+            //     label: '景观'
+            //   },
+            //   {
+            //     value: '咨询分析',
+            //     label: '咨询分析'
+            //   },
+            //   {
+            //     value: '市场推广',
+            //     label: '市场推广'
+            //   },
+            //   {
+            //     value: '人力资源',
+            //     label: '人力资源'
+            //   },
+            //   {
+            //     value: '社工服务',
+            //     label: '社工服务'
+            //   },
+            //   {
+            //     value: '养老服务',
+            //     label: '养老服务'
+            //   },
+            //   {
+            //     value: '教育',
+            //     label: '教育'
+            //   },
+            //   {
+            //     value: '高等教育',
+            //     label: '高等教育'
+            //   },
+            //   {
+            //     value: '基础教育',
+            //     label: '基础教育'
+            //   },
+            //   {
+            //     value: '职业教育',
+            //     label: '职业教育'
+            //   },
+            //   {
+            //     value: '幼儿教育',
+            //     label: '幼儿教育'
+            //   },
+            //   {
+            //     value: '特殊教育',
+            //     label: '特殊教育'
+            //   },
+            //   {
+            //     value: '培训',
+            //     label: '培训'
+            //   },
+            //   {
+            //     value: '医疗服务',
+            //     label: '医疗服务'
+            //   },
+            //   {
+            //     value: '临床服务',
+            //     label: '临床服务'
+            //   },
+            //   {
+            //     value: '制药',
+            //     label: '制药'
+            //   },
+            //   {
+            //     value: '保健',
+            //     label: '保健'
+            //   },
+            //   {
+            //     value: '美容',
+            //     label: '美容'
+            //   },
+            //   {
+            //     value: '医疗器械',
+            //     label: '医疗器械'
+            //   },
+            //   {
+            //     value: '生物工程',
+            //     label: '生物工程'
+            //   },
+            //   {
+            //     value: '疗养服务',
+            //     label: '疗养服务'
+            //   },
+            //   {
+            //     value: '护理服务',
+            //     label: '护理服务'
+            //   },
+            //   {
+            //     value: '艺术娱乐',
+            //     label: '艺术娱乐'
+            //   },
+            //   {
+            //     value: '创意艺术',
+            //     label: '创意艺术'
+            //   },
+            //   {
+            //     value: '体育健身',
+            //     label: '体育健身'
+            //   },
+            //   {
+            //     value: '娱乐休闲',
+            //     label: '娱乐休闲'
+            //   },
+            //   {
+            //     value: '图书馆',
+            //     label: '图书馆'
+            //   },
+            //   {
+            //     value: '博物馆',
+            //     label: '博物馆'
+            //   },
+            //   {
+            //     value: '策展',
+            //     label: '策展'
+            //   },
+            //   {
+            //     value: '博彩',
+            //     label: '博彩'
+            //   },
+            //   {
+            //     value: '制造加工',
+            //     label: '制造加工'
+            //   },
+            //   {
+            //     value: '食品饮料业',
+            //     label: '食品饮料业'
+            //   },
+            //   {
+            //     value: '纺织皮革业',
+            //     label: '纺织皮革业'
+            //   },
+            //   {
+            //     value: '服务业',
+            //     label: '服务业'
+            //   },
+            //   {
+            //     value: '烟草业',
+            //     label: '烟草业'
+            //   },
+            //   {
+            //     value: '造纸业',
+            //     label: '造纸业'
+            //   },
+            //   {
+            //     value: '印刷业',
+            //     label: '印刷业'
+            //   },
+            //   {
+            //     value: '化工业',
+            //     label: '化工业'
+            //   },
+            //   {
+            //     value: '汽车',
+            //     label: '汽车'
+            //   },
+            //   {
+            //     value: '家具',
+            //     label: '家具'
+            //   },
+            //   {
+            //     value: '电子电器',
+            //     label: '电子电器'
+            //   },
+            //   {
+            //     value: '机械设备',
+            //     label: '机械设备'
+            //   },
+            //   {
+            //     value: '塑料工业',
+            //     label: '塑料工业'
+            //   },
+            //   {
+            //     value: '金属加工',
+            //     label: '金属加工'
+            //   },
+            //   {
+            //     value: '军火',
+            //     label: '军火'
+            //   },
+            //   {
+            //     value: '地产建筑',
+            //     label: '地产建筑'
+            //   },
+            //   {
+            //     value: '房地产',
+            //     label: '房地产'
+            //   },
+            //   {
+            //     value: '装饰装潢',
+            //     label: '装饰装潢'
+            //   },
+            //   {
+            //     value: '物业服务',
+            //     label: '物业服务'
+            //   },
+            //   {
+            //     value: '特殊建造',
+            //     label: '特殊建造'
+            //   },
+            //   {
+            //     value: '建筑设备',
+            //     label: '建筑设备'
+            //   },
+            //   {
+            //     value: '贸易临售',
+            //     label: '贸易临售'
+            //   },
+            //   {
+            //     value: '零售',
+            //     label: '零售'
+            //   },
+            //   {
+            //     value: '大宗交易',
+            //     label: '大宗交易'
+            //   },
+            //   {
+            //     value: '进出口贸易',
+            //     label: '进出口贸易'
+            //   },
+            //   {
+            //     value: '公共服务',
+            //     label: '公共服务'
+            //   },
+            //   {
+            //     value: '政府',
+            //     label: '政府'
+            //   },
+            //   {
+            //     value: '国防军事',
+            //     label: '国防军事'
+            //   },
+            //   {
+            //     value: '航天',
+            //     label: '航天'
+            //   },
+            //   {
+            //     value: '科研',
+            //     label: '科研'
+            //   },
+            //   {
+            //     value: '给排水',
+            //     label: '给排水'
+            //   },
+            //   {
+            //     value: '水利能源',
+            //     label: '水利能源'
+            //   },
+            //   {
+            //     value: '电力电网',
+            //     label: '电力电网'
+            //   },
+            //   {
+            //     value: '公共管理',
+            //     label: '公共管理'
+            //   },
+            //   {
+            //     value: '环境保护',
+            //     label: '环境保护'
+            //   },
+            //   {
+            //     value: '非营利组织',
+            //     label: '非营利组织'
+            //   },
+            //   {
+            //     value: '开采冶金',
+            //     label: '开采冶金'
+            //   },
+            //   {
+            //     value: '煤炭工业',
+            //     label: '煤炭工业'
+            //   },
+            //   {
+            //     value: '石油工业',
+            //     label: '石油工业'
+            //   },
+            //   {
+            //     value: '黑色金属',
+            //     label: '黑色金属'
+            //   },
+            //   {
+            //     value: '有色金属',
+            //     label: '有色金属'
+            //   },
+            //   {
+            //     value: '土砂石开采',
+            //     label: '土砂石开采'
+            //   },
+            //   {
+            //     value: '地热开采',
+            //     label: '地热开采'
+            //   },
+            //   {
+            //     value: '交通仓储',
+            //     label: '交通仓储'
+            //   },
+            //   {
+            //     value: '邮政',
+            //     label: '邮政'
+            //   },
+            //   {
+            //     value: '物流递送',
+            //     label: '物流递送'
+            //   },
+            //   {
+            //     value: '地面运输',
+            //     label: '地面运输'
+            //   },
+            //   {
+            //     value: '铁路运输',
+            //     label: '铁路运输'
+            //   },
+            //   {
+            //     value: '管线运输',
+            //     label: '管线运输'
+            //   },
+            //   {
+            //     value: '航运业',
+            //     label: '航运业'
+            //   },
+            //   {
+            //     value: '民用航空业',
+            //     label: '民用航空业'
+            //   },
+            //   {
+            //     value: '农林牧渔',
+            //     label: '农林牧渔'
+            //   },
+            //   {
+            //     value: '种植业',
+            //     label: '种植业'
+            //   },
+            //   {
+            //     value: '畜牧业',
+            //     label: '畜牧业'
+            //   },
+            //   {
+            //     value: '林业',
+            //     label: '林业'
+            //   },
+            //   {
+            //     value: '渔业',
+            //     label: '渔业'
+            //   }
+            // ],
+            ARRAY_DATA: ["高新科技", "互联网", "电子商务", "电子游戏", "计算机硬件", "信息传媒", "出版业", "电影录音", "广播电视", "通信", "金融", "银行", "资本投资", "证券投资", "保险", "信贷", "财务", "审计", "法律", "餐饮", "酒店", "旅游", "广告", "公关", "景观", "咨询分析", "市场推广", "人力资源", "社工服务", "养老服务", "教育", "高等教育", "基础教育", "职业教育", "幼儿教育", "特殊教育", "培训", "医疗服务", "临床服务", "制药", "保健", "美容", "医疗器械", "生物工程", "疗养服务", "护理服务", "艺术娱乐", "创意艺术", "体育健身", "娱乐休闲", "图书馆", "博物馆", "策展", "博彩", "制造加工", "食品饮料业", "纺织皮革业", "服务业", "烟草业", "造纸业", "印刷业", "化工业", "汽车", "家具", "电子电器", "机械设备", "塑料工业", "金属加工", "军火", "地产建筑", "房地产", "装饰装潢", "物业服务", "特殊建造", "建筑设备", "贸易临售", "零售", "大宗交易", "进出口贸易", "公共服务", "政府", "国防军事", "航天", "科研", "给排水", "水利能源", "电力电网", "公共管理", "环境保护", "非营利组织", "开采冶金", "煤炭工业", "石油工业", "黑色金属", "有色金属", "土砂石开采", "地热开采", "交通仓储", "邮政", "物流递送"],
+            HEI: '13rem'
+          },
+
+          //行业按钮
+          ChooseBtn_industry: {
+            DATA: {
+              word: 'true'
+            },
+            LEFT: '1rem',
+
+          },
+          //教育经历按钮
+          ChooseBtn_job: {
+            DATA: {
+              word: ''
+            },
+            LEFT: '1rem',
+
+          },
+          ChooseBtn_edu: {
+            DATA: {
+              word: ''
+            },
+            LEFT: '1rem',
+
+          },
+          //个人介绍按钮
+          ChooseBtn_introduce: {
+            DATA: {
+              word: 'true'
+            },
+            LEFT: '1rem',
+          },
           SelectBox_edu: {
             ARRAY_DATA: ['高中及以下', '大专', '本科', '硕士', '博士及以上'],
-            HEI:'13rem'
+            HEI: '13rem'
           },
           SelectBox_year: {
             ARRAY_DATA: ["2018", "2017", "2016", "2015", "2014", "2013", "2012", "2011", "2010", "2009", "2008", "2007", "2006", "2005", "2004", "2003", "2002", "2001", "2000", "1999", "1998", "1997", "1996", "1995", "1994", "1993", "1992", "1991", "1990", "1989", "1988", "1987", "1986", "1985", "1984", "1983", "1982", "1981", "1980", "1979", "1978", "1977", "1976", "1975", "1974", "1973", "1972", "1971", "1970", "1969", "1968", "1967", "1966", "1965", "1964", "1963", "1962", "1961", "1960", "1959", "1958", "1957", "1956", "1955", "1954", "1953", "1952", "1951", "1950"],
-            HEI:'18rem'
+            HEI: '18rem'
           }
 
-        }
+        },
+
       }
     },
     components: {
@@ -829,10 +915,73 @@
       SelectBox,
       ChooseBtn
     },
-    mounted(){
+    mounted() {
+      // var b=[];
+      // this.componentsObj.SelectBox_industry.ARRAY_DATA.forEach(function (item,index) {
+      //   b.push(item.label);
+      // })
+      // console.log(b)
+      // for (var i=0;i<this.componentsObj.SelectBox_industry.ARRAY_DATA.lenth;i++){
+      //   b.push()
+      // }
+    },
+    methods: {
+      //选择行业
+      controlSelectIndustry() {
+        this.$refs.industryRef.repeatControl();
+      },
+      //学历
+      controlSelectLevel() {
+        this.$refs.eduRef.repeatControl();
+      },
+      //开学时间
+      controlSelectGoSchool() {
+        this.$refs.goRef.repeatControl();
+      },
+      //毕业时间
+      controlSelectLeaveSchool() {
+        this.$refs.leaveRef.repeatControl();
+      },
+      //行业选择select框接收方法
+      industryMethod(value) {
+        this.formData.industry=value;
+        this.$refs.industryId.innerText = value;
+      },
+      //学历选择select框接收方法
+      eduMethod(value) {
+        this.$refs.eduId.innerText = value;
+      },
+      //上学时间选择select框接收方法
+      goMethod(value) {
+        this.$refs.goId.innerText = value;
+      },
+      //毕业时间选择select框接收方法
+      leaveMethod(value) {
+        this.$refs.leaveId.innerText = value;
+      },
+      //行业选择的保存或取消按钮
+      industryBtnMethod(value) {
+        if(value){
 
+        }
+        this.$set(this.fadeObj, 'industry_bool', !this.fadeObj.industry_bool)
+      },
+      //职业经历的保存或取消按钮
+      jobBtnMethod(value) {
+        this.$set(this.fadeObj, 'job_bool', !this.fadeObj.job_bool)
+
+      },
+      //教育经历的保存或取消按钮
+      eduBtnMethod(value) {
+        this.$set(this.fadeObj, 'education_bool', !this.fadeObj.education_bool)
+
+      },
+      //个人介绍的保存或取消按钮
+      personalBtnMethod(value) {
+        this.$set(this.fadeObj, 'industry_bool', !this.fadeObj.industry_bool)
+
+      }
     }
-
   }
 </script>
 <!--z注意写方法计算1950到2018的年数用谷歌测试版，内存不溢出（打印完整）let ii=i+'';-->
@@ -861,18 +1010,20 @@
 
   .fRight
     float: right
+
   .fLeft
     float: left
+
   /*-----*/
   .personal-data
     position: relative
     font-size .9735rem
-    box-sizing border-box
+    /*box-sizing border-box*/
     clearFix()
 
   .set-empty-head
     width: 100%
-    box-sizing border-box
+    /*box-sizing border-box*/
     padding: 1.4rem 2rem
     border-bottom 1px solid #ebebeb
     .set-con-type
@@ -892,8 +1043,10 @@
         transition: .5s
         color: #8590a6
         border-bottom 1px solid #ebebeb
-        clearFix()
+        box-sizing content-box
+        //clearFix()
         .set-item-box
+          box-sizing content-box
           /*padding: 1.8rem 0*/
           clearFix()
           .set-per-box
@@ -911,6 +1064,8 @@
             width: 12rem
             .set-com-hei
               padding: 1.58rem 0
+              .ivu-radio-wrapper
+                font-size .9375rem
               .set-sex
                 padding-left 3rem
           .set-per-type
@@ -934,8 +1089,8 @@
               /*height: 4.4rem*/
               /*background: #000*/
               &.edu-hei
-                height: 8rem
-              /*background: #ccc*/
+                /*height: 9rem*/
+                /*background: #ccc*/
               .set-empty-box
                 /*padding 1.58rem 0*/
                 line-height 4.4rem
@@ -957,25 +1112,40 @@
 
               /*所在行业隐藏盒子*/
               .set-hide-box
-                float: right
+                /*float: right*/
                 padding: 1.2rem 0
                 display: inline-block
-                position: absolute
-                top: 0
-                left: 0
+                /*position: absolute*/
+                /*top: 0*/
+                /*left: 0*/
                 .set-hide-inp
-                  display: inline-block
-                  overflow: hidden
+                  float: left
+                  position: relative
+                  /*设置中心的select框组件*/
+                  .select-wrapper
+                    .set--select
+                      padding: 0.315rem 0.8rem;
+                      border: 1px solid #ebebeb;
+                      border-radius: 0.3rem;
+                      cursor: pointer;
+                      .set-select--type
+                        display: inline-block
+                        width: 129px
+                      /*background: #ccc*/
+                      .set-com-choose-svg
+                        display: inline-block
+                        .svg-icon
+                          font-size 1.2rem
                   .set-com-inp-box
                     width: 11.25rem
                     display: inline-block
                     &.set-com-sty
-                      padding: .3rem .8rem
+                      padding: .315rem .8rem
                       border 1px solid #ebebeb
                       border-radius .3rem
                       .set-com-input
                         display: inline-block
-                        height: 1.5rem
+                        /*height: 1.5rem*/
                         font-size .875rem
                       &.set-com-space
                         margin-left .6rem
@@ -983,13 +1153,14 @@
                   font-size .9375rem
                   color: #8590a6
                   .field-fir
+                    clearFix()
                     .field-fir-wrapper
                       position: relative
-                      display: inline-block
+                      float: left
                       &:not(:first-child)
-                        margin-left .6rem
+                        margin-left 1.1rem
                       .field-fir-wrapper-empty
-                        padding: .5rem .8rem
+                        padding: .34rem .8rem
                         border 1px solid #ebebeb
                         border-radius .2rem
                         &.set-hov
@@ -1009,16 +1180,18 @@
                               font-size 1.2rem
                               fill #8590a6
                   .field-sec
-                    margin-top .8rem
+                    margin-top 1.6rem
+                    clearFix()
                     .field-sec-wrapper
                       position: relative
-                      display: inline-block
+                      float: left
                       .preset-styl
-                        margin-left 1rem
+                        clearFix()
+                        margin-left .86rem
                       &:not(:first-child)
-                        margin-left .6rem
+                        margin-left 1.2rem
                       .field-sec-wrapper-empty
-                        padding: .5rem .8rem
+                        padding: .34rem .8rem
                         border 1px solid #ebebeb
                         border-radius .2rem
                         &.set-hov
@@ -1039,36 +1212,38 @@
                   display: inline-block
                   overflow: hidden
                   font-size .875rem
-                  .set-com-btn
-                    display: inline-block
-                    padding: .36rem .6rem
-                    background: #ccc
-                    border-radius .2rem
-                    margin-left .6rem
-                    cursor: pointer;
-                    &.set-make-sure
-                      background: #0084ff
-                      border 1px solid #0084ff
-                      color: #ffffff
-                    &.set-make-cancel
-                      color: #8590a6
-                      background: #ffffff
-                      border 1px solid #8590a6
+                  margin-left 1.4rem
 
-            .set-com-wrapper
-              /*border 1px solid #007fff*/
-              border-radius .3rem
-              height: 4.4rem
-              width: 26rem
-              box-sizing border-box
-              display: inline-block
+          .set-com-wrapper
+            width: 27rem
+            float: left
+            clearFix()
+            .comment-inp-box
+              margin 1.7rem 0
+              position: relative
+              .buttonGroup
+                /*width:9rem*/
+                /*height:5rem*/
+                /*background: #7bb7fa*/
+                margin-top: 1.2rem
+                .buttonGroupEmpty
+                  float: right
+                clearFix()
               .comment-inp
-                position: relative;
-                /*padding: .2rem 1rem;*/
+                border-radius .2rem
+                /*添加重要的-取消box-sizing border-box */
+                border: 1px solid #ebebeb
+                box-sizing content-box
+                min-height: 4.6rem
+                max-height 6rem
+                padding: .2rem .6rem
                 color: #17181a;
                 outline: none;
-                /*min-height: 1.3em;*/
-                padding: 1.58rem 0
+                height: inherit
+                transition .2s
+                background: #f6f6f6
+                &:hover
+                  background: #ffffff
                 &:before
                   content: attr(placeholder);
                   position: absolute;
@@ -1078,48 +1253,45 @@
                   -moz-user-select: none;
                   -ms-user-select: none;
                   user-select: none;
-            .set-hide-job
-              /*padding-top 4.6rem*/
-              width: 32rem
-              padding-bottom .8rem
-              /*height:8rem*/
-              /*background: #ccc*/
-              clearFix()
-              .job-item
-                border-radius .2rem
-                /*background: aqua*/
-                margin-bottom .8rem
-                padding: .5rem 0
-                cursor: pointer
-                &:hover
-                  background: #cee6ff
-                .job-empty
-                  color: #1a1a1a
-                  font-size .9375rem
-                  .set-com-job
-                    display: inline-block
-                    .company-svg
-                      display: inline-block
-                      padding: 0 .6rem
-                      .svg-icon
-                        fill #6266ff
-                    .job-svg
-                      display: inline-block
-                      padding-right .4rem
-                      .svg-icon
-                        fill #42474c
-                  .close-svg
-                    display: none
-                    float: right
-                    padding-right .6rem
-                    .svg-icon
-                      font-size .8rem
-                      fill #42474c
-                      transition .2s
-                      &:hover
-                        fill #6266ff
-                &:hover .close-svg
+          .set-hide-job
+            width: 32rem
+            padding-bottom .8rem
+            clearFix()
+            .job-item
+              border-radius .2rem
+              /*background: aqua*/
+              margin-bottom .8rem
+              padding: .5rem 0
+              cursor: pointer
+              &:hover
+                background: #cee6ff
+              .job-empty
+                color: #1a1a1a
+                font-size .9375rem
+                .set-com-job
                   display: inline-block
+                  .company-svg
+                    display: inline-block
+                    padding: 0 .6rem
+                    .svg-icon
+                      fill #6266ff
+                  .job-svg
+                    display: inline-block
+                    padding-right .4rem
+                    .svg-icon
+                      fill #42474c
+                .close-svg
+                  display: none
+                  float: right
+                  padding-right .6rem
+                  .svg-icon
+                    font-size .8rem
+                    fill #42474c
+                    transition .2s
+                    &:hover
+                      fill #6266ff
+              &:hover .close-svg
+                display: inline-block
         .set-com-svg
           display: inline-block
           padding 1.58rem 0

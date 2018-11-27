@@ -1,10 +1,14 @@
 <template>
-  <div class="hide--box">
+  <div class="hide--box" :class="{'show':comObj.showFlag}">
     <div class="hide-empty">
       <div class="hide-list">
         <div class="hide-list-item" :style="'height:'+selectBox_data.HEI">
           <vue-scroll :ops="ops">
-            <span class="edu-type" v-for="(item,index) in selectBox_data.ARRAY_DATA" :key="selectBox_data.ARRAY_DATA[index]">{{item}}</span>
+            <span class="edu-type"
+                  v-for="(item,index) in selectBox_data.ARRAY_DATA"
+                  :key="selectBox_data.ARRAY_DATA[index]"
+                  @click="responseMethod(item)"
+            >{{item}}</span>
           </vue-scroll>
         </div>
       </div>
@@ -23,17 +27,30 @@
         data() {
             return {
               ops: {
+              },
+              comObj:{
+                showFlag:false
               }
             }
+        },
+        methods:{
+          repeatControl(){
+            this.$set(this.comObj,'showFlag',!this.comObj.showFlag)
+          },
+          responseMethod(item){
+            this.$set(this.comObj,'showFlag',!this.comObj.showFlag);
+            this.$emit('reciveMe',item)
+          }
         }
     }
 </script>
 
 <style lang="stylus" scoped>
   .hide--box
+    z-index: 100
     color: #8590a6
     position: absolute;
-    bottom 2.6rem
+    top 2.6rem
     left 0
     background: #fff;
     border: 1px solid #ebebeb;
@@ -42,6 +59,12 @@
     box-sizing border-box
     width: 100%
     overflow: hidden
+    visibility: hidden
+    opacity:0
+    transition opacity .2s ease-out
+    &.show
+      visibility: visible
+      opacity:1
     .hide-empty
       padding:.5rem 0
       .hide-list
