@@ -46,9 +46,11 @@
               <div class="fade-wrapper">
                 <div class="set-fade-empty">
                   <!--<transition name="fade" mode="in-out">-->
+                  <!--v-show="fadeObj.industry_bool"-->
                   <div class="set-empty-box"
-                       v-show="fadeObj.industry_bool"
-                       @click="fadeObj.industry_bool=!fadeObj.industry_bool"
+
+                       v-if="fadeObj.industry_show_add_bool"
+                       @click="setShowBox('industry')"
                   >
                       <span class="set-add-svg">
                         <svg-icon iconClass="icon-tianjia4"></svg-icon>
@@ -56,14 +58,14 @@
                     <span class="set-add-com">添加所在行业</span>
                   </div>
                   <!--选好行业选择后且有值出现的框-->
-                  <div class="industry-suc">
+                  <div class="industry-suc" v-if="fadeObj.industry_show_suc_bool">
                     <span class="industry">{{formData.industry}}</span>
                   </div>
                   <!--</transition>-->
                   <!--<transition name="fade" mode="out-in">-->
                   <!--隐藏盒子-->
                   <div class="set-hide-box"
-                       v-show="!fadeObj.industry_bool"
+                       v-if="fadeObj.industry_show_input_bool"
                   >
                     <div class="set-hide-inp">
                       <!--<div class="field-sec-wrapper-empty set-hov"-->
@@ -72,7 +74,7 @@
                            @click="controlSelectIndustry"
                       >
                         <div class="set--select">
-                          <span ref="industryId" class="set-select--type">选择行业</span>
+                          <span ref="industryId" class="set-select--type">信息传媒</span>
                           <span class="set-com-choose-svg">
                                   <svg-icon iconClass="icon-ICON-"></svg-icon>
                                 </span>
@@ -94,10 +96,6 @@
                   <!--</transition>-->
                 </div>
               </div>
-
-              <!--<span class="fRight set-com-svg">-->
-              <!--<svg-icon iconClass="icon-xieyoujian1"></svg-icon>-->
-              <!--</span>-->
             </div>
           </li>
           <li class="set-item">
@@ -108,8 +106,8 @@
                 <div class="set-fade-empty">
                   <!--<transition name="fade">-->
                   <div class="set-empty-box"
-                       v-if="fadeObj.job_bool"
-                       @click="fadeObj.job_bool=!fadeObj.job_bool"
+                       v-if="fadeObj.job_show_add_bool"
+                       @click="setShowBox('job')"
                   >
                       <span class="set-add-svg">
                         <svg-icon iconClass="icon-tianjia4"></svg-icon>
@@ -121,7 +119,7 @@
                   <!--<transition name="fade">-->
                   <!--隐藏盒子-->
                   <div class="set-hide-box"
-                       v-show="!fadeObj.job_bool"
+                       v-show="fadeObj.job_show_input_bool"
                   >
                         <span class="set-hide-inp">
                           <div>
@@ -130,7 +128,13 @@
                                      aria-expanded="false" aria-autocomplete="list"
                                      aria-activedescendant="AutoComplete64-0"
                                      ria-haspopup="true" aria-owns="Popover63-content"
-                                     class="set-com-input" placeholder="公司或组织名称" value="">
+                                     class="set-com-input" placeholder="公司或组织名称"
+                                     value=""
+                                     v-model="formDataReady.job.company"
+                                     ref="companyRef"
+                                     @input="handelInput('company','companyRef')"
+
+                              >
                             </div>
                             <!--set-com-space输入框之间的距离-->
                             <div class="set-com-inp-box set-com-sty set-com-space">
@@ -138,7 +142,12 @@
                                      aria-expanded="false" aria-autocomplete="list"
                                      aria-activedescendant="AutoComplete64-0"
                                      ria-haspopup="true" aria-owns="Popover63-content"
-                                     class="set-com-input" placeholder="所在职位（选填）" value="">
+                                     class="set-com-input" placeholder="所在职位（选填）"
+                                     value=""
+                                     v-model="formDataReady.job.work"
+                                     ref="workRef"
+                                     @input="handelInput('work','workRef')"
+                              >
                             </div>
                           </div>
                         </span>
@@ -147,76 +156,28 @@
                           :chooseData="componentsObj.ChooseBtn_job"
                           @chooseMe="jobBtnMethod"
                         ></choose-btn>
-                      <!--<span class="set-com-btn set-make-sure"-->
-                      <!--@click="fadeObj.job_bool=!fadeObj.job_bool"-->
-                      <!--&gt;确定</span>-->
-                      <!--<span class="set-com-btn set-make-cancel"-->
-                      <!--@click="fadeObj.job_bool=!fadeObj.job_bool"-->
-                      <!--&gt;取消</span>-->
                     </span>
                   </div>
 
                   <!--</transition>-->
                 </div>
-                <!--添加填写的行业信息-->
-                <div class="set-hide-job">
+                <!--添加填写的职业信息-->
+                <div class="set-hide-job" v-if="formData.job.length">
                   <!--循环个数-->
-                  <div class="job-item">
+                  <div class="job-item" v-for="(item,index) of formData.job" :key="index">
                     <div class="job-empty">
                       <div class="set-com-job company-box">
                         <span class="company-svg">
                           <svg-icon iconClass="icon-gongsi4"></svg-icon>
                         </span>
-                        <span class="company-name">广东传媒有限公司</span>
+                        <span class="company-name">{{item.company}}</span>
                       </div>
-                      &nbsp;&nbsp;·&nbsp;&nbsp;
-                      <div class="set-com-job job-box">
+                      <span v-if="item.work">&nbsp;&nbsp;·&nbsp;&nbsp;</span>
+                      <div class="set-com-job job-box" v-if="item.work">
                         <span class="job-svg">
                           <svg-icon iconClass="icon-zhiwei1"></svg-icon>
                         </span>
-                        <span class="job-name">技术总监</span>
-                      </div>
-                      <!--关闭图标-->
-                      <div class="close-svg">
-                        <svg-icon iconClass="icon-guanbi1"></svg-icon>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="job-item">
-                    <div class="job-empty">
-                      <div class="set-com-job company-box">
-                        <span class="company-svg">
-                          <svg-icon iconClass="icon-gongsi4"></svg-icon>
-                        </span>
-                        <span class="company-name">360集团有限公司</span>
-                      </div>
-                      &nbsp;&nbsp;·&nbsp;&nbsp;
-                      <div class="set-com-job job-box">
-                        <span class="job-svg">
-                          <svg-icon iconClass="icon-zhiwei1"></svg-icon>
-                        </span>
-                        <span class="job-name">全栈工程师</span>
-                      </div>
-                      <!--关闭图标-->
-                      <div class="close-svg">
-                        <svg-icon iconClass="icon-guanbi1"></svg-icon>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="job-item">
-                    <div class="job-empty">
-                      <div class="set-com-job company-box">
-                        <span class="company-svg">
-                          <svg-icon iconClass="icon-gongsi1"></svg-icon>
-                        </span>
-                        <span class="company-name">上海传媒股份集团</span>
-                      </div>
-                      &nbsp;&nbsp;·&nbsp;&nbsp;
-                      <div class="set-com-job job-box">
-                        <span class="job-svg">
-                          <svg-icon iconClass="icon-zhiwei1"></svg-icon>
-                        </span>
-                        <span class="job-name">项目经理</span>
+                        <span class="job-name">{{item.work}}</span>
                       </div>
                       <!--关闭图标-->
                       <div class="close-svg">
@@ -227,9 +188,6 @@
                 </div>
                 <!--END-->
               </div>
-              <!--<span class="fRight set-com-svg">-->
-              <!--<svg-icon iconClass="icon-xieyoujian1"></svg-icon>-->
-              <!--</span>-->
             </div>
           </li>
           <li class="set-item">
@@ -239,8 +197,8 @@
                 <div class="set-fade-empty edu-hei">
                   <!--<transition name="fade">-->
                   <div class="set-empty-box"
-                       v-if="fadeObj.education_bool"
-                       @click="fadeObj.education_bool=!fadeObj.education_bool"
+                       v-if="fadeObj.education_show_add_bool"
+                       @click="setShowBox('edu')"
                   >
                       <span class="set-add-svg">
                         <svg-icon iconClass="icon-tianjia4"></svg-icon>
@@ -251,21 +209,30 @@
                   <!--<transition name="fade">-->
                   <!--隐藏盒子-->
                   <div class="set-hide-box"
-                       v-if="!fadeObj.education_bool"
+                       v-if="fadeObj.education_show_input_bool"
                   >
                     <div class="field-content">
                       <div class="field-fir">
                         <!--1-->
                         <div class="field-fir-wrapper">
                           <div class="field-fir-wrapper-empty">
-                            <input class="set-com-input" v-model="componentsObj.ChooseBtn_edu.DATA.word"
-                                   placeholder="学校或教育机构名" type="text" value="">
+                            <input class="set-com-input"
+                                   placeholder="学校或教育机构名" type="text" value=""
+                                   ref="schoolRef"
+                                   v-model="formDataReady.education.school"
+                                   @input="handelInput('school','schoolRef')"
+
+                            >
                           </div>
                         </div>
                         <!--2-->
                         <div class="field-fir-wrapper">
                           <div class="field-fir-wrapper-empty">
-                            <input class="set-com-input" placeholder="专业方向（选填）" type="text">
+                            <input class="set-com-input" placeholder="专业方向（选填）" type="text"
+                                   v-model="formDataReady.education.profession"
+                                   ref="professionRef"
+                                   @input="handelInput('profession','professionRef')"
+                            >
                           </div>
                         </div>
                         <!--3-->
@@ -274,7 +241,11 @@
                                @click="controlSelectLevel"
                           >
                             <div class="set-com-level">
-                              <span class="set-com-level-type" ref="eduId">本科</span>
+                              <span class="set-com-level-type"
+                                    ref="eduId"
+                                    v-model="formDataReady.education.edu_back"
+
+                              >本科</span>
                               <span class="set-com-choose-svg">
                                   <svg-icon iconClass="icon-ICON-"></svg-icon>
                                 </span>
@@ -296,7 +267,11 @@
                                @click="controlSelectGoSchool"
                           >
                             <div class="set-com-year">
-                              <span class="set-com--type" ref="goId">入学年份</span>
+                              <!--v-model="formDataReady.education.goSchoolTimer"-->
+                              <span class="set-com--type"
+                                    ref="goId"
+
+                              >入学年份</span>
                               <span class="set-com-choose-svg">
                                   <svg-icon iconClass="icon-ICON-"></svg-icon>
                                 </span>
@@ -314,7 +289,10 @@
                                @click="controlSelectLeaveSchool"
                           >
                             <div class="set-com-year">
-                              <span class="set-com--type" ref="leaveId">毕业年份</span>
+                              <!--v-model="formDataReady.education.leaveSchoolTimer"-->
+                              <span class="set-com--type"
+                                    ref="leaveId"
+                              >毕业年份</span>
                               <span class="set-com-choose-svg">
                                   <svg-icon iconClass="icon-ICON-"></svg-icon>
                                 </span>
@@ -341,10 +319,66 @@
                   <!--</transition>-->
                 </div>
                 <!--添加填写的教育经历-->
+                <div class="show-edu-content">
+                  <div class="set-show-empty">
+                    <!--循环教育经历条数-->
+                    <div class="set-show-item" v-for="(item,index) of formData.education">
+                      <div>
+                        <div class="set-item-picture">
+                          <svg-icon iconClass="icon-beijingdaxue"></svg-icon>
+                        </div>
+                        <div class="set-item-meta">
+                          <div class="edu-timer" v-if="item.goSchoolTimer">
+                            <span>{{item.goSchoolTimer}}年</span>
+                            -
+                            <span v-if="item.leaveSchoolTimer">{{item.leaveSchoolTimer}}年</span>
+                          </div>
+                          <div class="edu-content">
+                            <span>{{item.school}}</span>
+                            <span v-if="item.profession">&nbsp;&nbsp;·&nbsp;&nbsp;</span>
+                            <span v-if="item.profession">{{item.profession}}</span>
+                            <span v-if="item.edu_back">&nbsp;&nbsp;·&nbsp;&nbsp;</span>
+                            <span v-if="item.edu_back">{{item.edu_back}}</span>
+                          </div>
+                        </div>
+                        <div class="set-item-close">
+                          <span>
+                            <svg-icon iconClass="icon-guanbi1"></svg-icon>
+                          </span>
+                        </div>
+                        <!--关闭图标-->
+                      </div>
+                    </div>
+                    <!--2-->
+                    <!--<div class="set-show-item">-->
+                      <!--<div>-->
+                        <!--<div class="set-item-picture">-->
+                          <!--<svg-icon iconClass="icon-beijingdaxue"></svg-icon>-->
+                        <!--</div>-->
+                        <!--<div class="set-item-meta">-->
+                          <!--<div class="edu-timer">-->
+                            <!--<span>2015年</span>-->
+                            <!-- - -->
+                            <!--<span>2019年</span>-->
+                          <!--</div>-->
+                          <!--<div class="edu-content">-->
+                            <!--<span>湖南大学</span>-->
+                            <!--&nbsp;&nbsp;·&nbsp;&nbsp;-->
+                            <!--<span>软件工程</span>-->
+                            <!--&nbsp;&nbsp;·&nbsp;&nbsp;-->
+                            <!--<span>本科</span>-->
+                          <!--</div>-->
+                        <!--</div>-->
+                        <!--<div class="set-item-close">-->
+                          <!--<span>-->
+                            <!--<svg-icon iconClass="icon-guanbi1"></svg-icon>-->
+                          <!--</span>-->
+                        <!--</div>-->
+                      <!--</div>-->
+                    <!--</div>-->
+                  </div>
+                </div>
               </div>
-              <!--<span class="fRight set-com-svg">-->
-              <!--<svg-icon iconClass="icon-xieyoujian1"></svg-icon>-->
-              <!--</span>-->
             </div>
           </li>
           <li class="set-item">
@@ -390,28 +424,81 @@
     name: "personal-data",
     data() {
       return {
-        formData: {
-          userName:'',
-          sex:'',
-          industry:'',
+        //输入框触发的值(各个方面的单条数据)
+        handelInputData:{
           job:{
             company:'',
             work:''
           },
-          education:{
-            school:'',
-            profession:'',
-            edu_back:'',
-            goSchoolTimer:'',
-            leaveSchoolTimer:''
-          },
-          selfIntroduction:''
+          edu:{
+            school: '',
+            profession: '',
+            edu_back: '',
+            goSchoolTimer: '',
+            leaveSchoolTimer: ''
+          }
+        },
+        //真正的值
+        formData: {
+          userName: '',
+          sex: '',
+          industry: '',
+          job: [
+            {
+              company: '广东传媒有限公司',
+              work: ' 技术总监'
+            },
+            {
+              company: ' 360集团有限公司',
+              work: ' 全栈工程师'
+            },
+            {
+              company: ' 上海传媒股份集团',
+              work: '项目经理'
+            }
+          ],
+          education: [
+            {
+              school: '青海师范大学',
+              profession: '软件工程',
+              edu_back: '本科',
+              goSchoolTimer: '1992',
+              leaveSchoolTimer: '1996'
+            }
+          ],
+          selfIntroduction: ''
+        },
+        //表单原来和准备的值
+        formDataReady: {
+          userName: '',
+          sex: '',
+          industry: '信息传媒',
+          job:
+            {
+            company: '',
+            work: ''
+            },
+          education:
+            {
+              school: '',
+              profession: '',
+              edu_back: '',
+              goSchoolTimer: '',
+              leaveSchoolTimer: ''
+            },
+          selfIntroduction: ''
         },
         disabledGroup: '男',
         fadeObj: {
-          industry_bool: true,
-          job_bool: true,
-          education_bool: true
+          industry_show_add_bool: true,
+          industry_show_suc_bool: false,
+          industry_show_input_bool: false,
+          job_show_add_bool: true,
+          job_show_suc_bool: false,
+          job_show_input_bool: false,
+          education_show_add_bool: true,
+          education_show_suc_bool: false,
+          education_show_input_bool: false,
         },
         industryValue: '',
         //所有组件需要的值(_edu表示哪个区块需要组件，里面有8种数据类型数据)
@@ -870,16 +957,15 @@
               word: 'true'
             },
             LEFT: '1rem',
-
           },
-          //教育经历按钮
+          //职业经历按钮
           ChooseBtn_job: {
             DATA: {
               word: ''
             },
             LEFT: '1rem',
-
           },
+          //教育经历按钮
           ChooseBtn_edu: {
             DATA: {
               word: ''
@@ -899,7 +985,7 @@
             HEI: '13rem'
           },
           SelectBox_year: {
-            ARRAY_DATA: ["2018", "2017", "2016", "2015", "2014", "2013", "2012", "2011", "2010", "2009", "2008", "2007", "2006", "2005", "2004", "2003", "2002", "2001", "2000", "1999", "1998", "1997", "1996", "1995", "1994", "1993", "1992", "1991", "1990", "1989", "1988", "1987", "1986", "1985", "1984", "1983", "1982", "1981", "1980", "1979", "1978", "1977", "1976", "1975", "1974", "1973", "1972", "1971", "1970", "1969", "1968", "1967", "1966", "1965", "1964", "1963", "1962", "1961", "1960", "1959", "1958", "1957", "1956", "1955", "1954", "1953", "1952", "1951", "1950"],
+            ARRAY_DATA: ["至今","2018", "2017", "2016", "2015", "2014", "2013", "2012", "2011", "2010", "2009", "2008", "2007", "2006", "2005", "2004", "2003", "2002", "2001", "2000", "1999", "1998", "1997", "1996", "1995", "1994", "1993", "1992", "1991", "1990", "1989", "1988", "1987", "1986", "1985", "1984", "1983", "1982", "1981", "1980", "1979", "1978", "1977", "1976", "1975", "1974", "1973", "1972", "1971", "1970", "1969", "1968", "1967", "1966", "1965", "1964", "1963", "1962", "1961", "1960", "1959", "1958", "1957", "1956", "1955", "1954", "1953", "1952", "1951", "1950"],
             HEI: '18rem'
           }
 
@@ -926,6 +1012,54 @@
       // }
     },
     methods: {
+      handelInput(who,ref){
+
+        if(who==='company'){
+          let va=this.$refs[ref].value;
+          if(va){
+            this.componentsObj.ChooseBtn_job.DATA.word=true;
+            return;
+          }
+          this.componentsObj.ChooseBtn_job.DATA.word=false;
+
+        }else if(who==='work'){
+          let va=this.$refs[ref].value;
+          if(va){
+            console.log(va)
+          }
+        }else if(who==='school'){
+          let va=this.$refs[ref].value;
+          if(va){
+            this.componentsObj.ChooseBtn_edu.DATA.word=true;
+            return;
+          }
+          this.componentsObj.ChooseBtn_edu.DATA.word=false;
+        }
+
+      },
+      //设置切换操作的内容（industry,job,edu）
+      setShowBox(value) {
+        //if 和 switch 在5个条件以下if快，以上的话switch快
+        switch (value) {
+          case 'industry':
+            // this.$set(this.fadeObj,'industry_show_add_bool',false);
+            // this.$set(this.fadeObj,'industry_show_input_bool',true);
+            this.fadeObj.industry_show_add_bool = false;
+            this.fadeObj.industry_show_input_bool = true;
+            break;
+          case 'job':
+            this.fadeObj.job_show_add_bool = false;
+            this.fadeObj.job_show_input_bool = true;
+            break;
+          case 'edu':
+            this.fadeObj.education_show_add_bool = false;
+            this.fadeObj.education_show_input_bool = true;
+            break;
+          default :
+            break
+        }
+      },
+
       //选择行业
       controlSelectIndustry() {
         this.$refs.industryRef.repeatControl();
@@ -944,36 +1078,87 @@
       },
       //行业选择select框接收方法
       industryMethod(value) {
-        this.formData.industry=value;
+        this.formDataReady.industry=value;
         this.$refs.industryId.innerText = value;
       },
       //学历选择select框接收方法
       eduMethod(value) {
+        this.formDataReady.education.edu_back=value;
         this.$refs.eduId.innerText = value;
       },
       //上学时间选择select框接收方法
       goMethod(value) {
+        this.formDataReady.education.goSchoolTimer=value;
         this.$refs.goId.innerText = value;
       },
       //毕业时间选择select框接收方法
       leaveMethod(value) {
+        this.formDataReady.education.leaveSchoolTimer=value;
         this.$refs.leaveId.innerText = value;
       },
       //行业选择的保存或取消按钮
       industryBtnMethod(value) {
-        if(value){
 
+        // this.fadeObj.industry_show_input_bool = false;
+        this.$set(this.fadeObj, 'industry_show_input_bool', false);
+        //按了保存键
+        if (value==='YES') {
+          this.formData.industry=this.formDataReady.industry;
+
+          this.fadeObj.industry_show_suc_bool = true;
+        }else{
+          //按了取消键
+          if (this.formData.industry) {
+            this.fadeObj.industry_show_suc_bool = true;
+          }else{
+            this.fadeObj.industry_show_add_bool = true;
+          }
         }
-        this.$set(this.fadeObj, 'industry_bool', !this.fadeObj.industry_bool)
       },
       //职业经历的保存或取消按钮
       jobBtnMethod(value) {
-        this.$set(this.fadeObj, 'job_bool', !this.fadeObj.job_bool)
-
+        this.$set(this.fadeObj, 'job_show_input_bool', false);
+        this.fadeObj.job_show_add_bool = true;
+        if(value==='YES'){
+          //直接    this.formData.job.unshift(this.formDataReady.job);不行的，数据都会同时改变
+          //原因是对象是引用类型，传递的是引用地址，所以你两个数组引用的是同一个对象，只要其中一个数组改变，就会导致对象改变，进而另一个引用的数组也会改。
+          //解决办法就是将需要放入数组的对象先深拷贝一份，用拷贝的对象，这样就不存在引用关系了。(深拷贝)
+          let data = Object.assign({}, JSON.parse(JSON.stringify(this.formDataReady.job)));
+          if(data.company){
+            this.formData.job.unshift(data);
+          }
+          this.$set(this.formDataReady,'job',{company:'',work:''})
+          // this.formDataReady.job.company='';
+          // this.formDataReady.job.work='';
+          // alert('点了保存键')
+        }else{
+          // alert('点了取消键')
+        }
       },
       //教育经历的保存或取消按钮
       eduBtnMethod(value) {
-        this.$set(this.fadeObj, 'education_bool', !this.fadeObj.education_bool)
+        this.$set(this.fadeObj, 'education_show_input_bool', false);
+        this.fadeObj.education_show_add_bool=true;
+        let data = Object.assign({}, JSON.parse(JSON.stringify(this.formDataReady.education)));
+        if(value==='YES'){
+          // alert('点了保存键')
+          if(data.school){
+            this.formData.education.unshift(data);
+            this.formDataReady.education={
+              school: '',
+              profession: '',
+              edu_back: '',
+              goSchoolTimer: '',
+              leaveSchoolTimer: ''
+            };
+            return;
+          }
+          return;
+        }
+        return;
+        // alert('点了取消键')
+
+
 
       },
       //个人介绍的保存或取消按钮
@@ -1078,10 +1263,8 @@
             display: inline-block
             min-width: 34rem
             max-width: 42rem
-            /*background: #ccc*/
-            /*height 4.2rem*/
-            box-sizing border-box
-            height: inherit
+            /*height: inherit*/
+            box-sizing content-box
             /*---------------------------------------*/
             .set-fade-empty
               position: relative
@@ -1109,7 +1292,11 @@
               .set-add-com
                 display: inline-block
                 color: #175199
-
+              .industry-suc
+                margin-top 1.54rem
+                /*background: #ccc*/
+                .industry
+                  display: inline-block
               /*所在行业隐藏盒子*/
               .set-hide-box
                 /*float: right*/
@@ -1213,6 +1400,66 @@
                   overflow: hidden
                   font-size .875rem
                   margin-left 1.4rem
+
+            .show-edu-content
+              position: relative
+              width: 100%
+              margin:.3rem 0 2rem
+
+              box-sizing content-box
+              clearFix()
+              .set-show-empty
+                box-sizing content-box
+                /*padding-bottom .3rem*/
+                .set-show-item
+                  position: relative
+                  box-sizing content-box
+                  border-radius .3rem
+                  /*margin-bottom .2rem*/
+                  /*background: antiquewhite*/
+                  clearFix()
+                  /*background: #000*/
+                  padding:.7rem 1rem
+                  &:hover
+                    background: #f6f6f6
+                  &:hover .set-item-close
+                    display: block
+                    background: #f6f6f6
+                  .set-item-picture
+                    box-sizing content-box
+                    font-size .9375rem
+                    margin:0 .8rem 0 0
+                    float: left;
+                    /*background: #ccc*/
+                    /*border-radius 50%*/
+                    /*background: #000*/
+                    /*padding:.1rem*/
+                    /*background: #ffffff*/
+                    .svg-icon
+                      font-size 1.8rem
+                      display: block
+
+                  .set-item-meta
+                    /*margin-left 3rem*/
+                    float: left
+                    .edu-timer
+                      margin-bottom .2rem
+                    .edu-content
+                      color: #1a1a1a
+                      padding .2rem 0
+                  .set-item-close
+                    float: right
+                    /*margin:.8rem 0*/
+                    /*background: #000*/
+                    cursor: pointer;
+                    display: none
+                    &:hover .svg-icon
+                      fill #290008
+
+                    .svg-icon
+                      fill #4e4e4e
+                      font-size 1rem
+
 
           .set-com-wrapper
             width: 27rem
