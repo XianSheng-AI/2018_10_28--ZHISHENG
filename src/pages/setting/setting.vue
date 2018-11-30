@@ -91,17 +91,14 @@
   @import "~@/common/stylus/mixins.styl"
   .fLeft
     float: left
-
   .fRight
     float: right
-
   .setting-wrapper
     clearFix()
     box-shadow: 0 0 4px rgba(6,10,29,.04);
     border: 1px solid #ebebeb;
     margin: 4.4rem auto
     width: 60rem
-    /*height: 200px*/
     background: #ffffff
     .wid-empty
       .guide-box

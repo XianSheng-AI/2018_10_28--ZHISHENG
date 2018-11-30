@@ -3,7 +3,7 @@
     <div class="set-head">
       <h2 class="parent-action-title">消息与邮件</h2>
       <!--summarize总结-->
-      <div class="action-summarize">私信设置/邀请设置/赞同与赞赏/关注/邮件设置</div>
+      <div class="action-summarize">关注设置/邀请评论设置/赞同与踩/私信设置/邮件设置</div>
     </div>
     <div class="set-body">
       <div class="set-body-empty">
@@ -12,9 +12,6 @@
               <div class="set-item-box">
                 <div class="set-item-title">
                   <h4 class="set-type">关注提醒&nbsp;</h4>
-                  <!--<span class="hide-box-action" @click="show_box('focus')">-->
-                  <!--<svg-icon iconClass="icon-bottom"></svg-icon>-->
-                  <!--</span>-->
                   <div class="explain">我关注的内容有新的动态时,我会收到通知</div>
                   <div class="edit-btn">
                     <span class="edit-btn-com" @click="show_box('focus')">编辑</span>
@@ -29,34 +26,8 @@
                       </div>
                       <!--选择按钮-->
                       <div class="selectMsgBox">
-                        <div class="sureBtn" @click="setMsgChooseMethod('focusMe')">
-                          <span class="sureChoose">{{formData.setFocus.resultValue}}</span>
-                          <span class="sureSvg">
-                            <svg-icon iconClass="icon-ICON-"></svg-icon>
-                          </span>
-
-                        </div>
-                        <!--隐藏选择框-->
-                        <div class="selectBtn">
-                          <div class="selectBtnItem">
-                            <span class="electedSvg">
-                              <svg-icon iconClass="icon-gouxuan4"></svg-icon>
-                            </span>
-                            <span class="itemBtnType">所有人</span>
-                          </div>
-                          <div class="selectBtnItem">
-                            <span class="electedSvg">
-                              <svg-icon iconClass="icon-gouxuan4"></svg-icon>
-                            </span>
-                            <span class="itemBtnType">关注我的人</span>
-                          </div>
-                          <div class="selectBtnItem">
-                            <span class="electedSvg">
-                              <svg-icon iconClass="icon-gouxuan4"></svg-icon>
-                            </span>
-                            <span class="itemBtnType">不接收通知</span>
-                          </div>
-                        </div>
+                        <click-select></click-select>
+                        <!--END-->
                       </div>
                     </li>
                     <li class="edit-box-ul-li">
@@ -64,11 +35,21 @@
                       <div class="child-explain">
                         <span class="explain-desc">我的专栏被谁关注时，我会收到消息通知</span>
                       </div>
+                      <!--选择按钮-->
+                      <div class="selectMsgBox">
+                        <click-select></click-select>
+                        <!--END-->
+                      </div>
                     </li>
                     <li class="edit-box-ul-li">
                       <h4 class="action-title">专栏更新文章</h4>
                       <div class="child-explain">
                         <span class="explain-desc">关注的专栏有新文章时，我会收到消息通知</span>
+                      </div>
+                      <!--选择按钮-->
+                      <div class="selectMsgBox">
+                        <click-select></click-select>
+                        <!--END-->
                       </div>
                     </li>
                     <li class="edit-box-ul-li">
@@ -76,172 +57,184 @@
                       <div class="child-explain">
                         <span class="explain-desc">我的收藏夹被关注时，我将收到消息通知</span>
                       </div>
+                      <!--选择按钮-->
+                      <div class="selectMsgBox">
+                        <click-select></click-select>
+                        <!--END-->
+                      </div>
                     </li>
                     <li class="edit-box-ul-li">
                       <h4 class="action-title">关注了我的问题</h4>
                       <div class="child-explain">
                         <span class="explain-desc">我的问题被关注时，我将收到消息通知</span>
                       </div>
+                      <!--选择按钮-->
+                      <div class="selectMsgBox">
+                        <click-select></click-select>
+                        <!--END-->
+                      </div>
                     </li>
                   </ul>
                 </div>
               </div>
             </li>
-            <li class="set-item" :class="{'chan_col':change_bool_arr.invite_style}">
-              <div class="set-item-box">
-                <span class="set-type">邀请提醒&nbsp;</span>
-                <span class="hide-box-action" @click="show_box('invite')">
-                  <svg-icon iconClass="icon-bottom"></svg-icon>
-                </span>
-                <span class="explain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;当别人邀请我回答或提到我时,我会收到通知</span>
-                <span class="choose-btn">
-                  <i-switch>
-                    <span slot="open">开</span>
-                    <span slot="close">关</span>
-                  </i-switch>
-                </span>
-                <!--hide-box-->
-                <div class="edit-box" :class="{'show':change_bool_arr.invite_bool}">
-                  <ul class="edit-box-ul">
-                    <li class="edit-box-ul-li">
-                      <h4>邀请我回答问题</h4>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </li>
-            <li class="set-item" :class="{'chan_col':change_bool_arr.comment_style}">
-              <div class="set-item-box">
-                <span class="set-type">评论提醒&nbsp;</span>
-                <span class="hide-box-action" @click="show_box('comment')">
-                  <svg-icon iconClass="icon-bottom"></svg-icon>
-                </span>
-                <span class="explain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;当别人对我发的内容点赞时,我会收到通知</span>
-                <span class="choose-btn">
-                  <i-switch>
-                    <span slot="open">开</span>
-                    <span slot="close">关</span>
-                  </i-switch>
-                </span>
-                <!--hide-box-->
-                <div class="edit-box" :class="{'show':change_bool_arr.comment_bool}">
-                  <ul class="edit-box-ul">
-                    <li class="edit-box-ul-li">
-                      <h4>谁评论了我的文章</h4>
-                    </li>
-                    <li class="edit-box-ul-li">
-                      <h4>谁评论了我的星点</h4>
-                    </li>
-                    <li class="edit-box-ul-li">
-                      <h4>谁评论了我的回答</h4>
-                    </li>
-                    <li class="edit-box-ul-li">
-                      <h4>谁评论了我的专栏</h4>
-                    </li>
-                  </ul>
-                </div>
-              </div>
+          <li class="set-item" :class="{'chan_col':change_bool_arr.inviteComment_bool}">
 
-            </li>
-            <li class="set-item" :class="{'chan_col':change_bool_arr.like_style}">
-              <div class="set-item-box">
-                <span class="set-type">点赞提醒&nbsp;</span>
-                <span class="hide-box-action" @click="show_box('like')">
-                  <svg-icon iconClass="icon-bottom"></svg-icon>
-                </span>
-                <span class="explain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;当别人对我发的内容点赞时,我会收到通知</span>
-                <span class="choose-btn">
-                  <i-switch>
-                    <span slot="open">开</span>
-                    <span slot="close">关</span>
-                  </i-switch>
-                </span>
-                <!--hide-box-->
-                <div class="edit-box" :class="{'show':change_bool_arr.like_bool}">
-                  <ul class="edit-box-ul">
-                    <li class="edit-box-ul-li">
-                      <h4>谁赞了我的文章</h4>
-                    </li>
-                    <li class="edit-box-ul-li">
-                      <h4>谁赞了我的星点</h4>
-                    </li>
-                    <li class="edit-box-ul-li">
-                      <h4>谁赞了我的问题</h4>
-                    </li>
-                    <li class="edit-box-ul-li">
-                      <h4>谁赞了我的回答</h4>
-                    </li>
-                    <li class="edit-box-ul-li">
-                      <h4>谁赞了我的评论</h4>
-                    </li>
-                    <li class="edit-box-ul-li">
-                      <h4>谁赞了我的笔记</h4>
-                    </li>
-                    <li class="edit-box-ul-li">
-                      <h4>谁赞了我的想法</h4>
-                    </li>
-                  </ul>
+            <div class="set-item-box">
+              <div class="set-item-title">
+                <h4 class="set-type">邀请/评论&nbsp;</h4>
+                <div class="explain">当别人邀请我回答或评论提到我时,我会收到通知</div>
+                <div class="edit-btn">
+                  <span class="edit-btn-com" @click="show_box('inviteComment')">编辑</span>
                 </div>
               </div>
-            </li>
-            <li class="set-item" :class="{'chan_col':change_bool_arr.collect_style}">
-              <div class="set-item-box">
-                <span class="set-type">收藏提醒&nbsp;</span>
-                <span class="hide-box-action" @click="show_box('collect')">
-                    <svg-icon iconClass="icon-bottom"></svg-icon>
-                  </span>
-                <span class="explain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;当别人收藏我发的任何内容时,我会收到通知</span>
-                <span class="choose-btn">
-                  <i-switch>
-                    <span slot="open">开</span>
-                    <span slot="close">关</span>
-                  </i-switch>
-                </span>
-                <!--hide-box-->
-                <div class="edit-box" :class="{'show':change_bool_arr.collect_bool}">
-                  <ul class="edit-box-ul">
-                    <li class="edit-box-ul-li">
-                      <h4>谁收藏了我的文章</h4>
-                    </li>
-                    <li class="edit-box-ul-li">
-                      <h4>谁收藏了我的收藏夹</h4>
-                    </li>
-                    <li class="edit-box-ul-li">
-                      <h4>谁收藏了我的回答</h4>
-                    </li>
-                  </ul>
+              <!--hide-box-->
+              <div class="edit-box" :class="{'show':change_bool_arr.inviteComment_style}">
+                <ul class="edit-box-ul">
+                  <li class="edit-box-ul-li">
+                    <h4 class="action-title">邀请我回答问题</h4>
+                    <div class="child-explain">
+                      <span class="explain-desc">被谁邀请回答问题时，我将收到消息通知</span>
+                    </div>
+                    <!--选择按钮-->
+                    <div class="selectMsgBox">
+                      <click-select></click-select>
+                      <!--END-->
+                    </div>
+                  </li>
+                  <li class="edit-box-ul-li">
+                    <h4 class="action-title">提到我</h4>
+                    <div class="child-explain">
+                      <span class="explain-desc">被谁提及时，我将收到消息通知</span>
+                    </div>
+                    <!--选择按钮-->
+                    <div class="selectMsgBox">
+                      <click-select></click-select>
+                      <!--END-->
+                    </div>
+                  </li>
+                  <li class="edit-box-ul-li">
+                    <h4 class="action-title">评论或回复我</h4>
+                    <div class="child-explain">
+                      <span class="explain-desc">被谁评论或回复时，我将收到消息通知</span>
+                    </div>
+                    <!--选择按钮-->
+                    <div class="selectMsgBox">
+                      <click-select></click-select>
+                      <!--END-->
+                    </div>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </li>
+          <li class="set-item" :class="{'chan_col':change_bool_arr.agreeNo_bool}">
+
+            <div class="set-item-box">
+              <div class="set-item-title">
+                <h4 class="set-type">赞同/踩&nbsp;</h4>
+                <div class="explain">当别人赞同或者踩时,我会收到通知</div>
+                <div class="edit-btn">
+                  <span class="edit-btn-com" @click="show_box('agreeNo')">编辑</span>
                 </div>
               </div>
-            </li>
-            <li class="set-item" :class="{'chan_col':change_bool_arr.share_style}">
-              <div class="set-item-box">
-                <span class="set-type">分享提醒&nbsp;</span>
-                <span class="hide-box-action" @click="show_box('share')">
-                  <svg-icon iconClass="icon-bottom"></svg-icon>
-                </span>
-                <span class="explain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;当别人转发了我的内容时,我会收到通知</span>
-                <span class="choose-btn">
-                  <i-switch>
-                    <span slot="open">开</span>
-                    <span slot="close">关</span>
-                  </i-switch>
-                </span>
-                <!--hide-box-->
-                <div class="edit-box" :class="{'show':change_bool_arr.share_bool}">
-                  <ul class="edit-box-ul">
-                    <li class="edit-box-ul-li">
-                      <h4>谁收藏了我的文章</h4>
-                    </li>
-                    <li class="edit-box-ul-li">
-                      <h4>谁收藏了我的收藏夹</h4>
-                    </li>
-                    <li class="edit-box-ul-li">
-                      <h4>谁收藏了我的回答</h4>
-                    </li>
-                  </ul>
+              <!--hide-box-->
+              <div class="edit-box" :class="{'show':change_bool_arr.agreeNo_style}">
+                <ul class="edit-box-ul">
+                  <li class="edit-box-ul-li">
+                    <h4 class="action-title">赞同我的回答</h4>
+                    <div class="child-explain">
+                      <span class="explain-desc">我的回答被谁赞同时，我会收到消息通知</span>
+                    </div>
+                    <!--选择按钮-->
+                    <div class="selectMsgBox">
+                      <click-select></click-select>
+                      <!--END-->
+                    </div>
+                  </li>
+                  <li class="edit-box-ul-li">
+                    <h4 class="action-title">赞了我的内容</h4>
+                    <div class="child-explain">
+                      <span class="explain-desc">我的评论/专栏文章/星点被谁点赞时，我会收到消息通知</span>
+                    </div>
+                    <!--选择按钮-->
+                    <div class="selectMsgBox">
+                      <click-select></click-select>
+                      <!--END-->
+                    </div>
+                  </li>
+                  <li class="edit-box-ul-li">
+                    <h4 class="action-title">踩我</h4>
+                    <div class="child-explain">
+                      <span class="explain-desc">我的内容被谁‘踩’时，我将收到消息通知</span>
+                    </div>
+                    <!--选择按钮-->
+                    <div class="selectMsgBox">
+                      <click-select></click-select>
+                      <!--END-->
+                    </div>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </li>
+          <li class="set-item" :class="{'chan_col':change_bool_arr.privateLetter_bool}">
+
+            <div class="set-item-box">
+              <div class="set-item-title">
+                <h4 class="set-type">私信设置&nbsp;</h4>
+                <div class="explain">当别人赞同或者踩时,我会收到通知</div>
+                <div class="edit-btn">
+                  <span class="edit-btn-com" @click="show_box('privateLetter')">编辑</span>
                 </div>
               </div>
-            </li>
+              <!--hide-box-->
+              <div class="edit-box" :class="{'show':change_bool_arr.privateLetter_style}">
+                <ul class="edit-box-ul">
+                  <li class="edit-box-ul-li">
+                    <h4 class="action-title">私信设置</h4>
+                    <div class="child-explain">
+                      <span class="explain-desc">允许谁给我发私信</span>
+                    </div>
+                    <!--选择按钮-->
+                    <div class="selectMsgBox">
+                      <click-select></click-select>
+                      <!--END-->
+                    </div>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </li>
+          <li class="set-item" :class="{'chan_col':change_bool_arr.email_bool}">
+
+            <div class="set-item-box">
+              <div class="set-item-title">
+                <h4 class="set-type">邮件设置&nbsp;</h4>
+                <div class="explain">重要事件发生时，我将会收到邮件提醒</div>
+                <div class="edit-btn">
+                  <span class="edit-btn-com" @click="show_box('email')">编辑</span>
+                </div>
+              </div>
+              <!--提示框-->
+              <!--hide-box-->
+              <!--<div class="edit-box" :class="{'show':change_bool_arr.inviteComment_style}">-->
+                <!--<ul class="edit-box-ul">-->
+                  <!--<li class="edit-box-ul-li">-->
+                    <!--<h4 class="action-title">私信设置</h4>-->
+                    <!--<div class="child-explain">-->
+                      <!--<span class="explain-desc">允许谁给我发私信</span>-->
+                    <!--</div>-->
+                    <!--&lt;!&ndash;选择按钮&ndash;&gt;-->
+                    <!--<div class="selectMsgBox">-->
+                      <!--<click-select></click-select>-->
+                      <!--&lt;!&ndash;END&ndash;&gt;-->
+                    <!--</div>-->
+                  <!--</li>-->
+                <!--</ul>-->
+              <!--</div>-->
+            </div>
+          </li>
         </ul>
       </div>
     </div>
@@ -250,7 +243,8 @@
 </template>
 
 <script>
-  import {Switch} from 'iview'
+  // import {Switch} from 'iview'
+  import clickSelect from '@/components/clickSelect/clickSelect.vue'
   import change from '../../../util/util'
   export default {
     name: "setting-msg",
@@ -264,13 +258,14 @@
             resultValue:''
           }
         },
+
         ops:{},
         change_bool_arr:{
-          collect_bool:false,
-          collect_style:false,
+          agreeNo_bool:false,
+          agreeNo_style:false,
 
-          comment_bool:false,
-          comment_style:false,
+          inviteComment_bool:false,
+          inviteComment_style:false,
 
           focus_bool:false,
           focus_style:false,
@@ -291,7 +286,8 @@
       }
     },
     components:{
-      iSwitch:Switch
+      // iSwitch:Switch,
+      clickSelect
     },
     computed:{
 
@@ -304,7 +300,7 @@
     },
     methods :{
       setMsgChooseMethod(typeValue){
-        alert(typeValue)
+        this.bridgeValue.showEditBool=!this.bridgeValue.showEditBool;
       },
       show_box(SE){
         if(SE==='focus'){
@@ -316,54 +312,44 @@
             this.$set(this.change_bool_arr,'focus_style',true)
           }
         }
-
-        if(SE==='collect'){
-          if(this.change_bool_arr.collect_bool){
-            this.$set(this.change_bool_arr,'collect_bool',false)
-            this.$set(this.change_bool_arr,'collect_style',false)
+        //邀请/评论
+        if(SE==='inviteComment'){
+          if(this.change_bool_arr.inviteComment_bool){
+            this.$set(this.change_bool_arr,'inviteComment_bool',false)
+            this.$set(this.change_bool_arr,'inviteComment_style',false)
           }else {
-            this.$set(this.change_bool_arr,'collect_bool',true)
-            this.$set(this.change_bool_arr,'collect_style',true)
+            this.$set(this.change_bool_arr,'inviteComment_bool',true)
+            this.$set(this.change_bool_arr,'inviteComment_style',true)
           }
         }
 
-        if(SE==='invite'){
-          if(this.change_bool_arr.invite_bool){
-            this.$set(this.change_bool_arr,'invite_bool',false)
-            this.$set(this.change_bool_arr,'invite_style',false)
+        if(SE==='agreeNo'){
+          if(this.change_bool_arr.agreeNo_bool){
+            this.$set(this.change_bool_arr,'agreeNo_bool',false)
+            this.$set(this.change_bool_arr,'agreeNo_style',false)
           }else {
-            this.$set(this.change_bool_arr,'invite_bool',true)
-            this.$set(this.change_bool_arr,'invite_style',true)
+            this.$set(this.change_bool_arr,'agreeNo_bool',true)
+            this.$set(this.change_bool_arr,'agreeNo_style',true)
           }
         }
 
-        if(SE==='comment'){
-          if(this.change_bool_arr.comment_bool){
-            this.$set(this.change_bool_arr,'comment_bool',false)
-            this.$set(this.change_bool_arr,'comment_style',false)
+        if(SE==='privateLetter'){
+          if(this.change_bool_arr.privateLetter_bool){
+            this.$set(this.change_bool_arr,'privateLetter_bool',false)
+            this.$set(this.change_bool_arr,'privateLetter_style',false)
           }else {
-            this.$set(this.change_bool_arr,'comment_bool',true)
-            this.$set(this.change_bool_arr,'comment_style',true)
+            this.$set(this.change_bool_arr,'privateLetter_bool',true)
+            this.$set(this.change_bool_arr,'privateLetter_style',true)
           }
         }
 
-        if(SE==='like'){
-          if(this.change_bool_arr.like_bool){
-            this.$set(this.change_bool_arr,'like_bool',false)
-            this.$set(this.change_bool_arr,'like_style',false)
+        if(SE==='email'){
+          if(this.change_bool_arr.email_bool){
+            this.$set(this.change_bool_arr,'email_bool',false)
+            this.$set(this.change_bool_arr,'email_style',false)
           }else {
-            this.$set(this.change_bool_arr,'like_bool',true)
-            this.$set(this.change_bool_arr,'like_style',true)
-          }
-        }
-
-        if(SE==='share'){
-          if(this.change_bool_arr.share_bool){
-            this.$set(this.change_bool_arr,'share_bool',false)
-            this.$set(this.change_bool_arr,'share_style',false)
-          }else {
-            this.$set(this.change_bool_arr,'share_bool',true)
-            this.$set(this.change_bool_arr,'share_style',true)
+            this.$set(this.change_bool_arr,'email_bool',true)
+            this.$set(this.change_bool_arr,'email_style',true)
           }
         }
       }
@@ -409,13 +395,8 @@
     .set-body
       noSelectText()
       width: 100%
-      /*height:20rem*/
-      /*background: #ccc*/
-      /*padding-top 1rem*/
       .set-body-empty
-        /*padding:0 2rem*/
         .set-ul
-          height:40rem
           .set-item
             padding 1.2rem 0
             border-bottom 1px solid #ebebeb
@@ -451,8 +432,6 @@
                 display: none
                 margin-top 1.4rem
                 width: 100%
-                /*height:10rem*/
-                /*background: #ccc*/
                 padding:0 0 0 1.4rem
                 &.show
                   display: block
@@ -461,8 +440,8 @@
                     border-top 1px solid #ebebeb
                     padding:1rem 0
                     position: relative
-                    &:last-child
-                      padding-bottom 0
+                    /*&:last-child*/
+                      /*padding-bottom 0*/
                     .action-title
                       margin-bottom .2rem
                       font-size 0.875rem
@@ -480,47 +459,6 @@
                       right:0
                       margin-top -25.8px
                       background: #ffffff
-                      z-index:100
-                      .sureBtn
-                        position: relative
-                        cursor: pointer;
-                        padding:.8rem 1rem
-                        border 1px solid #ebebeb
-                        .sureChoose
-                          display: inline-block
-                          padding:0 2.4rem 0 .1rem
-                          color: #8590a6
-                          font-size .875rem
-                        .sureSvg
-                          .svg-icon
-                            fill #8590a6
-                            font-size 1rem
-                      .selectBtn
-                        display: none
-                        background: #ffffff
-                        z-index:101
-                        position: absolute
-                        top: -100%
-                        right: 0
-                        /*padding:1rem 1.8rem*/
-                        width: 118%
-                        padding:.5rem 0
-                        border: 1px solid #ebebeb;
-                        border-radius: 4px;
-                        box-shadow: 0 5px 20px rgba(26,26,26,.1);
-                        .selectBtnItem
-                          text-align center
-                          position: relative
-                          padding .8rem 1.6rem
-                          cursor: pointer;
-                          display: block
-                          &:hover
-                            background: #f4f8fb
-                          .electedSvg
-                            position: absolute
-                            left:9%
-                          .itemBtnType
-                            color: #1a1a1a
 
 
 </style>
