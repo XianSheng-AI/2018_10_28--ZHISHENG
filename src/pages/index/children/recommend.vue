@@ -50,24 +50,18 @@
         border-radius .4rem
         position relative
         .recommend-p
-            // background #666
             line-height 2.8rem
             padding 0.8rem
             color #f71f03
         .recommend-ul
             float right 
-            // width 80%
-            // background #666
             li
                 line-height 2.8rem
                 text-align center
                 float right 
                 height 2.8rem
-                // width 3rem
-                // background red
                 span
                     display inline-block
-                    // background #444
                     padding 0 0.8rem
                     cursor pointer
         .tag-more

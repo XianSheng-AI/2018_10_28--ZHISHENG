@@ -128,6 +128,7 @@
         border-left 1px solid #ebebeb
         width:48.66rem
         /*height:10rem*/
+        padding-bottom: 3rem;
         box-sizing border-box
         .set-empty
           width:100%

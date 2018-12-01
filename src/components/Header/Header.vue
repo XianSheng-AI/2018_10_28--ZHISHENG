@@ -3,7 +3,7 @@
     <div class="header-wrapper">
       <div class="logo">
         <a class="logo-go" href="#">
-          <svg-icon iconClass="icon-logo"></svg-icon>
+          <img class="LOGO" src="static/images/logo/logo-1.png" alt="">
         </a>
       </div>
       <div class="header-left">
@@ -44,11 +44,14 @@
         <span class="go register">注册</span>
       </div>
     </div>
+    <!--登陆注册-->
+    <login-register></login-register>
   </div>
 </template>
 
 <script>
   import Search from './children/Search'
+  import loginRegister from './children/login-register'
 
   export default {
     name: 'home-header',
@@ -56,7 +59,8 @@
       return {}
     },
     components: {
-      Search
+      Search,
+      loginRegister
     }
   }
 </script>
@@ -83,7 +87,7 @@
       .logo
         float left
         height 100%
-        width 6%
+        /*width 6%*/
         /*background #cccccc*/
         text-align center
         line-height 3rem
@@ -91,10 +95,13 @@
         font-weight bolder
         color $mainColor
         margin-right 2rem
+        margin-top .9rem
         .logo-go
           display: block
-          .svg-icon
-            font-size 3.2rem
+          /*background: #000*/
+          .LOGO
+            display: block
+            width 4rem
       .header-left
         float left
         /*width 50%*/
