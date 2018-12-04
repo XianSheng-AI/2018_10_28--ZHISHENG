@@ -1,5 +1,5 @@
 <template>
-  <div class="header">
+  <div class="header" :class="{'header-move':moveBool}">
     <div class="header-wrapper">
       <div class="logo">
         <a class="logo-go" href="#">
@@ -37,30 +37,100 @@
         </div>
       </div>
       <!-- 写文章/登陆/注册 -->
+
       <div class="log-reg">
         <svg-icon class="svg-icon" iconClass="icon-wenzhangliebiaoxiangqing"></svg-icon>
         <span class="go write-article">写文章</span>
-        <span class="go login">登陆</span>
-        <span class="go register">注册</span>
+        <span class="go login"
+              @click="ToGo(true)"
+        >登陆</span>
+        <span class="go register"
+              @click="ToGo(false)"
+        >注册</span>
       </div>
     </div>
-    <!--登陆注册-->
-    <login-register></login-register>
+
+    <!--顶部首页标签栏-->
+    <tag-list></tag-list>
+    <!--<div class="programming">-->
+
+    <!--</div>-->
+    <!--登录注册框-->
+    <transition name="fade" >
+      <!--遮罩-->
+      <div class="mask"
+           v-if="toGoData.showFlag"
+           @click="toGoMethod()"
+      ></div>
+    </transition>
+      <!--登陆注册-->
+    <transition name="move" >
+      <login-register
+        v-if="toGoData.showFlag"
+        :toGo="toGoData.way"
+        @toGoMe="toGoMethod"
+      >
+      </login-register>
+    </transition>
   </div>
 </template>
 
 <script>
   import Search from './children/Search'
   import loginRegister from './children/login-register'
+  import TagList from './children/programming-tag'
 
   export default {
     name: 'home-header',
     data() {
-      return {}
+      return {
+        moveBool:false,
+        toGoData:{
+          showFlag:false,
+          way:''
+        }
+      }
     },
     components: {
       Search,
-      loginRegister
+      loginRegister,
+      TagList
+    },
+    mounted(){
+      //给window添加一个滚动滚动监听事件
+      window.addEventListener('scroll', this.handleScroll)
+    },
+    methods:{
+      //没有写函数节流(后面补)
+      handleScroll () {
+        let scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop;
+        if (scrollTop >= 200) {
+        //Number(scrollTop)
+          if(this.moveBool){
+            return;
+          }
+          this.moveBool=true;
+        } else {
+          if(!this.moveBool){
+            return;
+          }
+          this.moveBool=false;
+        }
+      },
+      toGoMethod(){
+        this.$set(this.toGoData,'showFlag',false);
+      },
+      //注册登录 bool==true登录则反
+      ToGo(bool){
+        this.$set(this.toGoData,'showFlag',true);
+        if(bool){
+        //  登录
+          this.$set(this.toGoData,'way','lg');
+          return;
+        }
+        this.$set(this.toGoData,'way','rj');
+      //  注册
+      }
     }
   }
 </script>
@@ -68,27 +138,24 @@
 <style lang="stylus" scoped>
   @import "~@/common/stylus/mixins.styl"
   .header
+    transition .3s
     position: fixed
     top: 0
     left: 0
     width 100%
     /*height 3rem*/
     background #ffffff
-    box-shadow 0 0 0.2rem #cccccc
+    box-shadow: 0 1px 3px rgba(26,26,26,.1);
     z-index 10
     .header-wrapper
       clearFix()
       width 60rem
       height 100%
-      /*overflow: hidden*/
-      // background #784
       margin 0 auto
 
       .logo
         float left
         height 100%
-        /*width 6%*/
-        /*background #cccccc*/
         text-align center
         line-height 3rem
         font-size 1.6rem
@@ -176,4 +243,76 @@
         .svg-icon
           fill $mainColor
           font-size 1rem
+      /*登录注册遮罩*/
+    .mask
+      z-index:1
+      position: fixed
+      top:0
+      left 0
+      width: 100%
+      height: 100%
+      background-color: rgba(26,26,26,.65);
+    &.header-move
+      top -59px
 </style>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

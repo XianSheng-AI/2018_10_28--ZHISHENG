@@ -1,6 +1,6 @@
 <template>
     <section class="register">
-      <div class="reg-title">湖人 - huren.com</div>
+      <div class="reg-title">知声 - zhisheng.com</div>
       <div class="reg-tip">一个可以讨论话题的社区</div>
       <div class="input-group">
           <div class="input-box">

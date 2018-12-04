@@ -13,21 +13,6 @@
 
                         >{{item.name}}</router-link>
                     </li>
-                    <!--<li class="look-nav-ul-li">-->
-                        <!--<router-link to="/hot" tag="span">热门</router-link>-->
-                    <!--</li>-->
-                    <!--<li class="look-nav-ul-li">-->
-                        <!--<router-link to="/focus" tag="span">关注</router-link>-->
-                    <!--</li>-->
-                    <!--<li class="look-nav-ul-li">-->
-                        <!--<router-link to="star" tag="span">星点</router-link>-->
-                    <!--</li>-->
-                    <!--<li class="look-nav-ul-li">-->
-                        <!--<router-link to="/question" tag="span">提问</router-link>-->
-                    <!--</li>-->
-                    <!--<li class="look-nav-ul-li">-->
-                        <!--<router-link to="/topic" tag="span">话题</router-link>-->
-                    <!--</li>-->
                 </ul>
             </div>
             <div class="look-container">
@@ -51,8 +36,8 @@
             default_active_index:0,
             look_nav:[
               {
-                name:'最新',
-                href:'/newest'
+                name:'推荐',
+                href:'/recommend'
               },
               {
                 name:'热门',
@@ -97,6 +82,7 @@
         /*height 40rem*/
         background #ffffff
         border-radius 0.4rem
+        /*box-shadow: 0 0 0.2rem #ccc;*/
         //clearFix()
         /*overflow hidden*/
         .look-wrapper
@@ -106,34 +92,34 @@
             // background #888
 
             .look-nav
-                border-bottom 1.2px solid #f4f5f4
-                width 100%
-                height 2.8rem
+                clearFix()
+                border-bottom 1px solid #f0f2f7
+
                 .look-nav-ul
 
                     .look-nav-ul-li
-                        width 3.8rem
-                        height 2.8rem
                         float left
-                        cursor pointer
+
                         position: relative
+                        padding:0 20px
                         span
+                            cursor pointer
                             display inline-block
-                            width 100%
-                            height 2.8rem
+                            padding:18px 0
                             text-align center
-                            line-height 2.8rem
+                            /*line-height 2.8rem*/
                             position relative
+                            /*background: #ccc*/
                             &.active
                                 color $mainColor
-                        &:not(:last-child):after
-                            content ''
-                            height 10px
-                            width 1.2px
-                            background #cccccc
-                            position absolute
-                            top 1.1em
-                            right 0
+                        /*&:not(:last-child):after*/
+                            /*content ''*/
+                            /*height 10px*/
+                            /*width 1.2px*/
+                            /*background #cccccc*/
+                            /*position absolute*/
+                            /*top 1.1em*/
+                            /*right 0*/
             .look-container
                 width 100%
                 border-bottom 1px solid #f0f2f7

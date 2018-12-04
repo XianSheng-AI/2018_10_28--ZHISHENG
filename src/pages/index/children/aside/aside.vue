@@ -19,6 +19,7 @@
 
 <style lang="stylus" scoped>
   .aside
+    /*box-shadow: 0 0 0.2rem #ccc;*/
     position: absolute
     top: 0
     right: 0

@@ -3,7 +3,7 @@
     <ul class="action-row-ul">
       <li class="action-row-ul-li">
         <div class="action-like">
-          <span class="like-btn">有趣 552</span>
+          <span class="like-btn">赞同 552</span>
         </div>
       </li>
       <li class="action-row-ul-li com-m">
@@ -44,10 +44,12 @@
 </script>
 
 <style lang="stylus" scoped>
+  @import '~@/common/stylus/mixins.styl'
   .action-row
 
     width 100%
-    height 1.4rem
+    /*height 1.4rem*/
+    clearFix()
     .action-row-ul-li
       margin-right 1.8rem
       float left
@@ -60,7 +62,7 @@
       .like-btn
         font-size .9rem
         display: inline-block
-        padding: .3rem .7rem
+        padding: .3rem 1rem
         border-radius .3rem
         color: #0084ff;
         background: rgba(0,132,255,.1);

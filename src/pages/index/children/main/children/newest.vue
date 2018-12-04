@@ -14,28 +14,30 @@
               </ul>
             </div>
             <h3 class="title-row">[译] Google 工程师提升网页性能的新策略：空闲执行，紧急优先</h3>
-            <div class="action-row">
-              <ul class="action-row-ul">
-                <li class="action-row-ul-li">
-                  <div class="same action-like">
-                    <svg-icon iconClass="icon-dianzan_active"></svg-icon>
-                    <span class="same-count like-count">456</span>
-                  </div>
-                </li>
-                <li class="action-row-ul-li">
-                  <div class="same action-comment">
-                    <svg-icon iconClass="icon-zhuanfa5"></svg-icon>
-                    <span class="same-count comment-count">88</span>
-                  </div>
-                </li>
-                <li class="action-row-ul-li">
-                  <div class="same action-collect">
-                    <svg-icon iconClass="icon-shoucang2"></svg-icon>
-                    <span class="same-count collect-count">8</span>
-                  </div>
-                </li>
-              </ul>
-            </div>
+            <com-like></com-like>
+
+            <!--<div class="action-row">-->
+              <!--<ul class="action-row-ul">-->
+                <!--<li class="action-row-ul-li">-->
+                  <!--<div class="same action-like">-->
+                    <!--<svg-icon iconClass="icon-dianzan_active"></svg-icon>-->
+                    <!--<span class="same-count like-count">456</span>-->
+                  <!--</div>-->
+                <!--</li>-->
+                <!--<li class="action-row-ul-li">-->
+                  <!--<div class="same action-comment">-->
+                    <!--<svg-icon iconClass="icon-zhuanfa5"></svg-icon>-->
+                    <!--<span class="same-count comment-count">88</span>-->
+                  <!--</div>-->
+                <!--</li>-->
+                <!--<li class="action-row-ul-li">-->
+                  <!--<div class="same action-collect">-->
+                    <!--<svg-icon iconClass="icon-shoucang2"></svg-icon>-->
+                    <!--<span class="same-count collect-count">8</span>-->
+                  <!--</div>-->
+                <!--</li>-->
+              <!--</ul>-->
+            <!--</div>-->
           </div>
         </div>
       </li>
@@ -239,8 +241,12 @@
 </template>
 
 <script>
+  import comLike from '@/components/action/com-like.vue'
     export default {
         name: "home-newest",
+      components:{
+        comLike
+      },
         data (){
           return {
 
@@ -268,7 +274,7 @@
         width 100%
         // height 7rem
         // background #cccccc
-        border-bottom 1.2px solid #f4f5f4
+        border-bottom 1px solid #f0f2f7
         // position relative
         font-size 0.7rem
         // &:after
@@ -286,7 +292,7 @@
           /*width 652px*/
           /*height 80px*/
           // padding: 1.5rem 2rem;
-          padding: 1rem 1rem;
+          padding: 20px 20px;
           cursor: pointer;
           &:hover
             background-color: rgba(0,0,0,.01);

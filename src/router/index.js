@@ -10,7 +10,8 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import index from '../pages/index/index.vue'
 
-import indexNewest from '../pages/index/children/main/children/newest'
+// import indexNewest from '../pages/index/children/main/children/newest'
+import indexRecommend from '../pages/index/children/main/children/recommend'
 import indexHot from '../pages/index/children/main/children/hot'
 import indexFocus from '../pages/index/children/main/children/focus'
 import indexStar from '../pages/index/children/main/children/star'
@@ -111,8 +112,8 @@ export default new VueRouter({
       component: index,
       children: [
         {
-          path: '/newest',
-          component: indexNewest
+          path: '/recommend',
+          component: indexRecommend
         },
         {
           path: '/hot',
@@ -136,7 +137,7 @@ export default new VueRouter({
         },
         {
           path: '',
-          redirect: '/newest'
+          redirect: '/recommend'
         }
       ]
     }, {
