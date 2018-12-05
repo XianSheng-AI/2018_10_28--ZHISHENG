@@ -11,6 +11,8 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
+import store from './store/index'
+import errorTips from './components/errorTips/errorTips.js' //错误提示
 // import iView from 'iview'
 // import 'iview/dist/styles/iview.css';
 
@@ -23,8 +25,10 @@ import VueScroll from 'vuescroll/dist/vuescroll-native';
 import 'vuescroll/dist/vuescroll.css';
 
 import SvgIcon from '@/components/iconfont/SvgIcon.vue'
-
+Vue.use(errorTips)
 Vue.component('svg-icon',SvgIcon);
+//错误提示组件
+
 // Vue.use(VueScroll);
 Vue.use(VueScroll, {
   // mode: 'native',
@@ -68,6 +72,7 @@ Vue.use(VueScroll, {
 new Vue({
   el: '#app',
   router,
+  store,
   components: { App },
   template: '<App/>'
 })
