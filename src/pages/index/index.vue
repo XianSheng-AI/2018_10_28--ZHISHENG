@@ -5,9 +5,6 @@
             <home-main></home-main>
             <Home-Aside></Home-Aside>
         </div>
-      <div class="aaaa" @click="login">
-        <input type="text" v-model="token" value="446464">
-      </div>
     </div>
 </template>
 
@@ -34,7 +31,7 @@ export default {
 
       },
   mounted(){
-    this.$error('出错了！');
+
   },
       methods:{
         onload(){
@@ -55,10 +52,8 @@ export default {
           if(this.token){
             this.$store.commit(LOGIN, this.token)
             apiAddress().then(res=>{
-              console.log(res)
               this.$store.commit(LOGIN, this.token)
             }).catch(err=>{
-              console.log('123')
               this.$error('出错了！请稍后再试');
             })
 
@@ -83,18 +78,6 @@ export default {
         margin 7.6rem auto
         background: #ccc
         position: relative
-        /*margin 0.6rem 0 0 19rem*/
-    .aaaa
-      position: relative;
-      width:200px
-      height:200px
-      background: darkmagenta
-      input
-        position: absolute
-        display: block
-        width:100px
-        height:30px
-        background: violet
 
 </style>
 

@@ -103,19 +103,23 @@
     methods:{
       //没有写函数节流(后面补)
       handleScroll () {
-        let scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop;
-        if (scrollTop >= 200) {
-        //Number(scrollTop)
-          if(this.moveBool){
-            return;
+        let scrollTop;
+
+             scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop;
+          if (scrollTop >= 400) {
+            //Number(scrollTop)
+            if(this.moveBool){
+              return;
+            }
+            this.moveBool=true;
+          } else {
+            if(!this.moveBool){
+              return;
+            }
+            this.moveBool=false;
           }
-          this.moveBool=true;
-        } else {
-          if(!this.moveBool){
-            return;
-          }
-          this.moveBool=false;
-        }
+
+
       },
       toGoMethod(){
         this.$set(this.toGoData,'showFlag',false);

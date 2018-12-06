@@ -1,9 +1,11 @@
 <template>
-    <div class="errorTips showError">
+  <transition name="fade">
+    <div v-show="isvisible" class="errorTips">
       <div>
         {{tips}}
       </div>
     </div>
+  </transition>
 </template>
 
 <script>
@@ -11,7 +13,6 @@
         name: "warning-tips",
         data() {
             return {
-              // showBool:
                 tips:'',
                 isvisible:false
             }
@@ -21,11 +22,24 @@
 <!--一直没对，是这里的data写成了data:{}应该写成data(){}-->
 
 <style lang="stylus" scoped>
+
+.fade-enter-active {
+  transition: all .4s ease;
+}
+
+.fade-leave-active {
+  transition: all .4s ease;
+}
+
+.fade-enter, .fade-leave-to {
+  transform: translateY(-20px);
+  opacity: 0;
+}
 .errorTips
   font-size .78rem
   z-index 1000000000
   position: fixed
-  top 2%
+  top 8%
   left 50%
   margin-left -200px
   border-radius .2rem
@@ -35,9 +49,4 @@
   background: #ff090f
   color: #ffffff
   text-align center
-  transition .4s
-  opacity:1
-  &.showError
-    top 8%
-    opacity:1
 </style>

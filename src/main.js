@@ -6,28 +6,63 @@
  */
 
 
-// The Vue build version to load with the `import` command
-// (runtime-only or standalone) has been set in webpack.base.conf with an alias.
+
 import Vue from 'vue'
 import App from './App'
+import VueRouter from 'vue-router'
 import router from './router'
 import store from './store/index'
 import errorTips from './components/errorTips/errorTips.js' //错误提示
 // import iView from 'iview'
 // import 'iview/dist/styles/iview.css';
+import NProgress from 'nprogress'
+import 'nprogress/nprogress.css'
 
 import '../static/iconfont/iconfont.js'
-// import './common/normalize.css'
 import './common/reset.css'
 //引用vuescroll插件
 import VueScroll from 'vuescroll/dist/vuescroll-native';
-// import VueScroll from 'vuescroll/dist/vuescroll-slide';
 import 'vuescroll/dist/vuescroll.css';
 
 import SvgIcon from '@/components/iconfont/SvgIcon.vue'
+Vue.use(VueRouter)
 Vue.use(errorTips)
 Vue.component('svg-icon',SvgIcon);
 //错误提示组件
+
+// 状态码错误信息
+const codeMessage = {
+  200: '服务器成功返回请求的数据。',
+  201: '新建或修改数据成功。',
+  202: '一个请求已经进入后台排队（异步任务）。',
+  204: '删除数据成功。',
+  400: '发出的请求有错误，服务器没有进行新建或修改数据的操作。',
+  401: '用户没有权限（令牌、用户名、密码错误）。',
+  403: '用户得到授权，但是访问是被禁止的。',
+  404: '发出的请求针对的是不存在的记录，服务器没有进行操作。',
+  406: '请求的格式不可得。',
+  410: '请求的资源被永久删除，且不会再得到的。',
+  422: '当创建一个对象时，发生一个验证错误。',
+  500: '服务器发生错误，请检查服务器。',
+  502: '网关错误。',
+  503: '服务不可用，服务器暂时过载或维护。',
+  504: '网关超时。',
+};
+
+// 简单配置
+NProgress.inc(0.2)
+NProgress.configure({ easing: 'ease', speed: 500, showSpinner: false })
+
+//路由跳转有progress
+router.beforeEach((to,from,next) => {
+  NProgress.start()
+  next()
+})
+
+router.afterEach(() => {
+  NProgress.done()
+})
+
 
 // Vue.use(VueScroll);
 Vue.use(VueScroll, {
@@ -56,18 +91,8 @@ Vue.use(VueScroll, {
 });
 // import iView from 'iview';
 // Vue.use(iView);
-//
-// router.beforeEach((to, from, next) => {
-//   iView.LoadingBar.start();
-//   next();
-// });
-//
-// router.afterEach(route => {
-//   iView.LoadingBar.finish();
-// });
 
 // Vue.config.productionTip = false
-
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
@@ -76,17 +101,3 @@ new Vue({
   components: { App },
   template: '<App/>'
 })
-
-// import Vue from 'vue'
-// import router from 'vue-router'
-// import App from './App'
-
-// new Vue({
-//   el:'#app',
-//   router,
-//   components:{ App },
-//   template: '<App/>'
-
-// })
-
-

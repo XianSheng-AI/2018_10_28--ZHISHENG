@@ -37,17 +37,71 @@
                     </div>
                   </div>
                   <!--精选评论-->
-                  <div class="choiceness-comments">
-                    <div class="choiceness-top-bar">精选评论 (3)</div>
+                  <div class="com-for-comments choiceness-comments">
+                    <div class="comments-top-bar">精选评论 (3)</div>
 
                     <div class="choiceness-wrapper">
                       <!--循环精选评论条数-->
                       <!--做到这了------->
-                      <div class="item">454</div>
+                      <div class="item">
+                        <div class="item-header-info">
+                          <span class="item-avatar">
+                            <img src="../../../../../../static/images/comment-person-header.jpg" alt="">
+                          </span>
+                          <span class="avatar">
+                            <a class="avatar-name" href="javascript:;">凯莎</a>
+                          </span>
+                          <span class="talk-timer">3小时前</span>
+                        </div>
+                        <div class="cText">
+                          我一个月前想骑哈罗单车，没找到 但看到了周围的小黄，
+                          就扫码想骑，然后一扫，说什么不提供免费骑行，
+                          然后我交了，准备骑 说什么打不开锁 我也没骑成，
+                          然后我退款[捂脸]，到现在也没有给我退[大哭]
+                        </div>
+                        <!--评论应该有图-->
+                        <!--评论底部赞，查看回复-->
+                        <div class="action-part">
+                          <!--点赞-->
+                          <div class="action-like">
+                            <span class="svg">
+                              <svg-icon iconClass="icon-dianzan25"></svg-icon>
+                            </span>
+                            78
+                          </div>
+                          <!--查看回复-->
+                          <div class="action-res">
+                            <span class="svg">
+                              <svg-icon iconClass="icon-huifu1"></svg-icon>
+                            </span>
+                              查看回复
+                          </div>
+                          <!--鼠标移上去才会出现的《《《 回复/踩/举报 》》》-->
+                          <div class="many-res-wrapper">
+                            <!--回复-->
+                            <span class="res-com respose-comments">
+                              <svg-icon iconClass="icon-huifu9"></svg-icon>
+                              回复
+                            </span>
+                            <!--踩-->
+                            <span class="res-com respose-no-good">
+                                <svg-icon iconClass="icon-cai5"></svg-icon>
+                              踩
+                            </span>
+                            <!--举报-->
+                            <span class="res-com respose-inform">
+                                <svg-icon iconClass="icon-jubao4"></svg-icon>
+                              举报
+                            </span>
+                          </div>
+                        </div>
+                      </div>
                     </div>
                   </div>
                   <!--评论还有分页条-->
-                  <div class="comments-wrapper"></div>
+                  <div class="com-for-comments comments-wrapper">
+                    <div class="comments-top-bar">评论 (25)</div>
+                  </div>
                   <!--写下你的评论(评论输入框)-->
                 </div>
               </div>
@@ -129,7 +183,7 @@
           padding: 16px 20px 18px;
           /*cursor: pointer;*/
           .info-box
-            ellipsis()
+            //ellipsis()
             width 100%
             .title-row
               ellipsis()
@@ -169,14 +223,16 @@
               font-size .875rem
               margin-top .96rem
               width:100%
-              height:20rem
-              background: #ccc
+
+              /*background: #ccc*/
               .with-edit
                 width 100%
-
+                border: 1px solid #ebebeb;
+                box-shadow: 0 1px 3px rgba(26,26,26,.1);
+                background: #fff;
                 .top-bar
                   font-size .9375rem
-                  background: bisque
+                  /*background: bisque*/
                   clearFix()
                   padding:.9rem 1.1rem
                   .top-title
@@ -188,19 +244,73 @@
                   .top-options
                     float: right
                     color #8590a6
-                .choiceness-comments
-                  .choiceness-top-bar
+                .com-for-comments
+                  /*此元素里的公用元素*/
+                  .comments-top-bar
                     font-weight 600
                     color gray
                     padding:10px 20px
                     background-color: hsla(0,0%,96%,.5);
-                  .choiceness-wrapper
-                    padding:10px 20px
-                    background: palevioletred
-                    .item
-                      width: 100%
-                .comments-wrapper
-                  color: #000
+                  /*精选评论*/
+                  &.choiceness-comments
+
+                    .choiceness-wrapper
+                      padding:0 20px
+                      /*background: palevioletred*/
+                      .item
+                        padding:.88rem 0 .5rem 0
+                        width: 100%
+                        border-bottom 1px solid #f6f6f6
+                        .item-header-info
+                          /*background: peru*/
+                          margin-bottom .26rem
+                          .item-avatar
+                            width:24px
+                            height:24px
+                            /*background: #ccc*/
+                            float: left
+                            margin-right .6rem
+                            img
+                              width:24px
+                              height:24px
+                              display: block
+                          .avatar
+                            color #1a1a1a
+                            line-height 1.6rem
+                            .avatar-name
+                              display: inline-block
+                              color #333333
+                              font-weight 600
+                          .talk-timer
+                            float: right
+                            color: #8590a6
+                        .cText
+                          font-size .875rem
+                          margin-left 2rem
+                        .action-part
+                          clearFix()
+                          font-size .875rem
+                          /*background: navajowhite*/
+                          padding-left 2rem
+                          margin .4rem 0
+                          color #8590a6
+                          .svg
+                            .svg-icon
+                              fill #8590a6
+                          .action-like
+                            float: left
+                          .action-res
+                            margin-left  1.6rem
+                            margin-right 1.6rem
+                            color #8590a6
+                            float: left
+                          .many-res-wrapper
+                            .res-com
+                              display: inline-block
+                              margin-right 1.6rem
+                  /*精选评论*/
+                  &.comments-wrapper
+                    color: #000
 
 
 
