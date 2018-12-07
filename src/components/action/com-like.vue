@@ -3,31 +3,31 @@
     <ul class="action-row-ul">
       <li class="action-row-ul-li">
         <div class="action-like">
-          <span class="like-btn">赞同 552</span>
+          <span class="like-btn" @click="handleClick('zt')">赞同 552</span>
         </div>
       </li>
       <li class="action-row-ul-li com-m">
         <div class="same action-answer">
           <svg-icon class="act" iconClass="icon-xieyoujian1"></svg-icon>
-          <span  class="same-count answer-count">486回答</span>
+          <span  class="same-count answer-count" @click="handleClick('hd')">486回答</span>
         </div>
       </li>
       <li class="action-row-ul-li com-m">
         <div class="same action-comment">
           <svg-icon class="act" iconClass="icon-wodepinglun"></svg-icon>
-          <span class="same-count comment-count">1088评论</span>
+          <span class="same-count comment-count" @click="handleClick('pl')">1088评论</span>
         </div>
       </li>
       <li class="action-row-ul-li com-m">
         <div class="same action-collect">
           <svg-icon class="act" iconClass="icon-emizhifeiji1"></svg-icon>
-          <span class="same-count collect-count">分享</span>
+          <span class="same-count collect-count" @click="handleClick('fx')">分享</span>
         </div>
       </li>
       <li class="action-row-ul-li com-m">
         <div class="same action-collect">
           <svg-icon class="act" iconClass="icon-shoucang0"></svg-icon>
-          <span class="same-count collect-count">收藏</span>
+          <span class="same-count collect-count" @click="handleClick('sc')">收藏</span>
         </div>
       </li>
     </ul>
@@ -38,7 +38,23 @@
   export default {
     name: "action",
     data() {
-      return {}
+      return {
+        // staticData:[
+        //   {
+        //
+        //   }
+        // ]
+      }
+    },
+    methods:{
+      //赞同zt  回答hd 评论pl 分享fx 收藏sc
+      handleClick(val){
+        let _this=this;
+        if(val==="pl"){
+          _this.$emit("showComments",val);
+        }
+
+      }
     }
   }
 </script>
