@@ -42,25 +42,23 @@
                   <div class="comments-wrapper">
                     <!--循环精选评论条数-->
                     <!--做到这了------->
-                    <div class="item">
-                      <div class="item-header-info">
+                    <div class="item" v-for="(item,index) of commentsData.data" v-if="item.featured">
+                      <div class="parentItem">
+                        <div class="item-header-info">
                           <span class="item-avatar">
                             <img src="../../../../../../static/images/comment-person-header.jpg" alt="">
                           </span>
-                        <span class="avatar">
-                            <a class="avatar-name" href="javascript:;">凯莎</a>
+                          <span class="avatar">
+                            <a class="avatar-name" href="javascript:;">{{item.author.member.name}}</a>
                           </span>
-                        <span class="talk-timer">3小时前</span>
+                          <span class="talk-timer">{{addTimer(item.created_time)}}</span>
+                        </div>
+                        <div class="cText" v-html="item.content"></div>
+                        <!--评论应该有图-->
+                        <!--评论按钮组-->
+                        <reactor-button-group :initData="initBtn(item.vote_count,item.featured)"></reactor-button-group>
                       </div>
-                      <div class="cText">
-                        我一个月前想骑哈罗单车，没找到 但看到了周围的小黄，
-                        就扫码想骑，然后一扫，说什么不提供免费骑行，
-                        然后我交了，准备骑 说什么打不开锁 我也没骑成，
-                        然后我退款[捂脸]，到现在也没有给我退[大哭]
-                      </div>
-                      <!--评论应该有图-->
-                      <!--评论按钮组-->
-                      <!--<reactor-button-group :initData="initBtn"></reactor-button-group>-->
+
                     </div>
                   </div>
                 </div>
@@ -69,94 +67,92 @@
                   <div class="comments-top-bar">评论 (25)</div>
 
                   <div class="comments-wrapper">
-                    <!--循环精选评论条数-->
+                    <!--循环评论条数-->
                     <!--做到这了------->
-                    <div class="item" v-for="(item,index) of initData.data">
-                      <div class="item-header-info">
+                    <div class="item" v-for="(item,index) of commentsData.data" v-if="!item.featured">
+
+                       <div class="parentItem">
+                         <div class="item-header-info">
                           <span class="item-avatar">
                             <img :src="item.author.member.avatar_url" alt="">
                           </span>
-                        <span class="avatar">
+                           <span class="avatar">
                             <a class="avatar-name" href="javascript:;">{{item.author.member.name}}</a>
                           </span>
-                        <span class="talk-timer">{{addTimer(item.created_time)}}</span>
-                      </div>
-                      <div class="cText">{{item.content}}</div>
-                      <!--评论应该有图-->
+                           <span class="talk-timer">{{addTimer(item.created_time)}}</span>
+                         </div>
+                         <div class="cText" v-html="item.content"></div>
+                         <!--评论应该有图-->
+                         <!--评论按钮组-->
+                         <reactor-button-group :initData="initBtn(item.vote_count,item.featured)"></reactor-button-group>
+                       </div>
+                        <!--对此用户进行回复-->
+                        <div class="child-res-wrapper">
+                          <!--循环子回复-->
 
-                      <!--评论按钮组-->
-                      <!--<reactor-button-group :initData="initBtn"></reactor-button-group>-->
-                      <!--对此用户进行回复-->
-                      <div class="child-res-wrapper">
-                        <!--循环子回复-->
-
-                        <div class="item child-item" v-for="(itemC,index) of item.child_comments">
-                          <div class="item-header-info">
+                          <div class="item child-item" v-for="(itemC,index) of item.child_comments">
+                            <div class="parentItem">
+                              <div class="item-header-info">
                                 <span class="item-avatar">
                                   <img :src="itemC.author.member.avatar_url" alt="">
                                 </span>
-                            <span class="avatar">
+                                <span class="avatar">
                                   <a class="avatar-name" href="javascript:;">{{itemC.author.member.name}}</a>
                                   <span class="res-type" v-if="itemC.author.role==='author'">(作者)</span>
 
                                   &nbsp;<span class="res-type">回复</span>&nbsp;
                                   <a class="avatar-name" href="javascript:;">{{itemC.reply_to_author.member.name}}</a>
                                 </span>
-                            <span class="talk-timer">{{addTimer(itemC.created_time)}}</span>
-                            <!--<span class="talk-timer">{{itemC.created_time}}</span>-->
+                                <span class="talk-timer">{{addTimer(itemC.created_time)}}</span>
+                                <!--<span class="talk-timer">{{itemC.created_time}}</span>-->
+                              </div>
+                              <div class="cText" ref="resText">
+                                <!--回复文本位置-->
+                                <div v-html="itemC.content"></div>
+                              </div>
+                              <!--评论应该有图-->
+                              <!--评论按钮组-->
+                              <reactor-button-group :initData="initBtn(item.vote_count,item.featured)"></reactor-button-group>
+                            </div>
                           </div>
-                          <div class="cText" ref="resText">
-                            <!--回复文本位置-->
-                            <div v-html="itemC.content"></div>
-                          </div>
-                          <!--评论应该有图-->
-                          <!--评论按钮组-->
-                          <!--<reactor-button-group :initData="initBtn"></reactor-button-group>-->
                         </div>
-                        <div class="item child-item">
-                          <div class="item-header-info">
-                                <span class="item-avatar">
-                                  <img src="../../../../../../static/images/qq.jpg" alt="">
-                                </span>
-                            <span class="avatar">
-                                  <a class="avatar-name" href="javascript:;">徐知非</a>
-                                  <span class="res-type">回复</span>
-                                  <a class="avatar-name" href="javascript:;">徐知非</a>
-                                </span>
-                            <span class="talk-timer">6天前</span>
-                          </div>
-                          <div class="cText">
-                            ？？？想发个单独的回复结果回复到你下面了 哭哭
-                          </div>
-                          <!--评论应该有图-->
-                          <!--评论按钮组-->
-                          <!--<reactor-button-group :initData="initBtn"></reactor-button-group>-->
-                        </div>
-
                       </div>
-                    </div>
-
-                    <div class="item">
-                      <div class="item-header-info">
-                          <span class="item-avatar">
-                            <img src="../../../../../../static/images/ss.jpg" alt="">
-                          </span>
-                        <span class="avatar">
-                            <a class="avatar-name" href="javascript:;">powerpoint</a>
-                          </span>
-                        <span class="talk-timer">22小时前</span>
-                      </div>
-                      <div class="cText">
-                        彩虹的意义是这只部队是由很多不同肤色的人组成的？
-                      </div>
-                      <!--评论应该有图-->
-
-                      <!--评论按钮组-->
-                      <!--<reactor-button-group :initData="initBtn"></reactor-button-group>-->
-                    </div>
                   </div>
                 </div>
+                <!--评论查看更多-->
+                <div class="read-more">
+                  <span>更多评论</span>
+                </div>
                 <!--写下你的评论(评论输入框)-->
+                <div class="write-comment">
+                  <div placeholder="写下你的评论..."
+                       contenteditable="true"
+                       spellcheck="false"
+                       class="write-input"
+                       :class="{'empty':!!hasWord}"
+                       v-model="hasWord"
+                  >
+                  </div>
+                  <!--表情大全-->
+                  <span class="face-svg">
+                    <svg-icon iconClass="icon-biaoqing14"></svg-icon>
+                    <div class="face-show">
+                      <div class="face-all">
+                        <ul>
+                          <li class="face-item" v-for="(item,index) of faceImgData">
+                            <div class="face-empty">
+                              <img class="face-gif" :src="item.url" alt="">
+                            </div>
+                            <h6 class="face-type">{{item.title}}</h6>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </span>
+
+
+                  <div class="sub-btn">发布</div>
+                </div>
               </div>
             </div>
           </div>
@@ -210,6 +206,7 @@
 <script>
   import comLike from '../../../../../components/action/com-like.vue'
   import reactorButtonGroup from '@/components/action/reactor-button-group.vue'
+  import {apiComments,apiFaceImg} from '@/request/api.js'
 
   export default {
 
@@ -220,189 +217,32 @@
     },
     data() {
       return {
-        initData: {
-          data: [
-            {
-              "id": 555103495,
-              "type": "comment",
-              "url": "https://www.zhihu.com/comments/555103495",
-              "content": "有句KY一点的话。。感觉一灯不提段誉主要还是因为金庸先写射雕后写天龙，这种意义上说是先有的孙子后有的爷爷",
-              "featured": false,
-              "collapsed": false,
-              "is_author": false,
-              "is_delete": false,
-              "created_time": 1543922010,
-              "resource_type": "answer",
-              "reviewing": false,
-              "allow_like": true,
-              "allow_delete": false,
-              "allow_reply": true,
-              "allow_vote": true,
-              "can_recommend": false,
-              "can_collapse": false,
-              "author": {
-                "role": "normal",
-                "member": {
-                  "id": "e945ae2e6a5244acfc43ea178c565860",
-                  "url_token": "duan-wen-qi-81",
-                  "name": "何足道",
-                  "avatar_url": "https://pic1.zhimg.com/v2-3c1bbf9f0e56f4134215870abc1aa6ac_r.jpg",
-                  "avatar_url_template": "https://pic1.zhimg.com/v2-3c1bbf9f0e56f4134215870abc1aa6ac_{size}.jpg",
-                  "is_org": false,
-                  "type": "people",
-                  "url": "https://www.zhihu.com/people/e945ae2e6a5244acfc43ea178c565860",
-                  "user_type": "people",
-                  "headline": "国家注册二级吐槽师",
-                  "badge": [],
-                  "gender": 1,
-                  "is_advertiser": false
-                }
-              },
-              "vote_count": 23,
-              "voting": false,
-              "disliked": false,
-              "censor_status": 0,
-              "child_comment_count": 14,
-              "child_comments": [
-                {
-                  "id": 555112959,
-                  "type": "comment",
-                  "url": "https://www.zhihu.com/comments/555112959",
-                  "content": "哈哈有道理",
-                  "featured": false,
-                  "collapsed": false,
-                  "is_author": false,
-                  "is_delete": false,
-                  "created_time": 1543923358,
-                  "resource_type": "answer",
-                  "reviewing": false,
-                  "allow_like": true,
-                  "allow_delete": false,
-                  "allow_reply": true,
-                  "allow_vote": true,
-                  "can_recommend": false,
-                  "can_collapse": false,
-                  "author": {
-                    "role": "normal",
-                    "member": {
-                      "id": "6053d189bf17e8aebe86f9c2ec35825b",
-                      "url_token": "hao-li-82-3",
-                      "name": "Lihao",
-                      "avatar_url": "https://pic3.zhimg.com/v2-1faa7f2811d70c636692eee539c6fb9c_r.jpg",
-                      "avatar_url_template": "https://pic3.zhimg.com/v2-1faa7f2811d70c636692eee539c6fb9c_{size}.jpg",
-                      "is_org": false,
-                      "type": "people",
-                      "url": "https://www.zhihu.com/people/6053d189bf17e8aebe86f9c2ec35825b",
-                      "user_type": "people",
-                      "headline": "一命二运三风水，四修阴德五读书",
-                      "badge": [],
-                      "gender": 1,
-                      "is_advertiser": false
-                    }
-                  },
-                  "vote_count": 3,
-                  "reply_to_author": {
-                    "role": "normal",
-                    "member": {
-                      "id": "e945ae2e6a5244acfc43ea178c565860",
-                      "url_token": "duan-wen-qi-81",
-                      "name": "何足道",
-                      "avatar_url": "https://pic1.zhimg.com/v2-3c1bbf9f0e56f4134215870abc1aa6ac_r.jpg",
-                      "avatar_url_template": "https://pic1.zhimg.com/v2-3c1bbf9f0e56f4134215870abc1aa6ac_{size}.jpg",
-                      "is_org": false,
-                      "type": "people",
-                      "url": "https://www.zhihu.com/people/e945ae2e6a5244acfc43ea178c565860",
-                      "user_type": "people",
-                      "headline": "国家注册二级吐槽师",
-                      "badge": [],
-                      "gender": 1,
-                      "is_advertiser": false
-                    }
-                  },
-                  "voting": false,
-                  "disliked": false,
-                  "censor_status": 0
-                },
-                {
-                  "id": 555120094,
-                  "type": "comment",
-                  "url": "https://www.zhihu.com/comments/555120094",
-                  "content": "<p>朋友，你忘记金庸在80年代和2003年，两次修订自己作品，力图使之成为一体了。</p><p>2003年的新修版《射雕》，已经加上了这段：</p><p>【这降龙十八掌可说是外门武学中的巅峰绝诣，当真是无坚不摧、无固不破。虽招数有限，但每一招均具绝大威力。北宋年间，丐帮帮主萧峰以此邀斗天下英雄，极少有人能挡得他三招两式，气盖当世，群豪束手。】</p><p>为何谈及丐帮时要加上前帮主萧峰，谈及大理段氏时却一字不提段誉？</p>",
-                  "featured": false,
-                  "collapsed": false,
-                  "is_author": false,
-                  "is_delete": false,
-                  "created_time": 1543924419,
-                  "resource_type": "answer",
-                  "reviewing": false,
-                  "allow_like": true,
-                  "allow_delete": false,
-                  "allow_reply": true,
-                  "allow_vote": true,
-                  "can_recommend": false,
-                  "can_collapse": false,
-                  "author": {
-                    "role": "author",
-                    "member": {
-                      "id": "dd851a5ba9de70dcf4ce6b9604fd01c2",
-                      "url_token": "mu-rong-chen-xi",
-                      "name": "狐狸晨曦",
-                      "avatar_url": "https://pic1.zhimg.com/v2-47a4f7a0f78f4e2b4abfc456d6090346_r.jpg",
-                      "avatar_url_template": "https://pic1.zhimg.com/v2-47a4f7a0f78f4e2b4abfc456d6090346_{size}.jpg",
-                      "is_org": false,
-                      "type": "people",
-                      "url": "https://www.zhihu.com/people/dd851a5ba9de70dcf4ce6b9604fd01c2",
-                      "user_type": "people",
-                      "headline": "历史/影视撰稿人。公众号：狐言论史（huyanls1012）。",
-                      "badge": [],
-                      "gender": 1,
-                      "is_advertiser": false
-                    }
-                  },
-                  "vote_count": 36,
-                  "reply_to_author": {
-                    "role": "normal",
-                    "member": {
-                      "id": "e945ae2e6a5244acfc43ea178c565860",
-                      "url_token": "duan-wen-qi-81",
-                      "name": "何足道",
-                      "avatar_url": "https://pic1.zhimg.com/v2-3c1bbf9f0e56f4134215870abc1aa6ac_r.jpg",
-                      "avatar_url_template": "https://pic1.zhimg.com/v2-3c1bbf9f0e56f4134215870abc1aa6ac_{size}.jpg",
-                      "is_org": false,
-                      "type": "people",
-                      "url": "https://www.zhihu.com/people/e945ae2e6a5244acfc43ea178c565860",
-                      "user_type": "people",
-                      "headline": "国家注册二级吐槽师",
-                      "badge": [],
-                      "gender": 1,
-                      "is_advertiser": false
-                    }
-                  },
-                  "voting": false,
-                  "disliked": false,
-                  "censor_status": 0
-                }
-              ]
-            }
-          ],
 
-          commentType: 1 //0代表评论 1代表精选
-        },
-        initBtn: [],
-        btnData: {},
+        commentsData: {},//评论数据
+
+        faceImgData:null, //评论表情数据
         showCommentBool: false,
       }
     },
+    create: {},
     mounted() {
       this.initPage();
-
+      this.initFace()
 
     },
     computed: {
       //时间戳转换--传入秒（不是毫秒）
-      addTimer(){
-        return function(time) {
+      addTimer() {
+        return function (time) {
           return this.getDateDiff(time)
+        }
+      },
+      initBtn() {
+        return function (likeCount, isGood) {
+          return {
+            likeCount: likeCount,
+            isGood: isGood
+          }
         }
       },
     },
@@ -411,18 +251,29 @@
       initPage() {
 
       },
+      initFace(){
+        apiFaceImg().then(res=>{
+          console.log(res);
+          this.faceImgData=res;
+        })
+      },
       showComment() {
         this.showCommentBool = !this.showCommentBool;
+        //点击展开评论获取评论数据
+        apiComments().then(res => {
+          this.commentsData = res;
+          console.log(this.commentsData)
+        })
       },
       getDateDiff(dateTimeStamp) {
-        let result='';
+        let result = '';
         let minute = 1000 * 60;
         let hour = minute * 60;
         let day = hour * 24;
         let halfamonth = day * 15;
         let month = day * 30;
         let now = new Date().getTime();
-        let diffValue = now - dateTimeStamp*1000;
+        let diffValue = now - dateTimeStamp * 1000;
         if (diffValue < 0) {
           return;
         }
@@ -454,168 +305,229 @@
   .look-data
     width 100%
     height 100%
-
     .look-data-list
       width 100%
-
       .look-data-item
         width 100%
         border-bottom 1px solid #f0f2f7
         font-size 0.7rem
-
         .wrapper-box
           padding: 16px 20px 18px;
-          /*cursor: pointer;*/
-
           .info-box
-            //ellipsis()
             width 100%
-
             .title-row
               ellipsis()
               font-size 1.1rem
               margin 0 0 0 0
               color #313437
-
             .main-body
               margin .6rem 0 .9rem
               clearFix()
-              /*background: aquamarine*/
-
               .content-desc-img
                 width: 190px
                 height: 106px
                 overflow: hidden
-                /*background: #000*/
                 float: left
-
                 .desc-img
                   width: 100%
                   border-radius .2rem
                   display: block
-
               .content-text-box
-                /*background: aqua*/
                 margin .2rem 0 0 0
                 width: 456px
                 float: right
-                /*background: #ccc*/
                 line-height 1.5rem
-
                 .tText
-                  /*background: #ccc*/
                   font-size .9375rem
-
                 .read-more-btn
                   font-size .875rem
                   color: #175199
-
                 .svg-icon
                   fill #175199
-
             .comments-container
               font-size .875rem
               margin-top .96rem
               width: 100%
-
-              /*background: #ccc*/
-
               .with-edit
                 width 100%
                 border: 1px solid #ebebeb;
                 box-shadow: 0 1px 3px rgba(26, 26, 26, .1);
                 background: #fff;
-
                 .top-bar
                   font-size .9375rem
                   /*background: bisque*/
                   clearFix()
                   padding: .9rem 1.1rem
-
                   .top-title
                     float: left
                     color #1a1a1a
-
                     .top-bar-title
                       font-weight 600
                       color: #000
-
                   .top-options
                     float: right
                     color #8590a6
-
                 .com-for-comments
                   /*此元素里的公用元素*/
-
                   .comments-top-bar
                     font-weight 600
                     color gray
                     padding: 10px 20px
                     background-color: hsla(0, 0%, 96%, .5);
-
                   /*精选评论*/
                   /*&.choiceness-comments*/
-
                   .comments-wrapper
                     padding: 0 20px
-                    /*background: palevioletred*/
                     //一条一条的评论
-
                     .item
                       box-sizing border-box
-                      padding: .88rem 0 .5rem 0
                       width: 100%
-                      border-bottom 1px solid #f6f6f6
 
+                      clearFix()
                       &.child-item
                         padding-left 2rem
-
-                      .item-header-info
-                        /*background: peru*/
-                        margin-bottom .26rem
-
-                        .item-avatar
-                          width: 24px
-                          height: 24px
-                          /*background: #ccc*/
-                          float: left
-                          margin-right .6rem
-
-                          img
+                      .parentItem
+                        border-top 1px solid #f6f6f6
+                        padding:.88rem 0
+                        .item-header-info
+                          margin-bottom .26rem
+                          .item-avatar
                             width: 24px
                             height: 24px
-                            display: block
-
-                        .avatar
-                          color #1a1a1a
-                          line-height 1.6rem
-
-                          .avatar-name
-                            display: inline-block
-                            color #333333
-
-                          /*font-weight 600*/
-
-                          .res-type
+                            float: left
+                            margin-right .6rem
+                            img
+                              width: 24px
+                              height: 24px
+                              display: block
+                          .avatar
+                            color #1a1a1a
+                            line-height 1.6rem
+                            .avatar-name
+                              display: inline-block
+                              color #333333
+                            .res-type
+                              color: #8590a6
+                          .talk-timer
+                            float: right
                             color: #8590a6
-
-                        .talk-timer
-                          float: right
-                          color: #8590a6
-
-                      .cText
-                        font-size .875rem
-                        margin-left 2rem
-
+                        .cText
+                          font-size .875rem
+                          margin-left 2rem
                   /*评论*/
-
                   &.comments-wrapper
                     color: #000
+                .read-more
+                  /*border-top 1px solid #f6f6f6*/
+                  /*border-bottom 1px solid #dbdbdb*/
+                  width: 100%
+                  color: #8590a6
+                  text-align center
+                  cursor: pointer;
+                  span
+                    -webkit-transition: .2s
+                    -moz-transition: .2s
+                    -ms-transition: .2s
+                    -o-transition: .2s
+                    transition: .2s
+                    display: block
+                    padding:.6rem
+                    background: #ffffff
+                    &:hover
+                      background: #f6f6f6
+                .write-comment
+                  margin .8rem auto
+                  width: 100%
+                  /*background: gray*/
+                  position: relative
+                  .write-input
+                    box-sizing border-box
+                    -webkit-transition: .2s
+                    -moz-transition: .2s
+                    -ms-transition: .2s
+                    -o-transition: .2s
+                    transition: .2s
+                    position: relative;
+                    padding: .5rem 2rem .5rem 1.6rem;
+                    line-height: 1.7;
+                    color: #8590a6;
+                    outline: none;
+                    min-height: 1.3em;
+                    background: #f6f6f6
+                    width:83%
+                    margin-left 1.2rem
+                    border-radius 21px
+                    border 1px solid #f6f6f6
+                    &:before
+                      font-size .9275rem
+                      content: attr(placeholder);
+                      position: absolute;
+                      /*opacity: 1;*/
+                      pointer-events: none;
+                      -webkit-user-select: none;
+                      -moz-user-select: none;
+                      -ms-user-select: none;
+                      user-select: none;
+                      &:not(.empty):before
+                        display: none
 
-
+                    &:focus
+                      background: #ffff
+                      border-color #39acff
+                  .face-svg
+                    position: absolute
+                    bottom 7px
+                    right 15.8%
+                    cursor: pointer;
+                    .svg-icon
+                      fill #646f83
+                      font-size 1.5rem
+                    .face-show
+                      position: relative
+                      .face-all
+                        border: 1px solid #ebebeb;
+                        border-radius: 4px;
+                        box-shadow: 0 5px 20px rgba(26,26,26,.1);
+                        z-index: 1000000;
+                        background: #ffffff
+                        position: absolute
+                        top 1.4rem
+                        right -11.7rem
+                        width 408px
+                        height 208px
+                        .face-item
+                          width 48px
+                          padding 8px
+                          text-align center
+                          float: left
+                          .face-empty
+                            .face-gif
+                              width: 48px;
+                              height: 48px;
+                              padding-bottom: 4px;
+                              display: block
+                          .face-type
+                            width: 48px;
+                            line-height: 18px;
+                            font-size: 12px;
+                            color: #a9a9a9;
+                  .sub-btn
+                    cursor: pointer;
+                    text-align center
+                    border-radius 21px
+                    width 4rem
+                    color #ffffff
+                    background: #0084ff
+                    line-height 42px
+                    height 42px
+                    position: absolute
+                    bottom 0
+                    right 3%
+                    transition .2s
+                    &:hover
+                      background: #006ad3
           .info-img-box
             height: 100%
-
             .info-img
               height: 5rem
 </style>

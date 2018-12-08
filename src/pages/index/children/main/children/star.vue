@@ -350,11 +350,6 @@
                     color: #17181a;
                     outline: none;
                     min-height: 1.3em;
-                    /*float: right*/
-                    /*width: 91%*/
-                    /*height: 100%*/
-                    /*padding 0 0 .2rem .8rem*/
-                    /*background: aquamarine*/
                     &:before
                       content: attr(placeholder);
                       position: absolute;

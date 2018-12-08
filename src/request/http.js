@@ -41,7 +41,7 @@ import {LOGOUT} from "../store/mutation_type";
 
 // 请求超时时间
 axios.defaults.timeout = 5000;
-axios.defaults.baseURL = 'https://api.github.com'
+axios.defaults.baseURL = 'http://localhost:8080'
 // post请求头
 axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded;charset=UTF-8';
 
