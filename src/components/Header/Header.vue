@@ -51,7 +51,7 @@
     </div>
 
     <!--顶部首页标签栏-->
-    <tag-list></tag-list>
+    <tag-list v-if="$route.tagBool"></tag-list>
     <!--<div class="programming">-->
 
     <!--</div>-->

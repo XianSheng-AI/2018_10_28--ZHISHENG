@@ -134,21 +134,7 @@
                   >
                   </div>
                   <!--表情大全(组件)-->
-                  <span class="face-svg">
-                    <svg-icon iconClass="icon-biaoqing14"></svg-icon>
-                    <div class="face-show">
-                      <div class="face-all">
-                        <ul>
-                          <li class="face-item" v-for="(item,index) of faceImgData">
-                            <div class="face-empty">
-                              <img class="face-gif" :src="item.url" alt="">
-                            </div>
-                            <h6 class="face-type">{{item.title}}</h6>
-                          </li>
-                        </ul>
-                      </div>
-                    </div>
-                  </span>
+                  <face-gif @closeFace="showComment"></face-gif>
                   <div class="sub-btn">发布</div>
                 </div>
               </div>
@@ -204,7 +190,7 @@
 <script>
   import comLike from '../../../../../components/action/com-like.vue'
   import reactorButtonGroup from '@/components/action/reactor-button-group.vue'
-  import {apiComments,apiFaceImg} from '@/request/api.js'
+  import {apiComments} from '@/request/api.js'
 
   export default {
 
@@ -215,17 +201,18 @@
     },
     data() {
       return {
+        ops:{
 
+        },
         commentsData: {},//评论数据
-
-        faceImgData:null, //评论表情数据
         showCommentBool: false,
       }
     },
     create: {},
     mounted() {
       this.initPage();
-      this.initFace()
+      this.initFace();
+
 
     },
     computed: {
@@ -249,18 +236,12 @@
       initPage() {
 
       },
-      initFace(){
-        apiFaceImg().then(res=>{
-          console.log(res);
-          this.faceImgData=res;
-        })
-      },
+
       showComment() {
         this.showCommentBool = !this.showCommentBool;
         //点击展开评论获取评论数据
         apiComments().then(res => {
           this.commentsData = res;
-          console.log(this.commentsData)
         })
       },
       getDateDiff(dateTimeStamp) {
@@ -468,47 +449,9 @@
                       user-select: none;
                       &:not(.empty):before
                         display: none
-
                     &:focus
                       background: #ffff
                       border-color #39acff
-                  .face-svg
-                    position: absolute
-                    bottom 7px
-                    right 15.8%
-                    cursor: pointer;
-                    .svg-icon
-                      fill #646f83
-                      font-size 1.5rem
-                    .face-show
-                      position: relative
-                      .face-all
-                        border: 1px solid #ebebeb;
-                        border-radius: 4px;
-                        box-shadow: 0 5px 20px rgba(26,26,26,.1);
-                        z-index: 1000000;
-                        background: #ffffff
-                        position: absolute
-                        top 1.4rem
-                        right -11.7rem
-                        width 408px
-                        height 208px
-                        .face-item
-                          width 48px
-                          padding 8px
-                          text-align center
-                          float: left
-                          .face-empty
-                            .face-gif
-                              width: 48px;
-                              height: 48px;
-                              padding-bottom: 4px;
-                              display: block
-                          .face-type
-                            width: 48px;
-                            line-height: 18px;
-                            font-size: 12px;
-                            color: #a9a9a9;
                   .sub-btn
                     cursor: pointer;
                     text-align center

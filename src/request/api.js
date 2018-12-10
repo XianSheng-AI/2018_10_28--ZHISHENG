@@ -12,7 +12,7 @@ export const apiAddress = p => get('/user/repos', p);
 
 export const apiComments = p => get('/static/comments.json', p);
 
-export const apiFaceImg = p => get('/static/face-img.json', p); //表情gif图
+export const apiFaceGif = p => get('/static/face-img.json', p); //表情gif图
 
 
 

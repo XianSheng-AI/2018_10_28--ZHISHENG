@@ -23,12 +23,15 @@ import './common/reset.css'
 //引用vuescroll插件
 import VueScroll from 'vuescroll/dist/vuescroll-native';
 import 'vuescroll/dist/vuescroll.css';
-
+//全局组件
 import SvgIcon from '@/components/iconfont/SvgIcon.vue'
+import FaceGif from '@/components/face/face.vue'
 Vue.use(VueRouter)
 Vue.use(errorTips)
 Vue.component('svg-icon',SvgIcon);
 //错误提示组件
+Vue.component('face-gif',FaceGif);
+//评论表情组件
 
 // 状态码错误信息
 const codeMessage = {

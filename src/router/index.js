@@ -85,6 +85,8 @@ import likeCountPh from '../pages/people/children/personal-honor/children/like-c
 //--字数--wordCountPh
 import wordCountPh from '../pages/people/children/personal-honor/children/word-count'
 
+//写文章
+import writeArticle from '../pages/writeArticle/writeArticle'
 
 //设置中心
 //父组件
@@ -110,6 +112,7 @@ export default new VueRouter({
     {
       path: '/',
       component: index,
+      tagBool:true,
       children: [
         {
           path: '/recommend',
@@ -140,7 +143,14 @@ export default new VueRouter({
           redirect: '/recommend'
         }
       ]
-    }, {
+    },
+
+    {
+      path: '/write',
+      component: writeArticle,
+      tagBool:false
+    },
+    {
       path: '/messageCenter',
       component: myalerts,
       children: [
