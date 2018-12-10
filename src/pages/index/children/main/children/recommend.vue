@@ -133,7 +133,7 @@
                        v-model="hasWord"
                   >
                   </div>
-                  <!--表情大全-->
+                  <!--表情大全(组件)-->
                   <span class="face-svg">
                     <svg-icon iconClass="icon-biaoqing14"></svg-icon>
                     <div class="face-show">
@@ -149,8 +149,6 @@
                       </div>
                     </div>
                   </span>
-
-
                   <div class="sub-btn">发布</div>
                 </div>
               </div>
