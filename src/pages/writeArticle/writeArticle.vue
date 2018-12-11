@@ -23,31 +23,22 @@
         </div>
         <div class="list-wrapper">
           <ul class="side-list">
-            <li class="side-item active">
-              <h3 class="article-title">每一丰个人都值得去赞扬</h3>
-              <span class="word-count">2012字</span>
-            </li>
-            <li class="side-item">
-              <h3 class="article-title">是个GregGreg三十多个哥热缩管</h3>
-              <span class="word-count">2012字</span>
-            </li>
-            <li class="side-item">
-              <h3 class="article-title">二是过热热狗Greg</h3>
-              <span class="word-count">2012字</span>
-            </li>
-            <li class="side-item">
-              <h3 class="article-title">挖肺癌我v大哥个字符的个数噶政府</h3>
-              <span class="word-count">2012字</span>
-            </li>
-            <li class="side-item">
-              <h3 class="article-title">而设身体阿和太热的教育 教育就一天</h3>
-              <span class="word-count">2012字</span>
+            <li class="side-item" :class="{'active':activeIndex===index}" v-for="(item,index) of articleData" @click="handleClick(index)" >
+              <h3 class="article-title">{{item.title}}</h3>
+              <span class="word-count">{{item.countWord}}字</span>
+              <div class=""></div>
             </li>
           </ul>
         </div>
       </div>
       <!--编辑内容区-->
-      <div class="edit-container"></div>
+      <div class="edit-container">
+        <!--文章title-->
+        <h1 class="edit-top">
+          <input class="article-title" type="text" value="大师傅大师傅">
+        </h1>
+
+      </div>
     </div>
 </template>
 
@@ -55,8 +46,37 @@
     export default {
         name: "take-notes",
         data() {
-            return {}
+            return {
+              activeIndex:0,
+              articleData:[
+                {
+                  title:'但是发高热',
+                  countWord:1084
+                }
+                ,{
+                  title:'热给热爱过热啊',
+                  countWord:2045
+                }
+                ,{
+                  title:'热爱给热爱过热啊火热',
+                  countWord:10848
+                }
+                ,{
+                  title:'v反对v反对v发达不发达和埃格',
+                  countWord:5124
+                }
+                ,{
+                  title:'恶趣味驱蚊器few',
+                  countWord:2046
+                }
+              ]
+            }
+        },
+      methods:{
+        handleClick(index){
+          this.activeIndex=index;
         }
+      }
     }
 </script>
 
@@ -116,6 +136,8 @@
 
       .side-list
         .side-item
+          position: relative
+          transition .2s
           cursor: pointer;
           padding .6rem 18px
           background: #ffffff
@@ -126,7 +148,7 @@
           &.active
             border-left 3px solid #0084ff
           &:hover
-            background #dde9ff
+            background #f3f5f7
           .article-title
             ellipsis()
             width 180px
@@ -140,4 +162,14 @@
     width:720px
     height:30rem
     background: #ffffff
+    .edit-top
+      background: rosybrown
+      padding .6rem 1rem
+      .article-title
+        width 40rem
+        display: block
+        /*background: #ccc*/
+        font-size 1.2rem
+        color #595959
+        overflow: hidden
 </style>

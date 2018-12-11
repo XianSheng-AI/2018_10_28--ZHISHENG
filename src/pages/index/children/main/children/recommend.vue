@@ -211,7 +211,6 @@
     create: {},
     mounted() {
       this.initPage();
-      this.initFace();
 
 
     },

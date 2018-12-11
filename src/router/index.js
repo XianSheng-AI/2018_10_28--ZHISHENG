@@ -9,7 +9,10 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import index from '../pages/index/index.vue'
-
+//注册登录
+import loginRegister from '../pages/login-register/login-register'
+//注册，第二步选择标签
+import technologyLabel from '../pages/login-register/technologyLabel'
 // import indexNewest from '../pages/index/children/main/children/newest'
 import indexRecommend from '../pages/index/children/main/children/recommend'
 import indexHot from '../pages/index/children/main/children/hot'
@@ -107,48 +110,80 @@ Vue.use(VueRouter);
 
 export default new VueRouter({
   mode: 'history',
-  base: __dirname,
+  // base: __dirname,
   routes: [
+    {
+      path:'/signup',
+      component: loginRegister,
+      meta:{
+        tagBool:false,
+        showHeader:false
+      }
+    },
     {
       path: '/',
       component: index,
-      tagBool:true,
+      meta: {
+        tagBool:true,
+      },
       children: [
         {
           path: '/recommend',
-          component: indexRecommend
+          component: indexRecommend,
+          meta: {
+            tagBool:true,
+          },
+
         },
         {
           path: '/hot',
-          component: indexHot
+          component: indexHot,
+          meta: {
+            tagBool:true,
+          },
         },
         {
           path: '/focus',
           component: indexFocus,
+          meta: {
+            tagBool:true,
+          },
         },
         {
           path: '/star',
-          component: indexStar
+          component: indexStar,
+          meta: {
+            tagBool:true,
+          },
         },
         {
           path: '/question',
-          component: indexQuestion
+          component: indexQuestion,
+          meta: {
+            tagBool:true,
+          },
         },
         {
           path: '/topic',
-          component: indexTopic
+          component: indexTopic,
+          meta: {
+            tagBool:true,
+          },
         },
         {
           path: '',
           redirect: '/recommend'
         }
       ]
+
     },
 
     {
       path: '/write',
       component: writeArticle,
-      tagBool:false
+      meta:{
+        tagBool:false
+      }
     },
     {
       path: '/messageCenter',
@@ -333,7 +368,10 @@ export default new VueRouter({
       children:[
         {
           path:'account',
-          component:personalData
+          component:personalData,
+          meta:{
+            keepAlive:false
+          }
         },{
           path:'notification',
           component:messagesAndEmails

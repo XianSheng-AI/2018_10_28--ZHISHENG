@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <common-header></common-header>
+    <common-header v-if="$route.meta.showHeader"></common-header>
     <router-view/>
   </div>
 </template>
@@ -18,7 +18,6 @@ export default {
 <style>
 body{
   background: #f6f6f6;
-  height: 80rem;
 }
 #nprogress .bar {
   /*加载条颜色*/

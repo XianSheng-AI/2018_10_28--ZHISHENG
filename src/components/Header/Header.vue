@@ -51,7 +51,7 @@
     </div>
 
     <!--顶部首页标签栏-->
-    <tag-list v-if="$route.tagBool"></tag-list>
+    <tag-list v-if="$route.meta.tagBool"></tag-list>
     <!--<div class="programming">-->
 
     <!--</div>-->
@@ -72,16 +72,20 @@
       >
       </login-register>
     </transition>
+
   </div>
 </template>
 
 <script>
   import Search from './children/Search'
-  import loginRegister from './children/login-register'
+  import loginRegister from '../../pages/login-register/login-register'
   import TagList from './children/programming-tag'
 
   export default {
     name: 'home-header',
+    components:{
+
+    },
     data() {
       return {
         moveBool:false,
@@ -97,6 +101,7 @@
       TagList
     },
     mounted(){
+      console.log(this.$route)
       //给window添加一个滚动滚动监听事件
       window.addEventListener('scroll', this.handleScroll)
     },

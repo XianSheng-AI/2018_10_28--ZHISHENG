@@ -1,19 +1,18 @@
 <template>
     <div class="login-register">
-      <!--黑色透明遮罩-->
-      <div class="mask"></div>
-      <div class="box-empty">
+
+      <div class="box-empty" v-if="showLoginRegister">
 
         <div class="go-in-empty">
           <!--关闭按钮-->
-          <div class="close" @click="hideLogin()">
-            <span>
-              <svg-icon iconClass="icon-guanbi4"></svg-icon>
-            </span>
-          </div>
+          <!--<div class="close" @click="hideLogin()">-->
+            <!--<span>-->
+              <!--<svg-icon iconClass="icon-guanbi4"></svg-icon>-->
+            <!--</span>-->
+          <!--</div>-->
           <!--3种登录共用头部logo-->
           <div class="platform-name">
-            <img class="LOGO" src="../../../../static/images/logo/logo-1.png" alt="">
+            <img class="LOGO" src="../../../static/images/logo/logo-1.png" alt="">
             <!--<svg-icon iconClass="icon-logo"></svg-icon>-->
           </div>
           <h1 class="platform-desc">
@@ -59,7 +58,7 @@
               <svg-icon iconClass="icon-zhongxin1"></svg-icon>
             </span>
                 </div>
-                <img src="../../../../static/images/验证码图/下载.jpg" alt="">
+                <img src="../../../static/images/验证码图/下载.jpg" alt="">
               </div>
               <!--手机号登陆2次及以上出现验证码保证账号安全-->
               <div class="com-input hideCode"
@@ -76,7 +75,7 @@
                 <span class="input-svg"
                       v-if="modeData.usePhoneCode.activePhoneCode"
                 >
-                <img class="vali-code" src="../../../../static/images/验证码图/code.jpg" alt="">
+                <img class="vali-code" src="../../../static/images/验证码图/code.jpg" alt="">
               </span>
               </div>
               <div class="com-input">
@@ -131,7 +130,7 @@
                 <span class="input-svg"
                       v-if="modeData.usePassword.activePassword"
                 >
-                <img class="vali-code" src="../../../../static/images/验证码图/code.jpg" alt="">
+                <img class="vali-code" src="../../../static/images/验证码图/code.jpg" alt="">
               </span>
               </div>
 
@@ -165,7 +164,7 @@
           </div>
 
           <!--提交登陆按钮-->
-          <div class="submit-btn">{{modeData.subTy}}</div>
+          <div class="submit-btn" @click="subBtn(modeData.subTy)">{{modeData.subTy}}</div>
           <!--注册的footer-tip-->
           <div class="footer-tip">
 
@@ -234,13 +233,15 @@
         </div>
       </div>
 
-
+      <!--选择技术领域标签-->
+      <technology-label v-if="showTeLa"></technology-label>
     </div>
 </template>
 
 <script>
-  import selectBox from '../../Select-Box/Select-Box.vue'
-    export default {
+  import selectBox from '../../components/Select-Box/Select-Box.vue'
+  import technologyLabel from './technologyLabel'
+  export default {
         name: "login-register",
       props:{
         toGo:{
@@ -257,11 +258,14 @@
         }
       },
       components:{
-        selectBox
+        selectBox,
+        technologyLabel
       },
         data() {
             return {
 
+              showLoginRegister:true,  //控制登录注册隐藏
+              showTeLa:false,    //控制标签隐藏
               formData:{
                 usePassword:{
                   phone:''
@@ -294,6 +298,11 @@
             }
         },
       methods:{
+        //  登录/注册提交事件
+        subBtn(typ){
+          this.showLoginRegister=!this.showLoginRegister;
+          this.showTeLa=true;
+        },
         hideLogin(){
           this.$emit('toGoMe')
         },
@@ -332,13 +341,6 @@
 <style lang="stylus" scoped>
   @import '~@/common/stylus/mixins.styl'
 .login-register
-  /*.mask
-    z-index: 100
-    width: 100%
-    height: 100%
-    position: fixed
-    background: rgba(0,0,0,.6)
-    */
   .box-empty
     clearFix()
     position: relative
