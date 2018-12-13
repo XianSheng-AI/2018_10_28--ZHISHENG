@@ -16,7 +16,14 @@ export default {
 </script>
 
 <style>
+  #app{
+    width: 100%;
+    height: 100%;
+    /*background: #000;*/
+  }
 body{
+  width: 100%;
+  height: 100%;
   background: #f6f6f6;
 }
 #nprogress .bar {
