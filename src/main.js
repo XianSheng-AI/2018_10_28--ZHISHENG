@@ -97,6 +97,49 @@ Vue.use(VueScroll, {
 
 // Vue.config.productionTip = false
 /* eslint-disable no-new */
+//去除字符串首尾空白
+String.prototype.$trim = function (char, type) {
+  if (char) {
+    if (type == 'left') {
+      return this.replace(new RegExp('^\\'+char+'+', 'g'), '');
+    } else if (type == 'right') {
+      return this.replace(new RegExp('\\'+char+'+$', 'g'), '');
+    }
+    return this.replace(new RegExp('^\\'+char+'+|\\'+char+'+$', 'g'), '');
+  }
+  return this.replace(/^\s+|\s+$/g, '');
+};
+//$trim用法
+// 去除字符串首尾的全部空白
+// var str = ' Ruchee ';
+// console.log('xxx' + str.trim() + 'xxx');  // xxxRucheexxx
+//
+//
+// // 去除字符串左侧空白
+// str = ' Ruchee ';
+// console.log('xxx' + str.trim(' ', 'left') + 'xxx');  // xxxRuchee xxx
+//
+//
+// // 去除字符串右侧空白
+// str = ' Ruchee ';
+// console.log('xxx' + str.trim(' ', 'right') + 'xxx');  // xxx Rucheexxx
+//
+//
+// // 去除字符串两侧指定字符
+// str = '/Ruchee/';
+// console.log(str.trim('/'));  // Ruchee
+//
+//
+// // 去除字符串左侧指定字符
+// str = '/Ruchee/';
+// console.log(str.trim('/', 'left'));  // Ruchee/
+//
+//
+// // 去除字符串右侧指定字符
+// str = '/Ruchee/';
+// console.log(str.trim('/', 'right'));  // /Ruchee
+//
+
 new Vue({
   el: '#app',
   router,

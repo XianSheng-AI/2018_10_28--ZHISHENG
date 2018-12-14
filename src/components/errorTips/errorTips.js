@@ -14,8 +14,9 @@ Error.install = function (Vue) {
   document.body.appendChild(instance.$el)
   // 通过Vue的原型注册一个方法
   // 让所有实例共享这个方法
-  Vue.prototype.$error=(msg,duration=2000)=>{
+  Vue.prototype.$error=(msg,bgColor='#F43A0C',duration=2000)=>{
      instance.tips = msg;
+     instance.bg_color = bgColor;
      instance.isvisible=true;
     setTimeout(()=>{
       instance.isvisible=false;

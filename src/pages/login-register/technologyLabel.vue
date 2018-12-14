@@ -12,6 +12,7 @@
       <!--标签盒子-->
       <div class="containerBody">
         <ul class="tag-list">
+          <transition-group appear>
           <li class="tag-item"
               v-for="(item,index) of tagData"
               :key="item.id"
@@ -27,20 +28,23 @@
               <div class="add-button" :class="{'checked':item.checked}"  @click="handleFocus(item)">{{showText(item.checked)}}</div>
             </div>
           </li>
+          </transition-group>
         </ul>
       </div>
     </div>
     <!--底部下一步-->
     <div class="foodter">
-      <!--<div class="nextBtn">下一步</div>-->
-      <div class="svg-wrapper finish">
-        <svg height="40" width="150" xmlns="http://www.w3.org/2000/svg">
-          <rect id="shape" height="40" width="150" />
-          <div id="text">
-            <a href="javascript:;"><span class="spot"></span>完成注册</a>
-          </div>
-        </svg>
-      </div>
+      <div class="nextBtn">下一步</div>
+      <!--<div class="svg-wrapper finish">-->
+        <!--<svg height="40" width="150" xmlns="http://www.w3.org/2000/svg">-->
+          <!--<rect id="shape" height="40" width="150" />-->
+          <!--<div id="text">-->
+            <!--<a href="javascript:;">-->
+              <!--&lt;!&ndash;<span class="spot"></span>&ndash;&gt;-->
+              <!--完成注册</a>-->
+          <!--</div>-->
+        <!--</svg>-->
+      <!--</div>-->
     </div>
   </div>
 </template>
@@ -358,6 +362,17 @@
 
 <style lang="stylus" scoped>
   @import '~@/common/stylus/mixins.styl'
+
+  .v-enter,.v-leave-to{
+    transform: translateY(80px);
+    opacity: 0;
+  }
+
+  .v-enter-active,
+  .v-leave-active{
+    transition: all 2s ease;
+  }
+
   .technologyLabel
     position: absolute
     margin 0 auto
