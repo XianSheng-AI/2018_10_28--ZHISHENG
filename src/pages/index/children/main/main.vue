@@ -78,9 +78,9 @@
     .main-container
         float left
         clear both
-        width 44rem
+        width 726px
         /*height 40rem*/
-        background #ffffff
+        background #FFFFFF
         border-radius 0.4rem
         /*box-shadow: 0 0 0.2rem #ccc;*/
         //clearFix()

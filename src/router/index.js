@@ -125,6 +125,7 @@ export default new VueRouter({
       component: index,
       meta: {
         tagBool:true,
+        showHeader:true
       },
       children: [
         {
@@ -132,6 +133,7 @@ export default new VueRouter({
           component: indexRecommend,
           meta: {
             tagBool:true,
+            showHeader:true
           },
 
         },

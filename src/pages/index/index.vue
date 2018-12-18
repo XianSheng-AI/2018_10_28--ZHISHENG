@@ -74,8 +74,8 @@ export default {
     .posi
         /*overflow: hidden*/
 
-        width 60rem
-        margin 7.6rem auto
+        width 1034px
+        margin 4rem auto
         background: #ccc
         position: relative
 
