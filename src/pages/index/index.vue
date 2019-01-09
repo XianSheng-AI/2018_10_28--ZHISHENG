@@ -14,7 +14,7 @@ import HomeMain from './children/main/main'
 import HomeAside from './children/aside/aside'
 import {apiAddress} from "../../request/api";
 import {LOGIN} from "../../store/mutation_type";
-
+import axios from "axios"
 export default {
         name:'index',
         data(){
@@ -32,6 +32,19 @@ export default {
       },
   mounted(){
     console.log(this.$route);
+    // axios.get('https://api.github.com/search/users?q=XianSheng-AI').then(function (req,res){
+    //   console.log(res.data)
+    // })
+     const url = 'https://api.github.com/search/users?q=XianSheng-AI'
+    axios.get(url)
+      .then(response => {
+        // 成功了, 提交mutation: 更新状态(成功)
+       console.log(response.data)
+      })
+      .catch(error => {
+        // 失败了, 提交mutation: 更新状态(失败)
+       console.log('更新状态(失败)')
+      })
   },
       methods:{
         onload(){

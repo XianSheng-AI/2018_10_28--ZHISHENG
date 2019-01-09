@@ -110,6 +110,7 @@ Vue.use(VueRouter);
 
 export default new VueRouter({
   mode: 'history',
+  linkActiveClass:'active',
   // base: __dirname,
   routes: [
     {

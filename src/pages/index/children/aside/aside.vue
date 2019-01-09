@@ -8,6 +8,7 @@
           <span class="write-svg">
             <svg-icon iconClass="icon-xiepinglun"></svg-icon>
           </span>
+          <router-link to="/hot" active-class="active" exact>123</router-link>
           <span class="write-type">写回答</span>
         </a>
         <a class="write-item" href="javascript:;" alt="米">
@@ -16,7 +17,7 @@
           </span>
           <span class="write-type">写文章</span>
         </a>
-        <a class="write-item" href="javascript:;" alt="米">
+        <a class="write-item" href="javascript:;" alt="米" @mousedown="ssss">
           <span class="write-svg">
             <svg-icon iconClass="icon-xiangfa"></svg-icon>
           </span>
@@ -53,6 +54,15 @@
     data() {
       return {}
     },
+    mounted(){
+      // console.log(this.$router)
+      // console.log(this.$route)
+    },
+    methods:{
+      ssss(){
+        alert(555)
+      }
+    }
   }
 </script>
 
